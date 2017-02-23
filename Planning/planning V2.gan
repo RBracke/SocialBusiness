@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Planning SocialBusiness" company="" webLink="http://" view-date="2017-02-01" view-index="0" gantt-divider-location="381" resource-divider-location="300" version="2.7.2" locale="nl">
+    <description/>
+    <view zooming-state="default:8" id="gantt-chart">
+        <field id="tpd3" name="Naam" width="67" order="0"/>
+        <field id="tpd4" name="Begin datum" width="16" order="1"/>
+        <field id="tpd5" name="Eind datum" width="16" order="2"/>
+        <option id="color.recent"><![CDATA[#ffff00 #0000ff #33ff00]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Naam" width="50" order="0"/>
+        <field id="1" name="Standaard rol" width="50" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="true"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="35" name="Serverkot" meeting="false" start="2017-02-20" duration="12" complete="0" expand="true">
+            <task id="37" name="Lamp maken" meeting="false" start="2017-02-20" duration="5" complete="0" expand="true"/>
+            <task id="38" name="Server opzetten" meeting="false" start="2017-02-27" duration="5" complete="0" expand="true"/>
+        </task>
+        <task id="29" name="VPN" meeting="false" start="2017-02-27" duration="21" complete="0" expand="true">
+            <task id="32" name="VPN voor ons" meeting="false" start="2017-02-27" duration="5" complete="0" expand="true"/>
+            <task id="34" name="VPN voor gebruikers" meeting="false" start="2017-03-13" duration="7" complete="0" expand="true"/>
+        </task>
+        <task id="0" name="File Server" meeting="false" start="2017-02-27" duration="63" complete="0" expand="true">
+            <depend id="25" type="2" difference="0" hardness="Strong"/>
+            <task id="6" name="Server opzetten" meeting="false" start="2017-02-27" duration="9" complete="0" expand="true">
+                <task id="21" name="OS instaleren" meeting="false" start="2017-02-27" duration="5" complete="0" expand="true"/>
+                <task id="22" name="prog instaleren/instellen" meeting="false" start="2017-02-27" duration="9" complete="0" expand="true"/>
+            </task>
+            <task id="7" name="Netwerk instellen" meeting="false" start="2017-03-06" duration="5" complete="0" expand="true"/>
+            <task id="8" name="Protocol kiezen" meeting="false" start="2017-03-06" duration="5" complete="0" expand="true"/>
+            <task id="5" name="Koppelen met webserver" color="#8cb6ce" meeting="false" start="2017-04-22" duration="9" complete="0" expand="true"/>
+        </task>
+        <task id="9" name="Webserver / databaseserver" meeting="false" start="2017-02-27" duration="17" complete="0" expand="true">
+            <depend id="5" type="2" difference="0" hardness="Strong"/>
+            <depend id="25" type="2" difference="0" hardness="Strong"/>
+            <depend id="26" type="2" difference="0" hardness="Strong"/>
+            <task id="11" name="Server opzetten" meeting="false" start="2017-02-27" duration="5" complete="0" expand="true">
+                <task id="13" name="OS instaleren" meeting="false" start="2017-02-27" duration="5" complete="0" expand="true"/>
+                <task id="14" name="Web app instaleren/instelen" meeting="false" start="2017-02-27" duration="5" complete="0" expand="true"/>
+                <task id="106" name="Database app instaleren" meeting="false" start="2017-02-27" duration="5" complete="0" expand="true">
+                    <depend id="105" type="2" difference="0" hardness="Strong"/>
+                </task>
+            </task>
+            <task id="17" name="Netwerk instellen" meeting="false" start="2017-03-06" duration="5" complete="0" expand="true"/>
+            <task id="19" name="webserver-fileserver-samen" meeting="false" start="2017-03-11" duration="5" complete="0" expand="true"/>
+        </task>
+        <task id="25" name="Redundancy (extra)" color="#000000" meeting="false" start="2017-05-01" duration="7" complete="0" expand="true">
+            <task id="40" name="2 identieke servers" meeting="false" start="2017-05-01" duration="7" complete="0" expand="true"/>
+            <task id="49" name="loadbalancer" meeting="false" start="2017-05-01" duration="7" complete="0" expand="true"/>
+            <task id="51" name="Switch + netwerkkaarten" meeting="false" start="2017-05-01" duration="7" complete="0" expand="true"/>
+            <task id="52" name="Voeding" meeting="false" start="2017-05-01" duration="7" complete="0" expand="true"/>
+        </task>
+        <task id="26" name="Security" color="#000000" meeting="false" start="2017-03-16" duration="9" complete="0" expand="true">
+            <task id="54" name="HTTPS" meeting="false" start="2017-03-16" duration="9" complete="0" expand="true"/>
+        </task>
+        <task id="27" name="Website" meeting="false" start="2017-03-25" duration="28" complete="0" expand="true">
+            <depend id="5" type="2" difference="0" hardness="Strong"/>
+            <task id="78" name="Ontwerpen" meeting="false" start="2017-03-25" duration="17" complete="0" expand="true">
+                <task id="80" name="Pagina's in visio" meeting="false" start="2017-03-25" duration="9" complete="0" expand="true"/>
+                <task id="81" name="Visio -&gt; code" meeting="false" start="2017-04-01" duration="10" complete="0" expand="true"/>
+            </task>
+            <task id="94" name="PHP code maken" meeting="false" start="2017-04-10" duration="12" complete="0" expand="true"/>
+        </task>
+        <task id="28" name="Database" meeting="false" start="2017-02-20" duration="20" complete="0" expand="true">
+            <task id="101" name="Bepalen welke info" meeting="false" start="2017-02-20" duration="5" complete="0" expand="true"/>
+            <task id="102" name="ER diagram maken" meeting="false" start="2017-02-22" duration="7" complete="0" expand="true"/>
+            <task id="103" name="ER -&gt; code" meeting="false" start="2017-02-27" duration="5" complete="0" expand="true"/>
+            <task id="105" name="Code -&gt; tabellen op server" color="#8cb6ce" meeting="false" start="2017-03-04" duration="8" complete="0" expand="true"/>
+        </task>
+        <task id="43" name="Documentatie" meeting="false" start="2017-02-20" duration="1" complete="0" expand="true">
+            <task id="44" name="Film" meeting="false" start="2017-02-20" duration="1" complete="0" expand="true"/>
+            <task id="45" name="Pooster" meeting="false" start="2017-02-20" duration="1" complete="0" expand="true"/>
+            <task id="47" name="Verslag" meeting="false" start="2017-02-20" duration="1" complete="0" expand="true"/>
+        </task>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <taskdisplaycolumns>
+        <displaycolumn property-id="tpd7" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd12" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd3" order="0" width="243" visible="true"/>
+        <displaycolumn property-id="tpd4" order="1" width="60" visible="true"/>
+        <displaycolumn property-id="tpd8" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd6" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd5" order="2" width="59" visible="true"/>
+        <displaycolumn property-id="tpd10" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd11" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd13" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd1" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd0" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd9" order="-1" width="75" visible="false"/>
+        <displaycolumn property-id="tpd2" order="-1" width="75" visible="false"/>
+    </taskdisplaycolumns>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>

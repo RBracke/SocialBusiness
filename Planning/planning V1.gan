@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-03-13" view-index="0" gantt-divider-location="394" resource-divider-location="300" version="2.7.2" locale="nl">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2017-01-23" view-index="0" gantt-divider-location="394" resource-divider-location="300" version="2.7.2" locale="nl">
     <description/>
-    <view zooming-state="default:4" id="gantt-chart">
+    <view zooming-state="default:5" id="gantt-chart">
         <field id="tpd3" name="Naam" width="64" order="0"/>
         <field id="tpd4" name="Begin datum" width="17" order="1"/>
         <field id="tpd5" name="Eind datum" width="17" order="2"/>
         <option id="color.recent"><![CDATA[#ffff00 #0000ff #33ff00]]></option>
     </view>
     <view id="resource-table">
-        <field id="0" name="Naam" width="52" order="0"/>
-        <field id="1" name="Standaard rol" width="47" order="1"/>
+        <field id="0" name="Naam" width="50" order="0"/>
+        <field id="1" name="Standaard rol" width="49" order="1"/>
     </view>
     <!-- -->
     <calendars>
@@ -35,14 +35,19 @@
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
         <task id="0" name="Project zoeken en projectplan" color="#33ff00" meeting="false" start="2017-01-10" duration="20" complete="0" expand="true"/>
-        <task id="4" name="Pagina's uittekenen" color="#0000ff" meeting="false" start="2017-02-13" duration="14" complete="0" expand="true"/>
         <task id="8" name="ERD tekenen + tabellen" color="#ffff00" meeting="false" start="2017-02-13" duration="14" complete="0" expand="true"/>
+        <task id="4" name="Pagina's uittekenen" color="#0000ff" meeting="false" start="2017-02-13" duration="14" complete="0" expand="true"/>
         <task id="9" name="Query's voor schrijven en lezen data" color="#ffff00" meeting="false" start="2017-02-27" duration="14" complete="0" expand="true"/>
         <task id="10" name="Basis van site maken (PHP)" color="#0000ff" meeting="false" start="2017-02-27" duration="28" complete="0" expand="true"/>
         <task id="11" name="Site testen (mobiel, bugs, security, ...)" color="#ffff00" meeting="false" start="2017-03-13" duration="21" complete="0" expand="true"/>
         <task id="12" name="Overschakelen naar 2 servers" color="#33ff00" meeting="false" start="2017-03-27" duration="7" complete="0" expand="true"/>
         <task id="13" name="Redundancy implementeren" color="#ffff00" meeting="false" start="2017-04-08" duration="16" complete="0" expand="true"/>
-        <task id="14" name="Fileserver implementeren" color="#0000ff" meeting="false" start="2017-04-03" duration="21" complete="0" expand="true"/>
+        <task id="14" name="Fileserver implementeren" color="#0000ff" meeting="false" start="2017-02-13" duration="2" complete="0" expand="true">
+            <task id="26" name="Fileserver opzetten" color="#8cb6ce" meeting="false" start="2017-02-14" duration="1" complete="0" expand="true"/>
+            <task id="27" name="Netwerk instellen" meeting="false" start="2017-02-13" duration="1" complete="0" expand="true"/>
+            <task id="28" name="share protocol kiezen" meeting="false" start="2017-02-13" duration="1" complete="0" expand="true"/>
+            <task id="24" name="koppelen met webserver" meeting="false" start="2017-02-13" duration="1" complete="0" expand="true"/>
+        </task>
         <task id="16" name="Security bekijken en aanpassingen doen" color="#ffff00" meeting="false" start="2017-04-24" duration="14" complete="0" expand="true"/>
         <task id="17" name="EXTRA: inlog badge" color="#0000ff" meeting="false" start="2017-05-01" duration="14" complete="0" expand="true"/>
     </tasks>
