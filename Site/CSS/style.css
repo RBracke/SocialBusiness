@@ -5,6 +5,56 @@ span.bu {
 	color: #eeeeee;
 }
 div.mid {
-	background-color: #999999;
+	background-color: #fafafa;
+	border: solid #636363 1px;
+	border-radius: 5px;
 	text-align: center;
+}
+.BOX{
+	background-color: #fafafa;
+	border: solid #636363 1px;
+	border-radius: 5px;
+	padding: 20px;
+}
+.login_email {
+	padding: 20px;
+	margin-top: 200px;
+}
+img.user_foto {
+	width: 100%;
+	max-width: 300px;
+	max-height: 300px;
+}
+div.user_info {
+	font-size: 25px;
+}
+div.user_search {
+	font-size: 14px;
+}
+p.clear_both {
+	clear: both;
+}
+hr.hr {
+	padding: 0px;
+	margin: 0px;
+	color: #aaa;
+}
+ul.lijst_mensen_zoeken {
+	padding-left: 15px;
+	font-size: 14px;
+}
+.no_pad_right {
+	padding-right: 0px;
+}
+.no_pad_left {
+	padding-left: 0px;
+}
+.no_pad_top {
+	padding-top: 0px;
+}
+.no_pad_bottom {
+	padding-bottom: 0px;
+}
+.links_bovenaan > li > a {
+	color: #f00;
 }
