@@ -55,31 +55,18 @@
      </div>
      </div>
      <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-4 col-md-offset-0 user_search">
-     <div class="BOX">
-      <form class="form-horizontal" name="people_search" method="post" action="#">
-       <div class="form-group">
-        <label for="zoeken" class="col-md-3 control-label">Search:</label>
-        <div class="col-md-9">
-         <input type="text" class="form-control" id="zoeken" name="zoeken">
-        </div>
-       </div>
-      </form>
-      <div class="col-md-12"><hr class="hr"></div>
-      <div class="col-md-12">
-        <h3>Bosses</h3>
-        <ul class="lijst_mensen_zoeken">
-          <li>Bos 1</li>
-          <li>Bos 2</li>
-          <li>Bos 3</li>
-        </ul>
-        <h3>Staff</h3>
-        <ul class="lijst_mensen_zoeken">
-          <li>Staff 1</li>
-          <li>Staff 2</li>
-          <li>Staff 3</li>
-        </ul>
-      </div>
-      <p class="clear_both"></p>
+      <div class="BOX">
+        <form class="form-vertical" name="message" method="post" action="#">
+          <div class="form-group">
+            <label for="message" class="control-label h3">Message</label>
+            <input type="text" class="form-control message" id="message" name="message">
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-warning">Send</button>
+            </div>
+          </div>
+        </form>
       </div>
      </div>
   </div>

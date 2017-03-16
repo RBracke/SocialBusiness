@@ -25,7 +25,7 @@ else
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Login</title>
+    <title>Sobu</title>
     <link rel="shortcut icon" href="IMG/icon.png"/>
 
     <!-- Bootstrap -->
@@ -47,14 +47,18 @@ else
 	    <div class="navbar-header">
 	      <a class="navbar-brand" href="#"><span class="so">So</span><span class="bu">bu</span></a>
 	    </div>
-
-	    
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right links_bovenaan">
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
 	  </div><!-- /.container-fluid -->
 	</nav>
 
   <div class="container-fluid">
      <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
        <div class="login_email mid BOX">
+        <h2 class="login_text">Login</h2>
 
        <?php
        if ($email_ok == "ok")

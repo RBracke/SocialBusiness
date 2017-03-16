@@ -10,6 +10,9 @@ div.mid {
 	border-radius: 5px;
 	text-align: center;
 }
+h2.login_text {
+	margin-top: 0px;
+}
 .BOX{
 	background-color: #fafafa;
 	border: solid #636363 1px;
@@ -57,4 +60,7 @@ ul.lijst_mensen_zoeken {
 }
 .links_bovenaan > li > a {
 	color: #f00;
+}
+input.message {
+	height: 200px;
 }
