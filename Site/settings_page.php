@@ -75,8 +75,8 @@
         <div class="form-group">
         <label for="zoeken" class="col-md-3 control-label">Gender</label>
         <div class="col-md-9">
-         <input type="radio" class="form-control" id="nir" name="m">
-         <input type="radio" class="form-control" id="nir" name="f">
+         <label class="radio-inline"><input type="radio" id="nir" name="gender" value="m">M</label>
+         <label class="radio-inline"><input type="radio" id="nir" name="gender" value="m">F</label>
         </div>
        </div>
        <div class="form-group">
@@ -116,7 +116,7 @@
         </div>
        </div>
         <div class="col-md-9">
-         <input type="submit" id="submit" name="submit"> /* verzenden? */
+         <button type="submit" class="btn btn-warning">Save</button>
         </div>
       </form>
       </div>
