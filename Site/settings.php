@@ -29,8 +29,8 @@
 	    </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right links_bovenaan">
-          <li><a href="messages.php">Messages</a></li>
-          <li><a href="settings.php">Settings</a></li>
+          <li><a href="#">Messages</a></li>
+          <li><a href="#">Settings</a></li>
           <li><a href="#">Logout</a></li>
         </ul>
       </div>
@@ -56,28 +56,69 @@
      </div>
      <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-4 col-md-offset-0 user_search">
      <div class="BOX">
-      <form class="form-horizontal" name="people_search" method="post" action="#">
-       <div class="form-group">
-        <label for="zoeken" class="col-md-3 control-label">Search:</label>
-        <div class="col-md-9">
-         <input type="text" class="form-control" id="zoeken" name="zoeken">
-        </div>
-       </div>
-      </form>
+      <p>Settings</p>
       <div class="col-md-12"><hr class="hr"></div>
       <div class="col-md-12">
-        <h3>Bosses</h3>
-        <ul class="lijst_mensen_zoeken">
-          <li>Bos 1</li>
-          <li>Bos 2</li>
-          <li>Bos 3</li>
-        </ul>
-        <h3>Staff</h3>
-        <ul class="lijst_mensen_zoeken">
-          <li>Staff 1</li>
-          <li>Staff 2</li>
-          <li>Staff 3</li>
-        </ul>
+      <form class="form-horizontal" name="settings" method="post" action="#">
+       <div class="form-group">
+        <label for="zoeken" class="col-md-3 control-label">National insurance number</label>
+        <div class="col-md-9">
+         <input type="text" class="form-control" id="nir" name="nir">
+        </div>
+       </div>
+        <div class="form-group">
+        <label for="zoeken" class="col-md-3 control-label">Date of birth</label>
+        <div class="col-md-9">
+         <input type="text" class="form-control" id="dob" name="dob">
+        </div>
+       </div>
+        <div class="form-group">
+        <label for="zoeken" class="col-md-3 control-label">Gender</label>
+        <div class="col-md-9">
+         <input type="radio" class="form-control" id="nir" name="m">
+         <input type="radio" class="form-control" id="nir" name="f">
+        </div>
+       </div>
+       <div class="form-group">
+        <label for="zoeken" class="col-md-3 control-label">Home address</label>
+        <div class="col-md-9">
+         <input type="text" class="form-control" id="home" name="home">
+        </div>
+       </div>
+       <div class="form-group">
+        <label for="zoeken" class="col-md-3 control-label">Martial status</label>
+        <div class="col-md-9">
+         <input type="text" class="form-control" id="martial" name="martial">
+        </div>
+       </div>
+       <div class="form-group">
+        <label for="zoeken" class="col-md-3 control-label">Personal email</label>
+        <div class="col-md-9">
+         <input type="email" class="form-control" id="email" name="email">
+        </div>
+       </div>
+       <div class="form-group">
+        <label for="zoeken" class="col-md-3 control-label">Phone number</label>
+        <div class="col-md-9">
+         <input type="text" class="form-control" id="phone" name="phone">
+        </div>
+       </div>
+       <div class="form-group">
+        <label for="zoeken" class="col-md-3 control-label">Password</label>
+        <div class="col-md-9">
+         <input type="password" class="form-control" id="password" name="password">
+        </div>
+       </div>
+       <div class="form-group">
+        <label for="zoeken" class="col-md-3 control-label">Retype password</label>
+        <div class="col-md-9">
+         <input type="password" class="form-control" id="repassword" name="repassword">
+        </div>
+       </div>
+        <div class="col-md-9">
+         <input type="submit" id="submit" name="submit"> /* verzenden? */
+        </div>
+      </form>
       </div>
       <p class="clear_both"></p>
       </div>

@@ -29,9 +29,9 @@
 	    </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right links_bovenaan">
-          <li><a href="messages.php">Messages</a></li>
-          <li><a href="settings.php">Settings</a></li>
-          <li><a href="#">Logout</a></li>
+          <li><a href="#">Messages</a></li>
+          <li><a href="#">Settings</a></li>
+          <li><a href="settings.php">Logout</a></li>
         </ul>
       </div>
 	  </div><!-- /.container-fluid -->
@@ -56,29 +56,27 @@
      </div>
      <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-4 col-md-offset-0 user_search">
      <div class="BOX">
-      <form class="form-horizontal" name="people_search" method="post" action="#">
+      <form class="form-horizontal" name="messages" method="post" action="#">
        <div class="form-group">
-        <label for="zoeken" class="col-md-3 control-label">Search:</label>
+        <label for="receipant" class="col-md-3 control-label">Receipant</label>
         <div class="col-md-9">
-         <input type="text" class="form-control" id="zoeken" name="zoeken">
+         <input type="text" class="form-control" id="receipant" name="receipant">
         </div>
        </div>
+        <div class="form-group">
+        <label for="topic" class="col-md-3 control-label">Topic</label>
+        <div class="col-md-9">
+         <input type="text" class="form-control" id="topic" name="topic">
+        </div>
+       </div>
+        <div class="form-group">
+          <label for="message" class="col-md-3 control-label">Message</label>
+          <textarea class="form-control" rows="5" id="message"></textarea>
+        </div>
+        <div class="col-md-9">
+         <input type="submit" id="submit" name="submit"> /* verzenden? */
+        </div>
       </form>
-      <div class="col-md-12"><hr class="hr"></div>
-      <div class="col-md-12">
-        <h3>Bosses</h3>
-        <ul class="lijst_mensen_zoeken">
-          <li>Bos 1</li>
-          <li>Bos 2</li>
-          <li>Bos 3</li>
-        </ul>
-        <h3>Staff</h3>
-        <ul class="lijst_mensen_zoeken">
-          <li>Staff 1</li>
-          <li>Staff 2</li>
-          <li>Staff 3</li>
-        </ul>
-      </div>
       <p class="clear_both"></p>
       </div>
      </div>
