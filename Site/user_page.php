@@ -39,7 +39,7 @@
 
   <div class="container-fluid">
      <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2">
-     <div class="BOX">
+     <div class="BOX margin_15_bottom">
        <div class="col-md-5 user_foto">
          <img src="IMG/user.png" class="user_foto">
        </div>
@@ -50,6 +50,24 @@
            <li>In Building</li>
            <li>Online</li>
          </ul>
+       </div>
+      <p class="clear_both"></p>
+     </div>
+     <div class="BOX margin_15_bottom no_pad_bottom">
+       <div class="col-md-12">
+         <a href="#" class="h4">Info</a>
+       </div>
+      <p class="clear_both"></p>
+     </div>
+     <div class="BOX margin_15_bottom no_pad_bottom">
+       <div class="col-md-12">
+         <a href="#" class="h4">Check in and out history</a>
+       </div>
+      <p class="clear_both"></p>
+     </div>
+     <div class="BOX margin_15_bottom no_pad_bottom">
+       <div class="col-md-12">
+         <a href="#" class="h4">Message and file history</a>
        </div>
       <p class="clear_both"></p>
      </div>

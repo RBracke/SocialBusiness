@@ -39,7 +39,7 @@
 
   <div class="container-fluid">
      <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2">
-     <div class="BOX">
+     <div class="BOX margin_15_bottom">
        <div class="col-md-5 user_foto">
          <img src="IMG/user.png" class="user_foto">
        </div>
@@ -53,20 +53,46 @@
        </div>
       <p class="clear_both"></p>
      </div>
+     <div class="BOX margin_15_bottom no_pad_bottom">
+       <div class="col-md-12">
+         <a href="#" class="h4">Info</a>
+       </div>
+      <p class="clear_both"></p>
+     </div>
+     <div class="BOX margin_15_bottom no_pad_bottom">
+       <div class="col-md-12">
+         <a href="#" class="h4">Check in and out history</a>
+       </div>
+      <p class="clear_both"></p>
+     </div>
+     <div class="BOX margin_15_bottom no_pad_bottom">
+       <div class="col-md-12">
+         <a href="#" class="h4">Message and file history</a>
+       </div>
+      <p class="clear_both"></p>
+     </div>
      </div>
      <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-4 col-md-offset-0 user_search">
       <div class="BOX">
         <form class="form-vertical" name="message" method="post" action="#">
           <div class="form-group">
-            <label for="message" class="control-label h3">Message</label>
+            <label for="topic" class="control-label h4 no_margin_top">Topic</label>
+            <input type="text" class="form-control" id="message" name="message">
+          </div>
+          <div class="form-group">
+            <label for="message" class="control-label h4 no_margin_top">Message</label>
             <input type="text" class="form-control message" id="message" name="message">
           </div>
           <div class="form-group">
-            <div class="col-sm-12">
+            <div class="col-sm-12 no_pad_left pad_15_bottom">
+              <input type="file" class="btn btn-warning"></button>
+            </div>
+            <div class="col-sm-12 no_pad_left">
               <button type="submit" class="btn btn-warning">Send</button>
             </div>
           </div>
         </form>
+        <p class="clear_both"></p>
       </div>
      </div>
   </div>
