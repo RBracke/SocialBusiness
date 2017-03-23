@@ -1,0 +1,3 @@
+Webserver1:10.10.1.60
+Webserver2:10.10.1.61
+storageserver: 10.10.1.62
