@@ -29,9 +29,9 @@
 	    </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right links_bovenaan">
-          <li><a href="#">Messages</a></li>
-          <li><a href="#">Settings</a></li>
-          <li><a href="settings.php">Logout</a></li>
+          <li><a href="messages_page.php">Messages</a></li>
+          <li><a href="settings_page.php">Settings</a></li>
+          <li><a href="logout.php">Logout</a></li>
         </ul>
       </div>
 	  </div><!-- /.container-fluid -->
@@ -55,29 +55,30 @@
      </div>
      </div>
      <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-4 col-md-offset-0 user_search">
-     <div class="BOX">
-      <form class="form-horizontal" name="messages" method="post" action="#">
-       <div class="form-group">
-        <label for="receipant" class="col-md-3 control-label">Receipant</label>
-        <div class="col-md-9">
-         <input type="text" class="form-control" id="receipant" name="receipant">
-        </div>
-       </div>
-        <div class="form-group">
-        <label for="topic" class="col-md-3 control-label">Topic</label>
-        <div class="col-md-9">
-         <input type="text" class="form-control" id="topic" name="topic">
-        </div>
-       </div>
-        <div class="form-group">
-          <label for="message" class="col-md-3 control-label">Message</label>
-          <textarea class="form-control" rows="5" id="message"></textarea>
-        </div>
-        <div class="col-md-9">
-         <input type="submit" id="submit" name="submit"> /* verzenden? */
-        </div>
-      </form>
-      <p class="clear_both"></p>
+      <div class="BOX">
+        <form class="form-vertical" name="message" method="post" action="#">
+          <div class="form-group">
+            <label for="receipant" class="control-label h4 no_margin_top">Receipant</label>
+            <input type="text" class="form-control" id="receipant" name="receipant">
+          </div>
+          <div class="form-group">
+            <label for="topic" class="control-label h4 no_margin_top">Topic</label>
+            <input type="text" class="form-control" id="topic" name="topic">
+          </div>
+          <div class="form-group">
+            <label for="message" class="control-label h4 no_margin_top">Message</label>
+            <input type="text" class="form-control message" id="message" name="message">
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12 no_pad_left pad_15_bottom">
+              <input type="file" class="btn btn-warning file">
+            </div>
+            <div class="col-sm-12 no_pad_left">
+              <button type="submit" class="btn btn-warning">Send</button>
+            </div>
+          </div>
+        </form>
+        <p class="clear_both"></p>
       </div>
      </div>
   </div>

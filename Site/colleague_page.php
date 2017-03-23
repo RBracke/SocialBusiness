@@ -29,9 +29,9 @@
 	    </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right links_bovenaan">
-          <li><a href="#">Messages</a></li>
-          <li><a href="#">Settings</a></li>
-          <li><a href="#">Logout</a></li>
+          <li><a href="messages_page.php">Messages</a></li>
+          <li><a href="settings_page.php">Settings</a></li>
+          <li><a href="logout.php">Logout</a></li>
         </ul>
       </div>
 	  </div><!-- /.container-fluid -->
@@ -77,7 +77,7 @@
         <form class="form-vertical" name="message" method="post" action="#">
           <div class="form-group">
             <label for="topic" class="control-label h4 no_margin_top">Topic</label>
-            <input type="text" class="form-control" id="message" name="message">
+            <input type="text" class="form-control" id="topic" name="topic">
           </div>
           <div class="form-group">
             <label for="message" class="control-label h4 no_margin_top">Message</label>
@@ -85,7 +85,7 @@
           </div>
           <div class="form-group">
             <div class="col-sm-12 no_pad_left pad_15_bottom">
-              <input type="file" class="btn btn-warning"></button>
+              <input type="file" class="btn btn-warning file">
             </div>
             <div class="col-sm-12 no_pad_left">
               <button type="submit" class="btn btn-warning">Send</button>

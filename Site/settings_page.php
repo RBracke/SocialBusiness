@@ -19,6 +19,15 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+      });
+    </script>
   </head>
   <body>
 	<nav class="navbar navbar-default">
@@ -29,9 +38,9 @@
 	    </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right links_bovenaan">
-          <li><a href="#">Messages</a></li>
-          <li><a href="#">Settings</a></li>
-          <li><a href="#">Logout</a></li>
+          <li><a href="messages_page.php">Messages</a></li>
+          <li><a href="settings_page.php">Settings</a></li>
+          <li><a href="logout.php">Logout</a></li>
         </ul>
       </div>
 	  </div><!-- /.container-fluid -->
@@ -39,7 +48,7 @@
 
   <div class="container-fluid">
      <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2">
-     <div class="BOX">
+     <div class="BOX margin_15_bottom">
        <div class="col-md-5 user_foto">
          <img src="IMG/user.png" class="user_foto">
        </div>
@@ -53,66 +62,98 @@
        </div>
       <p class="clear_both"></p>
      </div>
+     <div class="BOX margin_15_bottom no_pad_bottom">
+       <div class="col-md-12">
+         <a href="#" class="h4">Info</a>
+       </div>
+      <p class="clear_both"></p>
+     </div>
+     <div class="BOX margin_15_bottom no_pad_bottom">
+       <div class="col-md-12">
+         <a href="#" class="h4">Check in and out history</a>
+       </div>
+      <p class="clear_both"></p>
+     </div>
+     <div class="BOX margin_15_bottom no_pad_bottom">
+       <div class="col-md-12">
+         <a href="#" class="h4">Message and file history</a>
+       </div>
+      <p class="clear_both"></p>
+     </div>
      </div>
      <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-4 col-md-offset-0 user_search">
      <div class="BOX">
-      <p>Settings</p>
+      <h4>Settings</h4>
       <div class="col-md-12"><hr class="hr"></div>
       <div class="col-md-12">
       <form class="form-horizontal" name="settings" method="post" action="#">
-       <div class="form-group">
-        <label for="zoeken" class="col-md-3 control-label">National insurance number</label>
+       <div class="form-group margin_15_top">
+        <label for="nin" class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="left" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Nin</label>
         <div class="col-md-9">
-         <input type="text" class="form-control" id="nir" name="nir">
+         <input type="text" class="form-control" id="nin" name="nin">
         </div>
        </div>
         <div class="form-group">
-        <label for="zoeken" class="col-md-3 control-label">Date of birth</label>
+        <label for="dob" class="col-md-3 control-label">Date of birth</label>
         <div class="col-md-9">
          <input type="text" class="form-control" id="dob" name="dob">
         </div>
        </div>
         <div class="form-group">
-        <label for="zoeken" class="col-md-3 control-label">Gender</label>
+        <label for="gender" class="col-md-3 control-label">Gender</label>
         <div class="col-md-9">
-         <label class="radio-inline"><input type="radio" id="nir" name="gender" value="m">M</label>
-         <label class="radio-inline"><input type="radio" id="nir" name="gender" value="m">F</label>
+         <label class="radio-inline"><input type="radio" id="gender" name="gender" value="m">M</label>
+         <label class="radio-inline"><input type="radio" id="gender" name="gender" value="m">F</label>
         </div>
        </div>
        <div class="form-group">
-        <label for="zoeken" class="col-md-3 control-label">Home address</label>
+        <label for="home" class="col-md-3 control-label">Home address</label>
         <div class="col-md-9">
          <input type="text" class="form-control" id="home" name="home">
         </div>
        </div>
        <div class="form-group">
-        <label for="zoeken" class="col-md-3 control-label">Martial status</label>
+        <label for="martial" class="col-md-3 control-label">Martial status</label>
         <div class="col-md-9">
          <input type="text" class="form-control" id="martial" name="martial">
         </div>
        </div>
        <div class="form-group">
-        <label for="zoeken" class="col-md-3 control-label">Personal email</label>
+        <label for="email" class="col-md-3 control-label">Personal email</label>
         <div class="col-md-9">
          <input type="email" class="form-control" id="email" name="email">
         </div>
        </div>
        <div class="form-group">
-        <label for="zoeken" class="col-md-3 control-label">Phone number</label>
+        <label for="phone" class="col-md-3 control-label">Phone number</label>
         <div class="col-md-9">
          <input type="text" class="form-control" id="phone" name="phone">
         </div>
        </div>
        <div class="form-group">
-        <label for="zoeken" class="col-md-3 control-label">Password</label>
+        <label for="oldpassword" class="col-md-3 control-label">Old password</label>
         <div class="col-md-9">
-         <input type="password" class="form-control" id="password" name="password">
+         <input type="password" class="form-control" id="oldpassword" name="oldpassword">
         </div>
        </div>
        <div class="form-group">
-        <label for="zoeken" class="col-md-3 control-label">Retype password</label>
+        <label for="newpassword" class="col-md-3 control-label">New password</label>
+        <div class="col-md-9">
+         <input type="password" class="form-control" id="newpassword" name="newpassword">
+        </div>
+       </div>
+       <div class="form-group">
+        <label for="repassword" class="col-md-3 control-label">Retype password</label>
         <div class="col-md-9">
          <input type="password" class="form-control" id="repassword" name="repassword">
+        </div>
+       </div>
+       <div class="form-group">
+        <div class="col-sm-12 no_pad_left pad_15_bottom">
+          <label for="picture" class="col-md-3 control-label">Profile picture</label>
+          <div class="col-md-9">
+            <input type="file" id="picture" class="btn btn-warning file">
+          </div>
         </div>
        </div>
         <div class="col-md-9">
@@ -125,11 +166,6 @@
      </div>
   </div>
 
-
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    
   </body>
 </html>

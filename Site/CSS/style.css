@@ -97,9 +97,24 @@ ul.lijst_mensen_zoeken {
 .margin_15_bottom {
 	margin-bottom: 15px;
 }
+.margin_30_right {
+	margin-right: 30px;
+}
+.margin_30_left {
+	margin-left: 30px;
+}
+.margin_30_top {
+	margin-top: 30px;
+}
+.margin_30_bottom {
+	margin-bottom: 30px;
+}
 .links_bovenaan > li > a {
 	color: #f00;
 }
 input.message {
 	height: 200px;
+}
+input.file {
+	width: 100%;
 }
