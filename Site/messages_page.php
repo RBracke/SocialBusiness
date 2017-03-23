@@ -37,33 +37,51 @@
 	  </div><!-- /.container-fluid -->
 	</nav>
 
-  <div class="container-fluid">
+   <div class="container-fluid">
      <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2">
-     <div class="BOX">
-       <div class="col-md-5 user_foto">
-         <img src="IMG/user.png" class="user_foto">
+       <div class="BOX margin_15_bottom">
+         <div class="col-md-5 user_foto">
+           <img src="IMG/user.png" class="user_foto">
+         </div>
+         <div class="col-md-7 user_info">
+           <ul>
+             <li>Name</li>
+             <li>Function</li>
+             <li>In Building</li>
+             <li>Online</li>
+           </ul>
+         </div>
+        <p class="clear_both"></p>
        </div>
-       <div class="col-md-7 user_info">
-         <ul>
-           <li>Name</li>
-           <li>Function</li>
-           <li>In Building</li>
-           <li>Online</li>
-         </ul>
+       <div class="BOX margin_15_bottom no_pad_bottom">
+         <div class="col-md-12">
+           <a href="#" class="h4">Info</a>
+         </div>
+        <p class="clear_both"></p>
        </div>
-      <p class="clear_both"></p>
-     </div>
-     </div>
+       <div class="BOX margin_15_bottom no_pad_bottom">
+         <div class="col-md-12">
+           <a href="#" class="h4">Check in and out history</a>
+         </div>
+        <p class="clear_both"></p>
+       </div>
+       <div class="BOX margin_15_bottom no_pad_bottom">
+         <div class="col-md-12">
+           <a href="#" class="h4">Message and file history</a>
+         </div>
+        <p class="clear_both"></p>
+       </div>
+      </div>
      <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-4 col-md-offset-0 user_search">
       <div class="BOX">
         <form class="form-vertical" name="message" method="post" action="#">
-          <div class="form-group">
+		      <div class="form-group">
             <label for="receipant" class="control-label h4 no_margin_top">Receipant</label>
-            <input type="text" class="form-control" id="receipant" name="receipant">
+            <input type="text" class="form-control" id="message" name="message">
           </div>
           <div class="form-group">
             <label for="topic" class="control-label h4 no_margin_top">Topic</label>
-            <input type="text" class="form-control" id="topic" name="topic">
+            <input type="text" class="form-control" id="message" name="message">
           </div>
           <div class="form-group">
             <label for="message" class="control-label h4 no_margin_top">Message</label>
