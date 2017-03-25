@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `rights` (
 CREATE TABLE IF NOT EXISTS `user` (
   `user_id` int(11) AUTO_INCREMENT,
   `name` varchar(40),
-  `nin` int(20),
+  `nin` bigint(30),
   `address` varchar(80),
   `gender` tinyint(1),
   `email` varchar(40),
