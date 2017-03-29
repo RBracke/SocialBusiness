@@ -1,3 +1,5 @@
 Webserver1:10.10.1.62
 Webserver2:10.10.1.61
 storageserver: 10.10.1.60
+cluster: 10.10.1.63
+fileserver cluster; 10.10.1.64
