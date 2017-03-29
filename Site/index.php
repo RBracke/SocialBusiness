@@ -1,15 +1,37 @@
 <?php
-if (isset($_POST["email_login"]))
+
+  include("functions.php");
+
+
+if (isset($_POST["email"]) && !isset($_POST["password"]))
 {
+
+  $email = strip($_POST["email"]);
   //Testen of deze email gelinkt is aan een account
-  if ("ok" == "ok")
+  
+  $email_result = check_email_exists($_POST["email"]);
+
+  if ($email_result == "email_ok")
+  {
+    $email_ok = "ok";
+  }
+  elseif ($email_result == "no_match")
   {
     $email_ok = "nok";
   }
   else
   {
-    $email_ok = "nok";
+    $email_ok = "error";
   }
+}
+elseif (isset($_POST["email"]) && isset($_POST["password"]))
+{
+  $email_ok = "ok";
+
+  $email_login = strip($_POST["email"]);
+  $password_login = strip($_POST["password"]);
+
+  echo user_login($email_login, $password_login);
 }
 else
 {
@@ -45,7 +67,7 @@ else
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#"><span class="so">So</span><span class="bu">bu</span></a>
+	      <a class="navbar-brand" href="index.php"><span class="so">So</span><span class="bu">bu</span></a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -74,8 +96,8 @@ else
           <div class="form-group">
             <label for="password" class="col-sm-2 control-label">Password:</label>
             <div class="col-sm-8">
-              <input type="password" class="form-control" id="password" name="password">
-              <input type="hidden" name="email" value="<?php echo $_POST['email_login']; ?>">
+              <input type="password" class="form-control" id="password" name="password" autofocus>
+              <input type="hidden" name="email" value="<?php echo $_POST['email']; ?>">
             </div>
           </div>
           <div class="form-group">
@@ -95,7 +117,27 @@ else
           <div class="form-group">
             <label for="email" class="col-sm-2 control-label">Email:</label>
             <div class="col-sm-8">
-              <input type="email" class="form-control" id="email" name="email_login">
+              <input type="email" class="form-control" id="email" name="email" autofocus>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-warning">Next</button>
+            </div>
+          </div>
+        </form>
+
+        <?php
+      }
+      else if ($email_ok == "error")
+      {
+        ?>
+        <div class="text-danger">An error occured please<a href="contact.html">contact</a> the administrator with error code 1.</div>
+        <form class="form-horizontal" name="login_email" method="post" action="#">
+          <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">Email:</label>
+            <div class="col-sm-8">
+              <input type="email" class="form-control" id="email" name="email" autofocus>
             </div>
           </div>
           <div class="form-group">
@@ -115,7 +157,7 @@ else
           <div class="form-group">
             <label for="email" class="col-sm-2 control-label">Email:</label>
             <div class="col-sm-8">
-              <input type="email" class="form-control" id="email" name="email_login">
+              <input type="email" class="form-control" id="email" name="email" autofocus>
             </div>
           </div>
           <div class="form-group">
