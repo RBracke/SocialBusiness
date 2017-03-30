@@ -1,42 +1,57 @@
 <?php
+session_start();
+include("functions.php");
 
-  include("functions.php");
-
-
-if (isset($_POST["email"]) && !isset($_POST["password"]))
+if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == 0 || !isset($_SESSION["logged_in"]))
 {
 
-  $email = strip($_POST["email"]);
-  //Testen of deze email gelinkt is aan een account
-  
-  $email_result = check_email_exists($_POST["email"]);
 
-  if ($email_result == "email_ok")
+  if (isset($_POST["email"]) && !isset($_POST["password"]))
   {
-    $email_ok = "ok";
+
+    $email = strip($_POST["email"]);
+    //Testen of deze email gelinkt is aan een account
+    
+    $email_result = check_email_exists($_POST["email"]);
+
+    if ($email_result == "email_ok")
+    {
+      $email_ok = "ok";
+    }
+    elseif ($email_result == "no_match")
+    {
+      $email_ok = "nok";
+    }
+    else
+    {
+      $email_ok = "error";
+    }
   }
-  elseif ($email_result == "no_match")
+  elseif (isset($_POST["email"]) && isset($_POST["password"]))
   {
-    $email_ok = "nok";
+
+    $email_login = strip($_POST["email"]);
+    $password_login = strip($_POST["password"]);
+
+    $login_result = user_login($email_login, $password_login);
+    if ($login_result == "login_ok")
+    {
+      header( "Location: user_page.php" );
+      exit();
+    }
+    elseif ($login_result == "no_match")
+    {
+      $email_ok = "login_no_match";
+    }
+    else
+    {
+      $email_ok = "error";
+    }
   }
   else
   {
-    $email_ok = "error";
+    $email_ok = "na";
   }
-}
-elseif (isset($_POST["email"]) && isset($_POST["password"]))
-{
-  $email_ok = "ok";
-
-  $email_login = strip($_POST["email"]);
-  $password_login = strip($_POST["password"]);
-
-  echo user_login($email_login, $password_login);
-}
-else
-{
-  $email_ok = "na";
-}
 
 ?>
 
@@ -89,6 +104,12 @@ else
         <h2 class="login_text">Login</h2>
 
        <?php
+
+       if (isset($_GET["logout"]) && isset($_GET["naam"]))
+       {
+        echo "<h4 class=\"text-danger\">You have successfully logged out, " .$_GET['naam']. ".</h4>";
+       }
+
        if ($email_ok == "ok")
       {
         ?>
@@ -132,7 +153,27 @@ else
       else if ($email_ok == "error")
       {
         ?>
-        <div class="text-danger">An error occured please<a href="contact.html">contact</a> the administrator with error code 1.</div>
+        <div class="text-danger">An error occured, please<a href="contact.html">contact</a> the administrator with error code 1.</div>
+        <form class="form-horizontal" name="login_email" method="post" action="#">
+          <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">Email:</label>
+            <div class="col-sm-8">
+              <input type="email" class="form-control" id="email" name="email" autofocus>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-warning">Next</button>
+            </div>
+          </div>
+        </form>
+
+        <?php
+      }
+      else if ($email_ok == "login_no_match")
+      {
+        ?>
+        <div class="text-danger">Wrong password. Forgot your password? Please <a href="contact.html">contact</a> the administrator.</div>
         <form class="form-horizontal" name="login_email" method="post" action="#">
           <div class="form-group">
             <label for="email" class="col-sm-2 control-label">Email:</label>
@@ -153,7 +194,7 @@ else
       {
         ?>
 
-        <form class="form-horizontal" name="login_email" method="post" action="#">
+        <form class="form-horizontal" name="login_email" method="post" action="index.php">
           <div class="form-group">
             <label for="email" class="col-sm-2 control-label">Email:</label>
             <div class="col-sm-8">
@@ -183,3 +224,9 @@ else
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
+<?php
+}
+else
+{
+  header( "Location: user_page.php" );
+}
