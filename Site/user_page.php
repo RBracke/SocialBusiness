@@ -1,3 +1,14 @@
+<?php
+session_start();
+
+include("functions.php");
+
+if (isset($_SESSION["logged_in"]))
+{
+
+  fill_session($_SESSION["user_id"]);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -51,8 +62,8 @@
        </div>
        <div class="col-md-7 user_info">
          <ul>
-           <li>Name</li>
-           <li>Function</li>
+           <li><?php echo $_SESSION["name"]; ?></li>
+           <li><?php echo $_SESSION["function"]; ?></li>
            <li>In Building</li>
            <li>Online</li>
          </ul>
@@ -116,3 +127,9 @@
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
+<?php
+}
+else
+{
+  header("Location: index.php");
+}

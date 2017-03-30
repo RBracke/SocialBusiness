@@ -59,7 +59,7 @@
   		$email_login = strip($email);
   		$password_login = md5(strip($password));
 
-		$query_login = "SELECT user.email AS email FROM user WHERE email='" . $email_login . "' && password='" . $password_login . "'";
+		$query_login = "SELECT user_id FROM user WHERE email='" . $email_login . "' && password='" . $password_login . "'";
 
 		$result_login = mysqli_query($link, $query_login) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_login\"");
 
@@ -67,8 +67,55 @@
 		{
 		    $result = "login_ok";
 		    $_SESSION["logged_in"] = 1;
+		    $result_login = mysqli_fetch_array($result_login);
 
-		    $query_rights = "SELECT check_in_out, info, messages FROM user left join rights on user.rights_id = rights.rights_id WHERE email = '" .$email_login. "'";
+		    fill_session($result_login["user_id"]);
+		} 
+		elseif (mysqli_num_rows($result_login) > 1) 
+		{
+		    $result = "error";
+		}
+		else
+		{
+			$result = "no_match";
+		}
+
+		mysqli_close($link);
+
+		return $result;
+	}
+
+	function fill_session($id)
+	{
+		$link = connecteren();
+
+		$query_user = "SELECT name, nin, address, gender, email, profile_picture, in_building, date_of_birth, online, martial_status, phone_number, function, rights_id FROM user WHERE user_id = '" .$id. "'";
+
+		$result_user = mysqli_query($link, $query_user) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_user\"");
+
+		if (mysqli_num_rows($result_user) == 1)
+		{
+
+			$result_user = mysqli_fetch_array($result_user);
+
+			$_SESSION["user_id"] = $id;
+			$_SESSION["name"] = $result_user["name"];
+			$_SESSION["nin"] = $result_user["nin"];
+			$_SESSION["address"] = $result_user["address"];
+			$_SESSION["gender"] = $result_user["gender"];
+			$_SESSION["email"] = $result_user["email"];
+			$_SESSION["profile_picture"] = $result_user["profile_picture"];
+			$_SESSION["in_building"] = $result_user["in_building"];
+			$_SESSION["date_of_birth"] = $result_user["date_of_birth"];
+			$_SESSION["martial_status"] = $result_user["martial_status"];
+			$_SESSION["phone_number"] = $result_user["phone_number"];
+			$_SESSION["function"] = $result_user["function"];
+			$rights_id = $result_user["rights_id"];
+		}
+
+
+
+		$query_rights = "SELECT check_in_out, info, messages FROM rights WHERE rights_id = '" .$rights_id. "'";
 
 		    $result_rights = mysqli_query($link, $query_rights) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_rights\"");
 
@@ -101,35 +148,8 @@
 		    	}
 		    } 
 
-		    fill_session();
-		} 
-		elseif (mysqli_num_rows($result_login) > 1) 
-		{
-		    $result = "error";
-		}
-		else
-		{
-			$result = "no_match";
-		}
 
 		mysqli_close($link);
-
-		return $result;
-	}
-
-	function fill_session()
-	{
-		$_SESSION["naam"] = "naam";
-		$_SESSION["nin"] = "nin";
-		$_SESSION["address"] = "address";
-		$_SESSION["gender"] = "gender";
-		$_SESSION["email"] = "email";
-		$_SESSION["profile_picture"] = "profile_picture";
-		$_SESSION["in_building"] = "in_building";
-		$_SESSION["dob"] = "dob";
-		$_SESSION["martial"] = "martial";
-		$_SESSION["phone_number"] = "phone_number";
-		$_SESSION["function"] = "function";
 	}
 
 	
