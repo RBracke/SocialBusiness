@@ -1,3 +1,6 @@
+body {
+	padding-bottom: 15px;
+}
 span.so {
 	color: #336699;
 }
@@ -117,4 +120,8 @@ input.message {
 }
 input.file {
 	width: 100%;
+}
+img.indicator_online_building {
+	width: 20px;
+	height: 20px;
 }

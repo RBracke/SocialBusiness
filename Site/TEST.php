@@ -2,6 +2,10 @@
 
 session_start();
 
+include("functions.php");
+
+fill_session($_SESSION["user_id"]);
+
 echo $_SESSION["logged_in"];
 echo "<br>";
 echo $_SESSION["name"];

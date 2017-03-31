@@ -53,7 +53,7 @@
 	</nav>
 
   <div class="container-fluid">
-     <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2">
+     <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-2">
      <div class="BOX margin_15_bottom">
        <div class="col-md-5 user_foto">
          <img src="IMG/user.png" class="user_foto">
@@ -87,7 +87,7 @@
       <p class="clear_both"></p>
      </div>
      </div>
-     <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-4 col-md-offset-0 user_search">
+     <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
      <div class="BOX">
       <h4>Settings</h4>
       <div class="col-md-12"><hr class="hr"></div>

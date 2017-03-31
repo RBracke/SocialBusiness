@@ -152,5 +152,53 @@
 		mysqli_close($link);
 	}
 
+	function user_online()
+	{
+		$link = connecteren();
+
+		$query_online = "UPDATE user SET online = 1 WHERE user_id = " .$_SESSION["user_id"];
+
+		$result_online = mysqli_query($link, $query_online) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_online\"");
+
+
+		mysqli_close($link);
+	}
+
+	function user_offline()
+	{
+		$link = connecteren();
+
+		$query_online = "UPDATE user SET online = 0 WHERE user_id = " .$_SESSION["user_id"];
+
+		$result_online = mysqli_query($link, $query_online) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_online\"");
+
+		
+		mysqli_close($link);
+	}
+
+	function user_in_building()
+	{
+		$link = connecteren();
+
+		$query_online = "UPDATE user SET in_building = 1 WHERE user_id = " .$_SESSION["user_id"];
+
+		$result_online = mysqli_query($link, $query_online) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_online\"");
+
+		
+		mysqli_close($link);
+	}
+
+	function user_out_building()
+	{
+		$link = connecteren();
+
+		$query_online = "UPDATE user SET in_building = 0 WHERE user_id = " .$_SESSION["user_id"];
+
+		$result_online = mysqli_query($link, $query_online) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_online\"");
+
+		
+		mysqli_close($link);
+	}
+
 	
 ?>

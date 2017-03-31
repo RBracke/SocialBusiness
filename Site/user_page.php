@@ -24,6 +24,59 @@ if (isset($_SESSION["logged_in"]))
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet" />
 
+    <script type="text/javascript">
+      
+    function check_in_out()
+      {
+        xhr = new XMLHttpRequest();
+        if (xhr != null)
+        {
+          var url="check_in_out_validate.php";  
+
+          xhr.onreadystatechange=refresh_in_building;
+          xhr.open("GET",url,true);
+          xhr.send(null);
+        }
+      }
+
+      function refresh_in_building() {
+        var output_icon = document.getElementById("in_building");
+        var output_button = document.getElementById("check_in_out_button");
+        if (xhr.readyState == 4 && xhr.status == 200)
+        {
+          if(xhr.responseText)
+          {
+            if (xhr.responseText == "in")
+            {
+              output_icon.src = "IMG/Green_circle.png";
+              output_icon.alt = "In building";
+              output_icon.title = "In building";
+              output_button.className = "btn btn-danger";
+              output_button.innerHTML = "Check out";
+
+            }
+            else
+            {
+              output_icon.src = "IMG/Red_circle.png";
+              output_icon.alt = "Not in building";
+              output_icon.title = "Not in building";
+              output_button.className = "btn btn-success";
+              output_button.innerHTML = "Check in";
+            }
+          }
+          else
+          {
+            output_icon.src = "IMG/Red_circle.png";
+            output_icon.alt = "Not in building";
+            output_icon.title = "Not in building";
+            output_button.className = "btn btn-success";
+            output_button.innerHTML = "Check in";
+          }
+        }
+      }
+
+    </script>
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -55,7 +108,7 @@ if (isset($_SESSION["logged_in"]))
 	</nav>
 
   <div class="container-fluid">
-     <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2">
+     <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-2">
      <div class="BOX margin_15_bottom">
        <div class="col-md-5 user_foto">
          <img src="IMG/user.png" class="user_foto">
@@ -64,9 +117,59 @@ if (isset($_SESSION["logged_in"]))
          <ul>
            <li><?php echo $_SESSION["name"]; ?></li>
            <li><?php echo $_SESSION["function"]; ?></li>
-           <li>In Building</li>
-           <li>Online</li>
-         </ul>
+           <li><div class="col-xs-9 col-sm-9 col-md-9 no_pad_left">Online</div><div class="col-xs-3 col-sm-3 col-md-3">
+
+
+           <?php
+
+           if ($_SESSION["logged_in"] == 1)
+           {
+            echo "<img src=\"IMG/Green_square.png\" title=\"Online\" alt=\"Online\" class=\"indicator_online_building\">";
+           }
+           else
+           {
+            echo "<img src=\"IMG/Red_square.png\" title=\"Offline\" alt=\"Offline\" class=\"indicator_online_building\">";
+           }
+
+           ?>
+           
+
+         
+         <li><div class="col-xs-9 col-sm-9 col-md-9 no_pad_left">In Building</div><div class="col-xs-3 col-sm-3 col-md-3">
+
+           <?php
+
+           if ($_SESSION["in_building"] == 1)
+           {
+            echo "<img src=\"IMG/Green_circle.png\" id=\"in_building\" title=\"In Building\" alt=\"In Building\" class=\"indicator_online_building\">";
+           }
+           else
+           {
+            echo "<img src=\"IMG/Red_circle.png\" id=\"in_building\" title=\"Not in Building\" alt=\"Not in building\" class=\"indicator_online_building\">";
+           }
+
+           ?>
+
+           </div></li>
+           <li>
+           <div class="col-md-12 no_pad_left">
+
+           <?php
+
+           if ($_SESSION["in_building"] == 0)
+           {
+            echo "<button class=\"btn btn-success\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check in</button>";
+           }
+           else
+           {
+            echo "<button class=\"btn btn-danger\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check out</button>";
+           }
+
+           ?>
+           
+           </div>
+           </li>
+          </ul>
        </div>
       <p class="clear_both"></p>
      </div>
@@ -89,7 +192,7 @@ if (isset($_SESSION["logged_in"]))
       <p class="clear_both"></p>
      </div>
      </div>
-     <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-4 col-md-offset-0 user_search">
+     <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
      <div class="BOX">
       <form class="form-horizontal" name="people_search" method="post" action="#">
        <div class="form-group">
