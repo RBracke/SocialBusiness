@@ -123,7 +123,7 @@ if (isset($_SESSION["logged_in"]))
 							else
 							{
 								echo "<button class=\"btn btn-danger\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check out</button>";
-                echo "<h5><small>Don't forget to check out when leaving</small></h5>";
+                echo "<h5><small>Don't forget to check out when leaving</small></h5>"; /*werkt pas vanaf refresh?*/
 							}
 
 							?>
