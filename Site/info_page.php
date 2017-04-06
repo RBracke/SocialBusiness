@@ -156,31 +156,31 @@ if (isset($_SESSION["logged_in"]))
 	<div class="BOX">
 	<div class="form-group margin_15_top">
 		<div class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>NIN</div><div class="col-md-9"><?php echo $_SESSION["nin"]; ?></div>
-	</div>
+	</div><p class="clear_both"></p>
 	<div class="form-group">
 		<div class="col-md-3">Age</div><div class="col-md-9"><?php echo date("Y/m/d") - $_SESSION["date_of_birth"]; ?></div>
-	</div>
+	</div><p class="clear_both"></p>
 	<div class="form-group">
 		<div class="col-md-3">Gender</div><div class="col-md-9"><?php if($_SESSION["gender"] == "1"){echo "Male";} else{echo "Female";} ?></div>
-	</div>
+	</div><p class="clear_both"></p>
 	<div class="form-group">
 		<div class="col-md-3">Home address</div><div class="col-md-9"><?php echo $_SESSION["address"]; ?></div>
-	</div>
+	</div><p class="clear_both"></p>
 	<div class="form-group">
 		<div class="col-md-3">Martial status</div><div class="col-md-9"><?php echo $_SESSION["martial_status"]; ?></div>
-	</div>
+	</div><p class="clear_both"></p>
 	<div class="form-group">
 		<div class="col-md-3">Personal email</div><div class="col-md-9"><?php echo $_SESSION["email"]; ?></div>
-	</div>
+	</div><p class="clear_both"></p>
 	<div class="form-group">
 		<div class="col-md-3">Phone number</div><div class="col-md-9"><?php echo $_SESSION["phone_number"]; ?></div>
-	</div>
+	</div><p class="clear_both"></p>
 		<div class="form-group">
 		<div class="col-md-3">Start date</div><div class="col-md-9"><?php echo $_SESSION["start_date"]; ?></div>
-	</div>
+	</div><p class="clear_both"></p>
 		<div class="form-group">
 		<div class="col-md-3">Days in company</div><div class="col-md-9"><?php $start_date = strtotime($_SESSION["start_date"]); echo floor((time() - $start_date)/86400); ?></div>
-	</div>
+	</div><p class="clear_both"></p>
 	<form class="form-horizontal" name="filter" method="post" action="#">
 		 <div class="form-group">
 				<label for="filter_info" class="col-md-3 control-label">Filter:</label>
