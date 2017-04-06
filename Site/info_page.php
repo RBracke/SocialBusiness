@@ -135,7 +135,7 @@ if (isset($_SESSION["logged_in"]))
 		</div>
 		<div class="BOX margin_15_bottom no_pad_bottom">
 		 <div class="col-md-12">
-			 <a href="info_page.php" class="h4">Info</a>
+			 <a href="#" class="h4">Info</a>
 		 </div>
 		 <p class="clear_both"></p>
 	 </div>
@@ -152,31 +152,39 @@ if (isset($_SESSION["logged_in"]))
 		 <p class="clear_both"></p>
 	 </div>
  </div>
- <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
+ <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4">
 	 <div class="BOX">
-		<form class="form-horizontal" name="people_search" method="post" action="#">
-		 <div class="form-group">
-			<label for="zoeken" class="col-md-3 control-label">Search:</label>
-			<div class="col-md-9">
-			 <input type="text" class="form-control" id="zoeken" name="zoeken">
-		 </div>
-	 </div>
- </form>
  <div class="col-md-12"><hr class="hr"></div>
  <div class="col-md-12">
-	<h3>Bosses</h3>
-	<ul class="lijst_mensen_zoeken">
-		<li>Bos 1</li>
-		<li>Bos 2</li>
-		<li>Bos 3</li>
-	</ul>
-	<h3>Staff</h3>
-	<ul class="lijst_mensen_zoeken">
-		<li>Staff 1</li>
-		<li>Staff 2</li>
-		<li>Staff 3</li>
-	</ul>
-</div>
+	<div class="form-group margin_15_top">
+		<label for="nin" class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span><?php echo $_SESSION["nin"]; ?></label>
+	</div>
+	<div class="form-group">
+		<label for="dob" class="col-md-3 control-label">Age</label><?php echo date("Y/m/d") - $_SESSION["date_of_birth"]; ?>
+	</div>
+	<div class="form-group">
+		<label for="gender" class="col-md-3 control-label">Gender</label><?php if($_SESSION["date_of_birth"] == "1"){echo "Male";} else{echo "Female";} ?>
+	</div>
+	<div class="form-group">
+		<label for="home" class="col-md-3 control-label">Home address</label><?php echo $_SESSION["address"]; ?>
+	</div>
+	<div class="form-group">
+		<label for="martial" class="col-md-3 control-label">Martial status</label><?php echo $_SESSION["martial_status"]; ?>
+	</div>
+	<div class="form-group">
+		<label for="email" class="col-md-3 control-label">Personal email</label><?php echo $_SESSION["email"]; ?>
+	</div>
+	<div class="form-group">
+		<label for="phone" class="col-md-3 control-label">Phone number</label><?php echo $_SESSION["phone_number"]; ?>
+	</div>
+	<form class="form-horizontal" name="people_search" method="post" action="#">
+		 <div class="form-group">
+				<label for="filter_info" class="col-md-3 control-label">Filter:</label>
+			<div class="col-md-9">
+				<input type="text" class="form-control" id="filter_info" name="filter_info">
+			</div>
+		</div>
+	</form>
 <p class="clear_both"></p>
 </div>
 </div>

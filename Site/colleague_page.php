@@ -81,7 +81,7 @@ if (isset($_SESSION["logged_in"]))
 					</div>
 					<div class="BOX margin_15_bottom no_pad_bottom">
 						<div class="col-md-12">
-							<a href="#" class="h4">Info</a>
+			 				<a href="info_page.php" class="h4">Info</a>
 						</div>
 						<p class="clear_both"></p>
 					</div>
