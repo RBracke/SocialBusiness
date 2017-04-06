@@ -22,15 +22,15 @@ CREATE TABLE IF NOT EXISTS `user` (
 	`gender` tinyint(1),
 	`email` varchar(40),
 	`profile_picture` varchar(10),
-	`in_building` tinyint(1),
-	`date_of_birth` date,
-	`online` tinyint(1),
+	`in_building` tinyint(1) default '0',
+	`date_of_birth` date ,
+	`online` tinyint(1) default '0',
 	`martial_status` varchar(20),
 	`password` varchar(50),
 	`phone_number` int(15),
 	`function` varchar(15),
-	`rights_id` int(3),
-	`admin` tinyint(1),
+	`rights_id` int(3) default '0',
+	`admin` tinyint(1) default '0',
 	`start_date` date,
 	PRIMARY KEY (`user_id`),
 	FOREIGN KEY (`rights_id`) REFERENCES `rights`(`rights_id`)
@@ -48,3 +48,10 @@ CREATE TABLE IF NOT EXISTS `message` (
 	FOREIGN KEY (`receipant`) REFERENCES `user`(`user_id`),
 	FOREIGN KEY (`sender`) REFERENCES `user`(`user_id`)
 );
+
+INSERT INTO `user` (`user_id`, `name`, `nin`, `address`, `gender`, `email`, `date_of_birth`, `martial_status`, `password`, `phone_number`, `function`, `rights_id`, `admin`, `start_date`) VALUES
+(1, 'Ruben De Admin', 86022402508, 'wijnegemstenweg 112e', 1, 'Ruben@admin.com', '1996-12-24', 'married', '21232f297a57a5a743894a0e4a801fc3', 494456865, 'Boss', NULL, 1, '2017-04-01'), /*password = admin*/
+(2, 'Kenzo De Admin', 60061812456, 'kenzotlaan 11', 1, 'kenzo@admin.com', '1997-12-24', 'married', '21232f297a57a5a743894a0e4a801fc3', 488656154, 'Boss', NULL, 1, '2017-03-01'),
+(3, 'joske', 44121181161, 'josdreef 24', 1, 'jos@hotmail.com', '1990-05-25', 'single', '21232f297a57a5a743894a0e4a801fc3', 568799563, 'Employee', NULL, 0, '2012-08-01'),
+(4, 'josefien',42082713590, 'nieuwdreef 54', 0, 'josefien@hotmail.com', '1992-06-25', 'in relationship', '21232f297a57a5a743894a0e4a801fc3', 675419824, 'cleaning lady', NULL, 0, '2010-08-25'),
+(5, 'jef',28061220565, 'boonhoek 88', 1, 'jef@hotmail.com', '1988-11-25', 'divorced', '21232f297a57a5a743894a0e4a801fc3', 5423647526, 'cook', NULL, 0, '2008-11-25');
