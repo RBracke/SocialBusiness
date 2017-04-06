@@ -177,7 +177,13 @@ if (isset($_SESSION["logged_in"]))
 	<div class="form-group">
 		<label for="phone" class="col-md-3 control-label">Phone number</label><?php echo $_SESSION["phone_number"]; ?>
 	</div>
-	<form class="form-horizontal" name="people_search" method="post" action="#">
+		<div class="form-group">
+		<label for="phone" class="col-md-3 control-label">Start date</label><?php echo $_SESSION["start_date"]; ?>
+	</div>
+		<div class="form-group">
+		<label for="phone" class="col-md-3 control-label">Days in company</label><?php $start_date = strtotime($_SESSION["start_date"]); echo floor((time() - $start_date)/86400); ?>
+	</div>
+	<form class="form-horizontal" name="filter" method="post" action="#">
 		 <div class="form-group">
 				<label for="filter_info" class="col-md-3 control-label">Filter:</label>
 			<div class="col-md-9">

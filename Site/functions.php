@@ -89,7 +89,7 @@ function fill_session($id)
 {
 	$link = connecteren();
 
-	$query_user = "SELECT name, nin, address, gender, email, profile_picture, in_building, date_of_birth, online, martial_status, phone_number, function, rights_id, admin FROM user WHERE user_id = '" .$id. "'";
+	$query_user = "SELECT name, nin, address, gender, email, profile_picture, in_building, date_of_birth, online, martial_status, phone_number, function, rights_id, admin, start_date FROM user WHERE user_id = '" .$id. "'";
 
 	$result_user = mysqli_query($link, $query_user) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_user\"");
 
@@ -112,6 +112,7 @@ function fill_session($id)
 		$_SESSION["function"] = $result_user["function"];
 		$rights_id = $result_user["rights_id"];
 		$_SESSION["admin"] = $result_user["admin"];
+		$_SESSION["start_date"] = $result_user["start_date"];
 	}
 
 

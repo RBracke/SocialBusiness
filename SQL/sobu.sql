@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 	`function` varchar(15),
 	`rights_id` int(3),
 	`admin` tinyint(1),
+	`start_date` date,
 	PRIMARY KEY (`user_id`),
 	FOREIGN KEY (`rights_id`) REFERENCES `rights`(`rights_id`)
 );
