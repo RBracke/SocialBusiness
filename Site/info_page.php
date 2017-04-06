@@ -153,35 +153,33 @@ if (isset($_SESSION["logged_in"]))
 	 </div>
  </div>
  <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4">
-	 <div class="BOX">
- <div class="col-md-12"><hr class="hr"></div>
- <div class="col-md-12">
+	<div class="BOX">
 	<div class="form-group margin_15_top">
-		<label for="nin" class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span><?php echo $_SESSION["nin"]; ?></label>
+		<div class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>NIN</div><div class="col-md-9"><?php echo $_SESSION["nin"]; ?></div>
 	</div>
 	<div class="form-group">
-		<label for="dob" class="col-md-3 control-label">Age</label><?php echo date("Y/m/d") - $_SESSION["date_of_birth"]; ?>
+		<div class="col-md-3">Age</div><div class="col-md-9"><?php echo date("Y/m/d") - $_SESSION["date_of_birth"]; ?></div>
 	</div>
 	<div class="form-group">
-		<label for="gender" class="col-md-3 control-label">Gender</label><?php if($_SESSION["date_of_birth"] == "1"){echo "Male";} else{echo "Female";} ?>
+		<div class="col-md-3">Gender</div><div class="col-md-9"><?php if($_SESSION["gender"] == "1"){echo "Male";} else{echo "Female";} ?></div>
 	</div>
 	<div class="form-group">
-		<label for="home" class="col-md-3 control-label">Home address</label><?php echo $_SESSION["address"]; ?>
+		<div class="col-md-3">Home address</div><div class="col-md-9"><?php echo $_SESSION["address"]; ?></div>
 	</div>
 	<div class="form-group">
-		<label for="martial" class="col-md-3 control-label">Martial status</label><?php echo $_SESSION["martial_status"]; ?>
+		<div class="col-md-3">Martial status</div><div class="col-md-9"><?php echo $_SESSION["martial_status"]; ?></div>
 	</div>
 	<div class="form-group">
-		<label for="email" class="col-md-3 control-label">Personal email</label><?php echo $_SESSION["email"]; ?>
+		<div class="col-md-3">Personal email</div><div class="col-md-9"><?php echo $_SESSION["email"]; ?></div>
 	</div>
 	<div class="form-group">
-		<label for="phone" class="col-md-3 control-label">Phone number</label><?php echo $_SESSION["phone_number"]; ?>
+		<div class="col-md-3">Phone number</div><div class="col-md-9"><?php echo $_SESSION["phone_number"]; ?></div>
 	</div>
 		<div class="form-group">
-		<label for="phone" class="col-md-3 control-label">Start date</label><?php echo $_SESSION["start_date"]; ?>
+		<div class="col-md-3">Start date</div><div class="col-md-9"><?php echo $_SESSION["start_date"]; ?></div>
 	</div>
 		<div class="form-group">
-		<label for="phone" class="col-md-3 control-label">Days in company</label><?php $start_date = strtotime($_SESSION["start_date"]); echo floor((time() - $start_date)/86400); ?>
+		<div class="col-md-3">Days in company</div><div class="col-md-9"><?php $start_date = strtotime($_SESSION["start_date"]); echo floor((time() - $start_date)/86400); ?></div>
 	</div>
 	<form class="form-horizontal" name="filter" method="post" action="#">
 		 <div class="form-group">
@@ -191,8 +189,6 @@ if (isset($_SESSION["logged_in"]))
 			</div>
 		</div>
 	</form>
-<p class="clear_both"></p>
-</div>
 </div>
 </div>
 
