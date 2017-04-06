@@ -123,6 +123,7 @@ if (isset($_SESSION["logged_in"]))
 							else
 							{
 								echo "<button class=\"btn btn-danger\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check out</button>";
+                echo "<h5><small>Don't forget to check out when leaving</small></h5>";
 							}
 
 							?>
@@ -164,18 +165,9 @@ if (isset($_SESSION["logged_in"]))
  </form>
  <div class="col-md-12"><hr class="hr"></div>
  <div class="col-md-12">
-	<h3>Bosses</h3>
-	<ul class="lijst_mensen_zoeken">
-		<li>Bos 1</li>
-		<li>Bos 2</li>
-		<li>Bos 3</li>
-	</ul>
-	<h3>Staff</h3>
-	<ul class="lijst_mensen_zoeken">
-		<li>Staff 1</li>
-		<li>Staff 2</li>
-		<li>Staff 3</li>
-	</ul>
+ <?php
+  show_member();
+  ?>
 </div>
 <p class="clear_both"></p>
 </div>

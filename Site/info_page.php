@@ -155,7 +155,7 @@ if (isset($_SESSION["logged_in"]))
  <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4">
 	<div class="BOX">
 	<div class="form-group margin_15_top">
-		<div class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>NIN</div><div class="col-md-9"><?php echo $_SESSION["nin"]; ?></div>
+		<div class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> NIN</div><div class="col-md-9"><?php echo $_SESSION["nin"]; ?></div>
 	</div><p class="clear_both"></p>
 	<div class="form-group">
 		<div class="col-md-3">Age</div><div class="col-md-9"><?php echo date("Y/m/d") - $_SESSION["date_of_birth"]; ?></div>
@@ -173,7 +173,7 @@ if (isset($_SESSION["logged_in"]))
 		<div class="col-md-3">Personal email</div><div class="col-md-9"><?php echo $_SESSION["email"]; ?></div>
 	</div><p class="clear_both"></p>
 	<div class="form-group">
-		<div class="col-md-3">Phone number</div><div class="col-md-9"><?php echo $_SESSION["phone_number"]; ?></div>
+		<div class="col-md-3">Phone number</div><div class="col-md-9"><?php echo ("+32" .$_SESSION["phone_number"]. ""); ?></div>
 	</div><p class="clear_both"></p>
 		<div class="form-group">
 		<div class="col-md-3">Start date</div><div class="col-md-9"><?php echo $_SESSION["start_date"]; ?></div>

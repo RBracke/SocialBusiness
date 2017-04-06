@@ -202,5 +202,30 @@ function user_out_building()
 	mysqli_close($link);
 }
 
+function show_member()
+{
+	$link = connecteren();
+	$query_list = "SELECT user_id, name, function, online, in_building FROM user";
+  	$result_list = mysqli_query($link, $query_list) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_list\"");
+  	if($result_list->num_rows > 0) {
+   		while($row = $result_list->fetch_assoc()) {
+        		if($row['user_id'] != $_SESSION['user_id'])
+          		{
+            		echo "<div class='form-group'>
+					<div class='col-md-3'><a href=\"colleague_page.php?id=".$row['user_id']."\">".$row['name']."</a></div>
+					<div class='col-md-3'>" .$row['function']. "</div>
+					<div class='col-md-3'>" .$row['online']. "</div>
+					<div class='col-md-3'>" .$row['in_building']. "</div>
+					</div>
+					<p class='clear_both'></p>";
+         		}
+    	}   
+    } 
+    else 
+    {
+    echo 'not found';
+    }
+    mysqli_close($link);
+}
 
 ?>
