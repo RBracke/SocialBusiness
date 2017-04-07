@@ -14,6 +14,7 @@ function check_in_out()
 function refresh_in_building() {
 	var output_icon = document.getElementById("in_building");
 	var output_button = document.getElementById("check_in_out_button");
+	var output_warning = document.getElementById("check_in_out_warning");
 	if (xhr.readyState == 4 && xhr.status == 200)
 	{
 		if(xhr.responseText)
@@ -25,7 +26,7 @@ function refresh_in_building() {
 				output_icon.title = "In building";
 				output_button.className = "btn btn-danger";
 				output_button.innerHTML = "Check out";
-
+				output_warning.innerHTML = "<small>Don't forget to check out when leaving.</small>";
 			}
 			else
 			{
@@ -34,6 +35,7 @@ function refresh_in_building() {
 				output_icon.title = "Not in building";
 				output_button.className = "btn btn-success";
 				output_button.innerHTML = "Check in";
+				output_warning.innerHTML = "<small>Don't forget to check in when arriving.</small>";
 			}
 		}
 		else
@@ -43,6 +45,7 @@ function refresh_in_building() {
 			output_icon.title = "Not in building";
 			output_button.className = "btn btn-success";
 			output_button.innerHTML = "Check in";
+			output_warning.innerHTML = "<small>Don't forget to check in when arriving.</small>";
 		}
 	}
 }

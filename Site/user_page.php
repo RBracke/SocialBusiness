@@ -34,22 +34,22 @@ if (isset($_SESSION["logged_in"]))
 			<![endif]-->
 		</head>
 		<body>
-		 <nav class="navbar navbar-default">
-			 <div class="container-fluid">
-				 <!-- Brand and toggle get grouped for better mobile display -->
-				 <div class="navbar-header">
-					<a class="navbar-brand" href="index.php"><span class="so">So</span><span class="bu">bu</span></a>
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div>
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right links_bovenaan">
-						<li><a href="messages_page.php">Messages</a></li>
-						<li><a href="settings_page.php">Settings</a></li>
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<a class="navbar-brand" href="index.php"><span class="so">So</span><span class="bu">bu</span></a>
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right links_bovenaan">
+							<li><a href="messages_page.php">Messages</a></li>
+							<li><a href="settings_page.php">Settings</a></li>
 							<?php
 
 							if ($_SESSION["admin"] == 1)
@@ -58,139 +58,140 @@ if (isset($_SESSION["logged_in"]))
 							}
 
 							?>
-						<li><a href="logout.php">Logout</a></li>
-					</ul>
-				</div>
-			</div><!-- /.container-fluid -->
-		</nav>
+							<li><a href="logout.php">Logout</a></li>
+						</ul>
+					</div>
+				</div><!-- /.container-fluid -->
+			</nav>
 
-		<div class="container-fluid">
-		 <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-2">
-			 <div class="BOX margin_15_bottom">
-				 <div class="col-md-5 user_foto">
-					 <img src="IMG/user.png" alt="Profile picture" class="user_foto">
-				 </div>
-				 <div class="col-md-7 user_info">
-					 <ul>
-						 <li><?php echo $_SESSION["name"]; ?></li>
-						 <li><?php echo $_SESSION["function"]; ?></li>
-						 <li>
-							 <div class="col-xs-9 col-sm-9 col-md-9 no_pad_left">Online</div>
-							 <div class="col-xs-3 col-sm-3 col-md-3">
-
-
-								 <?php
-
-								 if ($_SESSION["logged_in"] == 1)
-								 {
-									echo "<img src=\"IMG/Green_square.png\" title=\"Online\" alt=\"Online\" class=\"indicator_online_building\">";
-								}
-								else
-								{
-									echo "<img src=\"IMG/Red_square.png\" title=\"Offline\" alt=\"Offline\" class=\"indicator_online_building\">";
-								}
-
-								?>
-							</div>
-							<li>
-								<div class="col-xs-9 col-sm-9 col-md-9 no_pad_left">In Building</div>
-								<div class="col-xs-3 col-sm-3 col-md-3">
-
-								 <?php
-                $link = connecteren();
-                $query = "SELECT in_building_now FROM in_building WHERE user_id = " .$_SESSION["user_id"];
-                $result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
-                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                if ($row["in_building_now"] == 1)
-								 {
-									echo "<img src=\"IMG/Green_circle.png\" id=\"in_building\" title=\"In Building\" alt=\"In Building\" class=\"indicator_online_building\">";
-								}
-								else
-								{
-									echo "<img src=\"IMG/Red_circle.png\" id=\"in_building\" title=\"Not in Building\" alt=\"Not in building\" class=\"indicator_online_building\">";
-								}
-                    mysqli_close($link);
-								?>
-
-							</div>
-						</li>
-						<li>
-						 <div class="col-md-12 no_pad_left">
-
-							<?php
-              $link = connecteren();
-              $query = "SELECT in_building_now FROM in_building WHERE user_id = " .$_SESSION["user_id"];
-              $result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
-              $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-							if ($row["in_building_now"] == 0)
-							{
-								echo "<button class=\"btn btn-success\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check in</button>";
-							}
-							else
-							{
-								echo "<button class=\"btn btn-danger\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check out</button>";
-                echo "<h5><small>Don't forget to check out when leaving</small></h5>"; /*werkt pas vanaf refresh?*/
-							}
-                  mysqli_close($link);
-							?>
-
+			<div class="container-fluid">
+				<div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-2">
+					<div class="BOX margin_15_bottom">
+						<div class="col-md-5 user_foto">
+							<img src="IMG/user.png" alt="Profile picture" class="user_foto">
 						</div>
-					</li>
-				</ul>
-			</div>
-			<p class="clear_both"></p>
-		</div>
-		<div class="BOX margin_15_bottom no_pad_bottom">
-		 <div class="col-md-12">
-			 <a href="info_page.php" class="h4">Info</a>
-		 </div>
-		 <p class="clear_both"></p>
-	 </div>
-	 <div class="BOX margin_15_bottom no_pad_bottom">
-		 <div class="col-md-12">
-			 <a href="#" class="h4">Check in and out history</a>
-		 </div>
-		 <p class="clear_both"></p>
-	 </div>
-	 <div class="BOX margin_15_bottom no_pad_bottom">
-		 <div class="col-md-12">
-			 <a href="#" class="h4">Message and file history</a>
-		 </div>
-		 <p class="clear_both"></p>
-	 </div>
- </div>
- <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
-	 <div class="BOX">
-		<form class="form-horizontal" name="people_search" method="post" action="#">
-		 <div class="form-group">
-			<label for="zoeken" class="col-md-3 control-label">Search:</label>
-			<div class="col-md-9">
-			 <input type="text" class="form-control" id="zoeken" name="zoeken">
-		 </div>
-	 </div>
- </form>
- <div class="col-md-12"><hr class="hr"></div>
- <div class="col-md-12">
- <?php
-  show_member();
-  ?>
-</div>
-<p class="clear_both"></p>
-</div>
-</div>
-</div>
+						<div class="col-md-7 user_info">
+							<ul>
+								<li><?php echo $_SESSION["name"]; ?></li>
+								<li><?php echo $_SESSION["function"]; ?></li>
+								<li>
+									<div class="col-xs-9 col-sm-9 col-md-9 no_pad_left">Online</div>
+									<div class="col-xs-3 col-sm-3 col-md-3">
+
+
+										<?php
+
+										if ($_SESSION["logged_in"] == 1)
+										{
+											echo "<img src=\"IMG/Green_square.png\" title=\"Online\" alt=\"Online\" class=\"indicator_online_building\">";
+										}
+										else
+										{
+											echo "<img src=\"IMG/Red_square.png\" title=\"Offline\" alt=\"Offline\" class=\"indicator_online_building\">";
+										}
+
+										?>
+									</div>
+									<li>
+										<div class="col-xs-9 col-sm-9 col-md-9 no_pad_left">In Building</div>
+										<div class="col-xs-3 col-sm-3 col-md-3">
+
+											<?php
+											$link = connecteren();
+											$query = "SELECT in_building_now FROM in_building WHERE user_id = " .$_SESSION["user_id"];
+											$result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
+											$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+											if ($row["in_building_now"] == 1)
+											{
+												echo "<img src=\"IMG/Green_circle.png\" id=\"in_building\" title=\"In Building\" alt=\"In Building\" class=\"indicator_online_building\">";
+											}
+											else
+											{
+												echo "<img src=\"IMG/Red_circle.png\" id=\"in_building\" title=\"Not in Building\" alt=\"Not in building\" class=\"indicator_online_building\">";
+											}
+											mysqli_close($link);
+											?>
+
+										</div>
+									</li>
+									<li>
+										<div class="col-md-12 no_pad_left">
+
+											<?php
+											$link = connecteren();
+											$query = "SELECT in_building_now FROM in_building WHERE user_id = " .$_SESSION["user_id"];
+											$result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
+											$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+											if ($row["in_building_now"] == 0)
+											{
+												echo "<button class=\"btn btn-success\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check in</button>";
+												echo "<h5 id=\"check_in_out_warning\"><small>Don't forget to check in when arriving.</small></h5>";
+											}
+											else
+											{
+												echo "<button class=\"btn btn-danger\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check out</button>";
+												echo "<h5 id=\"check_in_out_warning\"><small>Don't forget to check out when leaving.</small></h5>"; /*werkt pas vanaf refresh?*/
+											}
+											mysqli_close($link);
+											?>
+
+										</div>
+									</li>
+								</ul>
+							</div>
+							<p class="clear_both"></p>
+						</div>
+						<div class="BOX margin_15_bottom no_pad_bottom">
+							<div class="col-md-12">
+								<a href="info_page.php" class="h4">Info</a>
+							</div>
+							<p class="clear_both"></p>
+						</div>
+						<div class="BOX margin_15_bottom no_pad_bottom">
+							<div class="col-md-12">
+								<a href="#" class="h4">Check in and out history</a>
+							</div>
+							<p class="clear_both"></p>
+						</div>
+						<div class="BOX margin_15_bottom no_pad_bottom">
+							<div class="col-md-12">
+								<a href="#" class="h4">Message and file history</a>
+							</div>
+							<p class="clear_both"></p>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
+						<div class="BOX">
+							<form class="form-horizontal" name="people_search" method="post" action="#">
+								<div class="form-group">
+									<label for="zoeken" class="col-md-3 control-label">Search:</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" id="zoeken" name="zoeken">
+									</div>
+								</div>
+							</form>
+							<div class="col-md-12"><hr class="hr"></div>
+							<div class="col-md-12">
+								<?php
+								show_member();
+								?>
+							</div>
+							<p class="clear_both"></p>
+						</div>
+					</div>
+				</div>
 
 
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-</body>
-</html>
-<?php
-}
-else
-{
-	header("Location: index.php");
-}
+				<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+				<!-- Include all compiled plugins (below), or include individual files as needed -->
+				<script src="js/bootstrap.min.js"></script>
+			</body>
+			</html>
+			<?php
+		}
+		else
+		{
+			header("Location: index.php");
+		}
