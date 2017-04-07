@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `in_building` (
 	`in_building_id` int(11) AUTO_INCREMENT,
 	`user_id` int(11),
 	`in_building_now` tinyint(1) DEFAULT '0',
-	`time_check` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+	`time_check` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (`in_building_id`),
 	FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`)
 );
