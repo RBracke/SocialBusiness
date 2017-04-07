@@ -3,10 +3,11 @@ session_start();
 
 include("functions.php");
 
-if (isset($_SESSION["logged_in"]))
+if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
 {
 
 	fill_session($_SESSION["user_id"]);
+	get_colleague($_GET["id"]);
 
 	?>
 
@@ -65,23 +66,56 @@ if (isset($_SESSION["logged_in"]))
 
 			<div class="container-fluid">
 				<div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-2">
-					<div class="BOX margin_15_bottom">
-						<div class="col-md-5 user_foto">
-							<img src="IMG/user.png" alt="Profile picture" class="user_foto">
-						</div>
-						<div class="col-md-7 user_info">
-							<ul>
-								<li>Name</li>
-								<li>Function</li>
-								<li>In Building</li>
-								<li>Online</li>
+				<div class="BOX margin_15_bottom">
+					<div class="col-md-5 user_foto">
+						<img src="IMG/user.png" alt="Profile picture" class="user_foto">
+					</div>
+					<div class="col-md-7 user_info">
+						<ul>
+							<li><?php echo $_SESSION["colleague"]["name"]; ?></li>
+							<li><?php echo $_SESSION["colleague"]["function"]; ?></li>
+							<li>
+								<div class="col-xs-9 col-sm-9 col-md-9 no_pad_left">Online</div>
+								<div class="col-xs-3 col-sm-3 col-md-3">
+
+
+									<?php
+
+									if ($_SESSION["colleague"]["logged_in"] == 1)
+									{
+										echo "<img src=\"IMG/Green_square.png\" title=\"Online\" alt=\"Online\" class=\"indicator_online_building\">";
+									}
+									else
+									{
+										echo "<img src=\"IMG/Red_square.png\" title=\"Offline\" alt=\"Offline\" class=\"indicator_online_building\">";
+									}
+
+									?>
+								</div>
+								<li>
+									<div class="col-xs-9 col-sm-9 col-md-9 no_pad_left">In Building</div>
+									<div class="col-xs-3 col-sm-3 col-md-3">
+
+										<?php
+										if ($_SESSION["colleague"]["in_building"] == 1)
+										{
+											echo "<img src=\"IMG/Green_circle.png\" id=\"in_building\" title=\"In Building\" alt=\"In Building\" class=\"indicator_online_building\">";
+										}
+										else
+										{
+											echo "<img src=\"IMG/Red_circle.png\" id=\"in_building\" title=\"Not in Building\" alt=\"Not in building\" class=\"indicator_online_building\">";
+										}
+										?>
+
+									</div>
+								</li>
 							</ul>
 						</div>
 						<p class="clear_both"></p>
 					</div>
 					<div class="BOX margin_15_bottom no_pad_bottom">
 						<div class="col-md-12">
-			 				<a href="info_page.php" class="h4">Info</a>
+							<a href="info_page.php" class="h4">Info</a>
 						</div>
 						<p class="clear_both"></p>
 					</div>
