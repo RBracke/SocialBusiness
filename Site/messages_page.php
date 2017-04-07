@@ -97,8 +97,11 @@ if (isset($_SESSION["logged_in"]))
 										<div class="col-xs-3 col-sm-3 col-md-3">
 
 											<?php
-
-											if ($_SESSION["in_building"] == 1)
+											$link = connecteren();
+											$query = "SELECT in_building_now FROM in_building WHERE user_id = " .$_SESSION["user_id"];
+											$result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
+											$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+											if ($row["in_building_now"] == 1)
 											{
 												echo "<img src=\"IMG/Green_circle.png\" id=\"in_building\" title=\"In Building\" alt=\"In Building\" class=\"indicator_online_building\">";
 											}
@@ -106,7 +109,7 @@ if (isset($_SESSION["logged_in"]))
 											{
 												echo "<img src=\"IMG/Red_circle.png\" id=\"in_building\" title=\"Not in Building\" alt=\"Not in building\" class=\"indicator_online_building\">";
 											}
-
+											mysqli_close($link);
 											?>
 
 										</div>
@@ -115,16 +118,21 @@ if (isset($_SESSION["logged_in"]))
 										<div class="col-md-12 no_pad_left">
 
 											<?php
-
-											if ($_SESSION["in_building"] == 0)
+											$link = connecteren();
+											$query = "SELECT in_building_now FROM in_building WHERE user_id = " .$_SESSION["user_id"];
+											$result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
+											$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+											if ($row["in_building_now"] == 0)
 											{
 												echo "<button class=\"btn btn-success\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check in</button>";
+												echo "<h5 id=\"check_in_out_warning\"><small>Don't forget to check in when arriving.</small></h5>";
 											}
 											else
 											{
 												echo "<button class=\"btn btn-danger\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check out</button>";
+												echo "<h5 id=\"check_in_out_warning\"><small>Don't forget to check out when leaving.</small></h5>"; /*werkt pas vanaf refresh?*/
 											}
-
+											mysqli_close($link);
 											?>
 
 										</div>
