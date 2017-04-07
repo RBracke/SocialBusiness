@@ -97,11 +97,8 @@ if (isset($_SESSION["logged_in"]))
 								<div class="col-xs-3 col-sm-3 col-md-3">
 
 								 <?php
-                $link = connecteren();
-                $query = "SELECT in_building_now FROM in_building WHERE user_id = " .$_SESSION["user_id"];
-                $result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
-                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                if ($row["in_building_now"] == 1)
+
+								 if ($_SESSION["in_building"] == 1)
 								 {
 									echo "<img src=\"IMG/Green_circle.png\" id=\"in_building\" title=\"In Building\" alt=\"In Building\" class=\"indicator_online_building\">";
 								}
@@ -109,7 +106,7 @@ if (isset($_SESSION["logged_in"]))
 								{
 									echo "<img src=\"IMG/Red_circle.png\" id=\"in_building\" title=\"Not in Building\" alt=\"Not in building\" class=\"indicator_online_building\">";
 								}
-                    mysqli_close($link);
+
 								?>
 
 							</div>
@@ -117,21 +114,17 @@ if (isset($_SESSION["logged_in"]))
 						<li>
 						 <div class="col-md-12 no_pad_left">
 
-							<?php
-              $link = connecteren();
-              $query = "SELECT in_building_now FROM in_building WHERE user_id = " .$_SESSION["user_id"];
-              $result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
-              $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-							if ($row["in_building_now"] == 0)
-							{
+							 <?php
+
+							 if ($_SESSION["in_building"] == 0)
+							 {
 								echo "<button class=\"btn btn-success\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check in</button>";
 							}
 							else
 							{
 								echo "<button class=\"btn btn-danger\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check out</button>";
-                echo "<h5><small>Don't forget to check out when leaving</small></h5>"; /*werkt pas vanaf refresh?*/
 							}
-                  mysqli_close($link);
+
 							?>
 
 						</div>
@@ -142,7 +135,7 @@ if (isset($_SESSION["logged_in"]))
 		</div>
 		<div class="BOX margin_15_bottom no_pad_bottom">
 		 <div class="col-md-12">
-			 <a href="info_page.php" class="h4">Info</a>
+			 <a href="#" class="h4">Info</a>
 		 </div>
 		 <p class="clear_both"></p>
 	 </div>
@@ -159,24 +152,43 @@ if (isset($_SESSION["logged_in"]))
 		 <p class="clear_both"></p>
 	 </div>
  </div>
- <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
-	 <div class="BOX">
-		<form class="form-horizontal" name="people_search" method="post" action="#">
+ <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4">
+	<div class="BOX">
+	<div class="form-group margin_15_top">
+		<div class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> NIN</div><div class="col-md-9"><?php echo $_SESSION["nin"]; ?></div>
+	</div><p class="clear_both"></p>
+	<div class="form-group">
+		<div class="col-md-3">Age</div><div class="col-md-9"><?php echo date("Y/m/d") - $_SESSION["date_of_birth"]; ?></div>
+	</div><p class="clear_both"></p>
+	<div class="form-group">
+		<div class="col-md-3">Gender</div><div class="col-md-9"><?php if($_SESSION["gender"] == "1"){echo "Male";} else{echo "Female";} ?></div>
+	</div><p class="clear_both"></p>
+	<div class="form-group">
+		<div class="col-md-3">Home address</div><div class="col-md-9"><?php echo $_SESSION["address"]; ?></div>
+	</div><p class="clear_both"></p>
+	<div class="form-group">
+		<div class="col-md-3">Martial status</div><div class="col-md-9"><?php echo $_SESSION["martial_status"]; ?></div>
+	</div><p class="clear_both"></p>
+	<div class="form-group">
+		<div class="col-md-3">Personal email</div><div class="col-md-9"><?php echo $_SESSION["email"]; ?></div>
+	</div><p class="clear_both"></p>
+	<div class="form-group">
+		<div class="col-md-3">Phone number</div><div class="col-md-9"><?php echo ("+32" .$_SESSION["phone_number"]. ""); ?></div>
+	</div><p class="clear_both"></p>
+		<div class="form-group">
+		<div class="col-md-3">Start date</div><div class="col-md-9"><?php echo $_SESSION["start_date"]; ?></div>
+	</div><p class="clear_both"></p>
+		<div class="form-group">
+		<div class="col-md-3">Days in company</div><div class="col-md-9"><?php $start_date = strtotime($_SESSION["start_date"]); echo floor((time() - $start_date)/86400); ?></div>
+	</div><p class="clear_both"></p>
+	<form class="form-horizontal" name="filter" method="post" action="#">
 		 <div class="form-group">
-			<label for="zoeken" class="col-md-3 control-label">Search:</label>
+				<label for="filter_info" class="col-md-3 control-label">Filter:</label>
 			<div class="col-md-9">
-			 <input type="text" class="form-control" id="zoeken" name="zoeken">
-		 </div>
-	 </div>
- </form>
- <div class="col-md-12"><hr class="hr"></div>
- <div class="col-md-12">
- <?php
-  show_member();
-  ?>
-</div>
-<p class="clear_both"></p>
-</div>
+				<input type="text" class="form-control" id="filter_info" name="filter_info">
+			</div>
+		</div>
+	</form>
 </div>
 </div>
 

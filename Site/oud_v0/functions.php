@@ -89,7 +89,7 @@ function fill_session($id)
 {
 	$link = connecteren();
 
-	$query_user = "SELECT name, nin, address, gender, email, profile_picture, date_of_birth, online, martial_status, phone_number, function, rights_id, admin, start_date FROM user WHERE user_id = '" .$id. "'";
+	$query_user = "SELECT name, nin, address, gender, email, profile_picture, in_building, date_of_birth, online, martial_status, phone_number, function, rights_id, admin, start_date FROM user WHERE user_id = '" .$id. "'";
 
 	$result_user = mysqli_query($link, $query_user) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_user\"");
 
@@ -105,6 +105,7 @@ function fill_session($id)
 		$_SESSION["gender"] = $result_user["gender"];
 		$_SESSION["email"] = $result_user["email"];
 		$_SESSION["profile_picture"] = $result_user["profile_picture"];
+		$_SESSION["in_building"] = $result_user["in_building"];
 		$_SESSION["date_of_birth"] = $result_user["date_of_birth"];
 		$_SESSION["martial_status"] = $result_user["martial_status"];
 		$_SESSION["phone_number"] = $result_user["phone_number"];
@@ -181,7 +182,7 @@ function user_in_building()
 {
 	$link = connecteren();
 
-	$query_online = "UPDATE in_building SET in_building_now = 1 WHERE user_id = " .$_SESSION["user_id"];
+	$query_online = "UPDATE user SET in_building = 1 WHERE user_id = " .$_SESSION["user_id"];
 
 	$result_online = mysqli_query($link, $query_online) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_online\"");
 
@@ -193,7 +194,7 @@ function user_out_building()
 {
 	$link = connecteren();
 
-	$query_online = "UPDATE in_building SET in_building_now = 0 WHERE user_id = " .$_SESSION["user_id"];
+	$query_online = "UPDATE user SET in_building = 0 WHERE user_id = " .$_SESSION["user_id"];
 
 	$result_online = mysqli_query($link, $query_online) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_online\"");
 
@@ -204,7 +205,7 @@ function user_out_building()
 function show_member()
 {
 	$link = connecteren();
-	$query_list = "SELECT user.user_id, user.name, user.function, user.online, in_building.in_building_now FROM user LEFT JOIN in_building on user.user_id = in_building.user_id";
+	$query_list = "SELECT user_id, name, function, online, in_building FROM user";
   	$result_list = mysqli_query($link, $query_list) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_list\"");
   	if($result_list->num_rows > 0) {
    		while($row = $result_list->fetch_assoc()) {
@@ -214,7 +215,7 @@ function show_member()
 					<div class='col-md-3'><a href=\"colleague_page.php?id=".$row['user_id']."\">".$row['name']."</a></div>
 					<div class='col-md-3'>" .$row['function']. "</div>
 					<div class='col-md-3'>" .$row['online']. "</div>
-					<div class='col-md-3'>" .$row['in_building_now']. "</div>
+					<div class='col-md-3'>" .$row['in_building']. "</div>
 					</div>
 					<p class='clear_both'></p>";
          		}

@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `message` (
 CREATE TABLE IF NOT EXISTS `in_building` (
 	`in_building_id` int(11) AUTO_INCREMENT,
 	`user_id` int(11),
-	`in_building_now` tinyint(1) DEFAULT NULL,
+	`in_building_now` tinyint(1) DEFAULT '0',
 	`time_check_in` datetime DEFAULT NULL,
 	`time_check_out` datetime DEFAULT NULL,
 	PRIMARY KEY (`in_building_id`),
@@ -65,3 +65,9 @@ INSERT INTO `user` (`user_id`, `name`, `nin`, `address`, `gender`, `email`, `dat
 (3, 'joske', 44121181161, 'josdreef 24', 1, 'jos@hotmail.com', '1990-05-25', 'single', '21232f297a57a5a743894a0e4a801fc3', 568799563, 'Employee', NULL, 0, '2012-08-01'),
 (4, 'josefien',42082713590, 'nieuwdreef 54', 0, 'josefien@hotmail.com', '1992-06-25', 'in relationship', '21232f297a57a5a743894a0e4a801fc3', 675419824, 'cleaning lady', NULL, 0, '2010-08-25'),
 (5, 'jef',28061220565, 'boonhoek 88', 1, 'jef@hotmail.com', '1988-11-25', 'divorced', '21232f297a57a5a743894a0e4a801fc3', 5423647526, 'cook', NULL, 0, '2008-11-25');
+
+INSERT INTO `in_building` (`in_building_id`, `user_id`, `in_building_now`, `time_check_in`, `time_check_out`) VALUES
+(1, 2, 1, '2017-04-07 06:08:06', '2017-04-07 16:04:39'),
+(2, 1, 1, '2017-03-17 06:28:16', '2017-03-17 15:59:21'),
+(3, 3, 1, '2017-03-14 06:01:24', '2017-03-14 15:54:28'),
+(4, 4, 0, '2017-03-15 05:59:05', '2017-03-15 16:02:11');

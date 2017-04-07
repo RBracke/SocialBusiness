@@ -1,0 +1,2 @@
+1:	meer dan 1 zelfde email in de database
+2: wanneer men inlogt met fout wachtwoord keert dit terug naar het invullen van het emailadress
