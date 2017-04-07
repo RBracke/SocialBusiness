@@ -5,6 +5,7 @@ USE `sobu`;
 DROP TABLE IF EXISTS `message`;
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `rights`;
+DROP TABLE IF EXISTS `in_building`;
 
 CREATE TABLE IF NOT EXISTS `rights` (
 	`rights_id` int(11) AUTO_INCREMENT,
@@ -22,7 +23,6 @@ CREATE TABLE IF NOT EXISTS `user` (
 	`gender` tinyint(1),
 	`email` varchar(40),
 	`profile_picture` varchar(10),
-	`in_building` tinyint(1) default '0',
 	`date_of_birth` date ,
 	`online` tinyint(1) default '0',
 	`martial_status` varchar(20),
@@ -47,6 +47,16 @@ CREATE TABLE IF NOT EXISTS `message` (
 	PRIMARY KEY (`message_id`),
 	FOREIGN KEY (`receipant`) REFERENCES `user`(`user_id`),
 	FOREIGN KEY (`sender`) REFERENCES `user`(`user_id`)
+);
+
+CREATE TABLE IF NOT EXISTS `in_building` (
+	`in_building_id` int(11) AUTO_INCREMENT,
+	`user_id` int(11),
+	`in_building_now` tinyint(1) DEFAULT NULL,
+	`time_check_in` datetime DEFAULT NULL,
+	`time_check_out` datetime DEFAULT NULL,
+	PRIMARY KEY (`in_building_id`),
+	FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`)
 );
 
 INSERT INTO `user` (`user_id`, `name`, `nin`, `address`, `gender`, `email`, `date_of_birth`, `martial_status`, `password`, `phone_number`, `function`, `rights_id`, `admin`, `start_date`) VALUES
