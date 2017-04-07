@@ -211,12 +211,13 @@ function user_out_building()
 
 function show_member()
 {
+	$x = NULL;
 	$link = connecteren();
-	$query_list = "SELECT user.user_id, user.name, user.function, user.online, in_building.in_building_now FROM user LEFT JOIN in_building on user.user_id = in_building.user_id";
+	$query_list = "SELECT user.user_id, user.name, user.function, user.online, in_building.in_building_now, in_building.in_building_id FROM user LEFT JOIN in_building on user.user_id = in_building.user_id ORDER BY user.name ASC, in_building.in_building_id DESC";
 	$result_list = mysqli_query($link, $query_list) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_list\"");
 	if($result_list->num_rows > 0) {
 		while($row = $result_list->fetch_assoc()) {
-			if($row['user_id'] != $_SESSION['user_id'])
+			if(($row['user_id'] != $_SESSION['user_id']) && ($row['user_id'] != $x))
 			{
 				echo "<div class='form-group'>
 				<div class='col-md-3'><a href=\"colleague_page.php?id=".$row['user_id']."\">".$row['name']."</a></div>
@@ -225,6 +226,7 @@ function show_member()
 				<div class='col-md-3'>" .$row['in_building_now']. "</div>
 			</div>
 			<p class='clear_both'></p>";
+			$x = $row['user_id'];
 		}
 	}   
 } 
