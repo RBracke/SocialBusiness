@@ -115,7 +115,7 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
 						</div>
 						<div class="BOX margin_15_bottom no_pad_bottom">
 							<div class="col-md-12">
-							<a href="info_page_colleague.php?id=<?php echo $_SESSION["colleague"]["user_id"] ?>" class="h4">Info</a>
+								<a href="info_page.php" class="h4">Info</a>
 							</div>
 							<p class="clear_both"></p>
 						</div>
@@ -132,27 +132,35 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
 							<p class="clear_both"></p>
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
+					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4">
 						<div class="BOX">
-							<form class="form-vertical" name="message" method="post" action="#">
-								<div class="form-group">
-									<label for="topic" class="control-label h4 no_margin_top">Topic</label>
-									<input type="text" class="form-control" id="topic" name="topic">
-								</div>
-								<div class="form-group">
-									<label for="message" class="control-label h4 no_margin_top">Message</label>
-									<textarea rows="10" class="form-control" id="message" name="message"></textarea>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-12 no_pad_left pad_15_bottom">
-										<input type="file" class="btn btn-warning file">
-									</div>
-									<div class="col-sm-12 no_pad_left">
-										<button type="submit" class="btn btn-warning">Send</button>
-									</div>
-								</div>
-							</form>
-							<p class="clear_both"></p>
+							<div class="form-group margin_15_top">
+							<div class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Nin</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["nin"]; ?></div>
+							</div><p class="clear_both"></p>
+							<div class="form-group">
+								<div class="col-md-3">Age</div><div class="col-md-9"><?php echo date("Y/m/d") - $_SESSION["colleague"]["date_of_birth"]; ?></div>
+							</div><p class="clear_both"></p>
+							<div class="form-group">
+								<div class="col-md-3">Gender</div><div class="col-md-9"><?php if($_SESSION["colleague"]["gender"] == "1"){echo "Male";} else{echo "Female";} ?></div>
+							</div><p class="clear_both"></p>
+							<div class="form-group">
+								<div class="col-md-3">Home address</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["address"]; ?></div>
+							</div><p class="clear_both"></p>
+							<div class="form-group">
+								<div class="col-md-3">Martial status</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["martial_status"]; ?></div>
+							</div><p class="clear_both"></p>
+							<div class="form-group">
+								<div class="col-md-3">Personal email</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["email"]; ?></div>
+							</div><p class="clear_both"></p>
+							<div class="form-group">
+								<div class="col-md-3">Phone number</div><div class="col-md-9"><?php echo ("+32" .$_SESSION["colleague"]["phone_number"]. ""); ?></div>
+							</div><p class="clear_both"></p>
+							<div class="form-group">
+								<div class="col-md-3">Start date</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["start_date"]; ?></div>
+							</div><p class="clear_both"></p>
+							<div class="form-group">
+								<div class="col-md-3">Days in company</div><div class="col-md-9"><?php $start_date = strtotime($_SESSION["colleague"]["start_date"]); echo floor((time() - $start_date)/86400); ?></div>
+							</div><p class="clear_both"></p>
 						</div>
 					</div>
 				</div>
