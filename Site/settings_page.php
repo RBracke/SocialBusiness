@@ -164,48 +164,48 @@ if (isset($_SESSION["logged_in"]))
 							<h4>Settings</h4>
 							<div class="col-md-12"><hr class="hr"></div>
 							<div class="col-md-12">
-								<form class="form-horizontal" name="settings" method="post" action="#">
+								<form class="form-horizontal" name="settings" method="post" action="settings_validate.php">
 									<div class="form-group margin_15_top">
 										<label for="nin" class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Nin</label>
 										<div class="col-md-9">
-											<input type="text" class="form-control" id="nin" name="nin">
+											<input type="text" class="form-control" id="nin" name="nin" value="<?php echo $_SESSION["nin"]; ?>">
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="dob" class="col-md-3 control-label">Date of birth</label>
 										<div class="col-md-9">
-											<input type="text" class="form-control" id="dob" name="dob">
+											<input type="date" class="form-control" id="dob" name="dob" value="<?php echo $_SESSION["date_of_birth"]; ?>">
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="gender" class="col-md-3 control-label">Gender</label>
 										<div class="col-md-9">
-											<label class="radio-inline"><input type="radio" id="gender" name="gender" value="m">M</label>
-											<label class="radio-inline"><input type="radio" name="gender" value="m">F</label>
+											<label class="radio-inline"><input type="radio" id="gender" name="gender" <?php if ($_SESSION["gender"] == 1) {echo "checked"; }?>>M</label>
+											<label class="radio-inline"><input type="radio" name="gender"  <?php if ($_SESSION["gender"] == 0) {echo "checked"; }?>>F</label>
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="home" class="col-md-3 control-label">Home address</label>
 										<div class="col-md-9">
-											<input type="text" class="form-control" id="home" name="home">
+											<input type="text" class="form-control" id="home" name="home" value="<?php echo $_SESSION["address"]; ?>">
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="martial" class="col-md-3 control-label">Martial status</label>
 										<div class="col-md-9">
-											<input type="text" class="form-control" id="martial" name="martial">
+											<input type="text" class="form-control" id="martial" name="martial" value="<?php echo $_SESSION["martial_status"]; ?>">
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="email" class="col-md-3 control-label">Personal email</label>
 										<div class="col-md-9">
-											<input type="email" class="form-control" id="email" name="email">
+											<input type="email" class="form-control" id="email" name="email" value="<?php echo $_SESSION["email"]; ?>">
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="phone" class="col-md-3 control-label">Phone number</label>
 										<div class="col-md-9">
-											<input type="text" class="form-control" id="phone" name="phone">
+											<input type="text" class="form-control" id="phone" name="phone" value="<?php echo $_SESSION["phone_number"]; ?>">
 										</div>
 									</div>
 									<div class="form-group">
@@ -228,7 +228,7 @@ if (isset($_SESSION["logged_in"]))
 									</div>
 									<div class="form-group">
 										<div class="col-sm-12 no_pad_left pad_15_bottom">
-											<label for="picture" class="col-md-3 control-label">Profile picture</label>
+											<label for="picture" class="col-md-3 control-label">New profile picture</label>
 											<div class="col-md-9">
 												<input type="file" id="picture" class="btn btn-warning file">
 											</div>
