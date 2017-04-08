@@ -24,6 +24,14 @@ if (isset($_SESSION["logged_in"]))
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet" />
 		<script src="js/check_in_out.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+			<!-- Include all compiled plugins (below), or include individual files as needed -->
+			<script src="js/bootstrap.min.js"></script>
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$('[data-toggle="tooltip"]').tooltip();   
+				});
+			</script>
 		
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -153,7 +161,7 @@ if (isset($_SESSION["logged_in"]))
  <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4">
 	<div class="BOX">
 	<div class="form-group margin_15_top">
-		<div class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> NIN</div><div class="col-md-9"><?php echo $_SESSION["nin"]; ?></div>
+		<div class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Nin</div><div class="col-md-9"><?php echo $_SESSION["nin"]; ?></div>
 	</div><p class="clear_both"></p>
 	<div class="form-group">
 		<div class="col-md-3">Age</div><div class="col-md-9"><?php echo date("Y/m/d") - $_SESSION["date_of_birth"]; ?></div>
