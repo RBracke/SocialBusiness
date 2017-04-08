@@ -21,7 +21,7 @@ function refresh_in_building() {
 		{
 			if (xhr.responseText == "in")
 			{
-				output_icon.src = "IMG/Green_circle.png";
+				output_icon.src = "IMG/Green_square.png";
 				output_icon.alt = "In building";
 				output_icon.title = "In building";
 				output_button.className = "btn btn-danger";
@@ -30,7 +30,7 @@ function refresh_in_building() {
 			}
 			else
 			{
-				output_icon.src = "IMG/Red_circle.png";
+				output_icon.src = "IMG/Red_square.png";
 				output_icon.alt = "Not in building";
 				output_icon.title = "Not in building";
 				output_button.className = "btn btn-success";
@@ -40,7 +40,7 @@ function refresh_in_building() {
 		}
 		else
 		{
-			output_icon.src = "IMG/Red_circle.png";
+			output_icon.src = "IMG/Red_square.png";
 			output_icon.alt = "Not in building";
 			output_icon.title = "Not in building";
 			output_button.className = "btn btn-success";
