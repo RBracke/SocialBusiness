@@ -92,11 +92,11 @@ if (isset($_SESSION["logged_in"]))
 
 										if ($_SESSION["logged_in"] == 1)
 										{
-											echo "<img src=\"IMG/Green_square.png\" title=\"Online\" alt=\"Online\" class=\"indicator_online_building\">";
+											echo "<img src=\"IMG/Green_circle.png\" title=\"Online\" alt=\"Online\" class=\"indicator_online_building\">";
 										}
 										else
 										{
-											echo "<img src=\"IMG/Red_square.png\" title=\"Offline\" alt=\"Offline\" class=\"indicator_online_building\">";
+											echo "<img src=\"IMG/Red_circle.png\" title=\"Offline\" alt=\"Offline\" class=\"indicator_online_building\">";
 										}
 
 										?>
@@ -108,11 +108,11 @@ if (isset($_SESSION["logged_in"]))
 											<?php
 											if ($_SESSION["in_building"] == 1)
 											{
-												echo "<img src=\"IMG/Green_circle.png\" id=\"in_building\" title=\"In Building\" alt=\"In Building\" class=\"indicator_online_building\">";
+												echo "<img src=\"IMG/Green_square.png\" id=\"in_building\" title=\"In Building\" alt=\"In Building\" class=\"indicator_online_building\">";
 											}
 											else
 											{
-												echo "<img src=\"IMG/Red_circle.png\" id=\"in_building\" title=\"Not in Building\" alt=\"Not in building\" class=\"indicator_online_building\">";
+												echo "<img src=\"IMG/Red_square.png\" id=\"in_building\" title=\"Not in Building\" alt=\"Not in building\" class=\"indicator_online_building\">";
 											}
 											?>
 

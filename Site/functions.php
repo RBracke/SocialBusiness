@@ -220,10 +220,32 @@ function show_member()
 			if(($row['user_id'] != $_SESSION['user_id']) && ($row['user_id'] != $x))
 			{
 				echo "<div class='form-group'>
-				<div class='col-md-3'><a href=\"colleague_page.php?id=".$row['user_id']."\">".$row['name']."</a></div>
+				<div class='col-md-5'><a href=\"colleague_page.php?id=".$row['user_id']."\">".$row['name']."</a></div>
 				<div class='col-md-3'>" .$row['function']. "</div>
-				<div class='col-md-3'>" .$row['online']. "</div>
-				<div class='col-md-3'>" .$row['in_building_now']. "</div>
+				<div class='col-md-2'>";
+
+				if ($row["online"] == 1)
+				{
+					echo "<img src=\"IMG/Green_circle.png\" title=\"Online\" alt=\"Online\" class=\"indicator_online_building\">";
+				}
+				else
+				{
+					echo "<img src=\"IMG/Red_circle.png\" title=\"Offline\" alt=\"Offline\" class=\"indicator_online_building\">";
+				}
+
+				echo "</div>
+				<div class='col-md-2'>";
+
+				if ($row["in_building_now"] == 1)
+				{
+					echo "<img src=\"IMG/Green_square.png\" id=\"in_building\" title=\"In Building\" alt=\"In Building\" class=\"indicator_online_building\">";
+				}
+				else
+				{
+					echo "<img src=\"IMG/Red_square.png\" id=\"in_building\" title=\"Not in Building\" alt=\"Not in building\" class=\"indicator_online_building\">";
+				}
+
+				echo "</div>
 			</div>
 			<p class='clear_both'></p>";
 			$x = $row['user_id'];
