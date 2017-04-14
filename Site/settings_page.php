@@ -130,7 +130,7 @@ if (isset($_SESSION["logged_in"]))
 											else
 											{
 												echo "<button class=\"btn btn-danger\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check out</button>";
-												echo "<h5 id=\"check_in_out_warning\"><small>Don't forget to check out when leaving.</small></h5>"; /*werkt pas vanaf refresh?*/
+												echo "<h5 id=\"check_in_out_warning\"><small>Don't forget to check out when leaving.</small></h5>";
 											}
 											?>
 
@@ -165,62 +165,62 @@ if (isset($_SESSION["logged_in"]))
 							<div class="col-md-12"><hr class="hr"></div>
 							<div class="col-md-12">
 								<form class="form-horizontal" name="settings" method="post" action="settings_validate.php">
-									<div class="form-group margin_15_top">
+									<div class="form-group margin_15_top <?php if (isset($_GET["nin"]) && $_GET["nin"] == "ok") {echo "has-success";} elseif (isset($_GET["nin"]) && $_GET["nin"] == "error") {echo "has-error";} ?>">
 										<label for="nin" class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Nin</label>
 										<div class="col-md-9">
 											<input type="text" class="form-control" id="nin" name="nin" value="<?php echo $_SESSION["nin"]; ?>">
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group <?php if (isset($_GET["dob"]) && $_GET["dob"] == "ok") {echo "has-success";} elseif (isset($_GET["dob"]) && $_GET["dob"] == "error") {echo "has-error";} ?>">
 										<label for="dob" class="col-md-3 control-label">Date of birth</label>
 										<div class="col-md-9">
 											<input type="date" class="form-control" id="dob" name="dob" value="<?php echo $_SESSION["date_of_birth"]; ?>">
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group <?php if (isset($_GET["gender"]) && $_GET["gender"] == "ok") {echo "has-success";} elseif (isset($_GET["gender"]) && $_GET["gender"] == "error") {echo "has-error";} ?>">
 										<label for="gender" class="col-md-3 control-label">Gender</label>
 										<div class="col-md-9">
-											<label class="radio-inline"><input type="radio" id="gender" name="gender" <?php if ($_SESSION["gender"] == 1) {echo "checked"; }?>>M</label>
-											<label class="radio-inline"><input type="radio" name="gender"  <?php if ($_SESSION["gender"] == 0) {echo "checked"; }?>>F</label>
+											<label class="radio-inline"><input type="radio" id="gender" value="m" name="gender" <?php if ($_SESSION["gender"] == 1) {echo "checked"; }?>>M</label>
+											<label class="radio-inline"><input type="radio" value="f" name="gender"  <?php if ($_SESSION["gender"] == 0) {echo "checked"; }?>>F</label>
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group <?php if (isset($_GET["address"]) && $_GET["address"] == "ok") {echo "has-success";} elseif (isset($_GET["address"]) && $_GET["address"] == "error") {echo "has-error";} ?>">
 										<label for="home" class="col-md-3 control-label">Home address</label>
 										<div class="col-md-9">
-											<input type="text" class="form-control" id="home" name="home" value="<?php echo $_SESSION["address"]; ?>">
+											<input type="text" class="form-control" id="home" name="address" value="<?php echo $_SESSION["address"]; ?>">
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group <?php if (isset($_GET["martial"]) && $_GET["martial"] == "ok") {echo "has-success";} elseif (isset($_GET["martial"]) && $_GET["martial"] == "error") {echo "has-error";} ?>">
 										<label for="martial" class="col-md-3 control-label">Martial status</label>
 										<div class="col-md-9">
 											<input type="text" class="form-control" id="martial" name="martial" value="<?php echo $_SESSION["martial_status"]; ?>">
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group <?php if (isset($_GET["email"]) && $_GET["email"] == "ok") {echo "has-success";} elseif (isset($_GET["email"]) && $_GET["email"] == "error") {echo "has-error";} ?>">
 										<label for="email" class="col-md-3 control-label">Personal email</label>
 										<div class="col-md-9">
 											<input type="email" class="form-control" id="email" name="email" value="<?php echo $_SESSION["email"]; ?>">
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group <?php if (isset($_GET["phone_number"]) && $_GET["phone_number"] == "ok") {echo "has-success";} elseif (isset($_GET["phone_number"]) && $_GET["phone_number"] == "error") {echo "has-error";} ?>">
 										<label for="phone" class="col-md-3 control-label">Phone number</label>
 										<div class="col-md-9">
-											<input type="text" class="form-control" id="phone" name="phone" value="<?php echo $_SESSION["phone_number"]; ?>">
+											<input type="text" class="form-control" id="phone" name="phone_number" value="<?php echo $_SESSION["phone_number"]; ?>">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="oldpassword" class="col-md-3 control-label">Old password</label>
+										<label for="oldpassword" class="col-md-3 control-label">Password</label>
 										<div class="col-md-9">
-											<input type="password" class="form-control" id="oldpassword" name="oldpassword">
+											<input type="password" class="form-control" id="oldpassword" name="password">
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group <?php if (isset($_GET["new_password"]) && $_GET["new_password"] == "ok") {echo "has-success";} elseif (isset($_GET["new_password"]) && $_GET["new_password"] == "error") {echo "has-error";} ?>">
 										<label for="newpassword" class="col-md-3 control-label">New password</label>
 										<div class="col-md-9">
 											<input type="password" class="form-control" id="newpassword" name="newpassword">
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group <?php if (isset($_GET["new_password"]) && $_GET["new_password"] == "ok") {echo "has-success";} elseif (isset($_GET["new_password"]) && $_GET["new_password"] == "error") {echo "has-error";} ?>">
 										<label for="repassword" class="col-md-3 control-label">Retype password</label>
 										<div class="col-md-9">
 											<input type="password" class="form-control" id="repassword" name="repassword">

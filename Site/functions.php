@@ -339,4 +339,10 @@ function get_colleague($id)
 
 }
 
+function valideerDatum($date)
+{
+    $d = DateTime::createFromFormat('Y-m-d', $date);
+    return $d && $d->format('Y-m-d') === $date;
+}
+
 ?>
