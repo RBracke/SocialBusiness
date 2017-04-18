@@ -60,26 +60,26 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 							<div class="col-md-12">
 								<form class="form-horizontal" name="add_user" method="post" action="add_user_validate.php">
 									<div class="form-group margin_15_top">
-										<label for="dob" class="col-md-3 control-label">Name</label>
+										<label for="dob" class="col-md-3 control-label">Name<span class="rood">*</span></label>
 										<div class="col-md-9">
 											<input type="text" class="form-control" id="name" name="name" placeholder="Surname Forename">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="function" class="col-md-3 control-label">Function</label>
+										<label for="function" class="col-md-3 control-label">Function<span class="rood">*</span></label>
 										<div class="col-md-9">
 											<input type="text" class="form-control" id="function" name="function" placeholder="Function of the new employee">
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="admin_radio" class="col-md-3 control-label">Admin</label>
+										<label for="admin_radio" class="col-md-3 control-label">Admin<span class="rood">*</span></label>
 										<div class="col-md-9">
 											<label class="radio-inline"><input type="radio" id="admin_radio" value="Yes" name="admin_radio">Yes</label>
 											<label class="radio-inline"><input type="radio" value="No" name="admin_radio">No</label>
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="rights_checkbox" class="col-md-3 control-label">Has rights</label>
+										<label for="rights_checkbox" class="col-md-3 control-label">Has rights<span class="rood">*</span></label>
 										<div class="col-md-9">
 											<label class="checkbox-inline"><input type="checkbox" id="rights_checkbox" value="1" name="rights_checkbox">Check info</label>
 											<label class="checkbox-inline"><input type="checkbox" value="2" name="rights_checkbox">Check in and out times</label>
@@ -149,6 +149,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 											</div>
 										</div>
 									</div>
+									<div class="col-sm-12 pad_15_bottom"><span class="rood">* Required</span></div>
 									<div class="col-md-9">
 										<button type="submit" class="btn btn-warning">Add</button>
 									</div>
