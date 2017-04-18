@@ -63,7 +63,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 				</div>
 				<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
 					<div class="BOX no_pad_top">
-						<h3>Add a user</h3>
+						<a href="admin_page_add.php"><h3>Add a user</h3></a>
 						<p class="clear_both"></p>
 					</div>
 				</div>
