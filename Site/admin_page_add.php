@@ -74,16 +74,16 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 									<div class="form-group">
 										<label for="admin_radio" class="col-md-3 control-label">Admin<span class="rood">*</span></label>
 										<div class="col-md-9">
-											<label class="radio-inline"><input type="radio" id="admin_radio" value="Yes" name="admin_radio">Yes</label>
-											<label class="radio-inline"><input type="radio" value="No" name="admin_radio">No</label>
+											<label class="radio-inline"><input type="radio" id="admin_radio" value="1" name="admin_radio">Yes</label>
+											<label class="radio-inline"><input type="radio" value="0" name="admin_radio">No</label>
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="rights_checkbox" class="col-md-3 control-label">Has rights<span class="rood">*</span></label>
+										<label for="rights_checkbox" class="col-md-3 control-label">Has rights<span class="rood">*</span></label> <!-- waardes tellen niet op-->
 										<div class="col-md-9">
-											<label class="checkbox-inline"><input type="checkbox" id="rights_checkbox" value="1" name="rights_checkbox">Check info</label>
+											<label class="checkbox-inline"><input type="checkbox" id="rights_checkbox" value="4" name="rights_checkbox">Check info</label>
 											<label class="checkbox-inline"><input type="checkbox" value="2" name="rights_checkbox">Check in and out times</label>
-											<label class="checkbox-inline"><input type="checkbox" value="3" name="rights_checkbox">Check Messages</label>
+											<label class="checkbox-inline"><input type="checkbox" value="1" name="rights_checkbox">Check Messages</label>
 										</div>
 									</div>
 									<div class="form-group">
