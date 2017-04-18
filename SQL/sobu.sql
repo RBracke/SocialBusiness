@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `in_building` (
 	`in_building_id` int(11) AUTO_INCREMENT,
 	`user_id` int(11),
 	`in_building_now` tinyint(1) DEFAULT '0',
-	`time_check` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`time_check` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (`in_building_id`),
 	FOREIGN KEY (`user_id`) REFERENCES `user`(`user_id`)
 );
@@ -66,15 +66,17 @@ INSERT INTO `user` (`user_id`, `name`, `nin`, `address`, `gender`, `email`, `dat
 (5, 'jef',28061220565, 'boonhoek 88', 1, 'jef@hotmail.com', '1988-11-25', 'divorced', '21232f297a57a5a743894a0e4a801fc3', 5423647526, 'cook', NULL, 0, '2008-11-25');
 
 INSERT INTO `in_building` (`in_building_id`, `user_id`, `in_building_now`, `time_check`) VALUES
-(1, 2, 1, '2017-04-07 22:33:23'),
-(2, 1, 0, '2017-04-07 22:33:23'),
-(3, 3, 1, '2017-04-07 22:33:23'),
-(4, 4, 0, '2017-04-07 22:33:23'),
-(8, 1, 1, '2017-04-07 22:42:58'),
-(9, 1, 0, '2017-04-07 22:50:55'),
-(10, 1, 1, '2017-04-07 22:50:56'),
-(11, 1, 0, '2017-04-07 22:50:57'),
-(12, 1, 1, '2017-04-07 22:52:23'),
-(13, 1, 0, '2017-04-07 22:54:57'),
-(14, 1, 1, '2017-04-07 22:56:05'),
-(15, 1, 0, '2017-04-07 22:56:50');
+(33, 1, 1, '2017-04-11 15:51:28'),
+(34, 1, 0, '2017-04-11 15:51:30'),
+(35, 1, 1, '2017-04-11 15:51:39'),
+(36, 1, 0, '2017-04-11 15:51:40'),
+(37, 1, 1, '2017-04-11 15:51:41'),
+(38, 1, 0, '2017-04-11 16:08:21'),
+(39, 1, 1, '2017-04-11 16:08:22'),
+(40, 1, 0, '2017-04-11 16:09:05');
+
+INSERT INTO `rights` (`rights_id`, `info`, `check_in_out`, `messages`) VALUES
+(1, 0, 0, 0),
+(2, 1, 0, 0),
+(3, 1, 1, 0),
+(4, 1, 1, 1);

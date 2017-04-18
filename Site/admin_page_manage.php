@@ -54,16 +54,19 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 			</nav>
 
 			<div class="container-fluid">
-				<div class="col-sm-offset-1 col-md-offset-1 col-lg-offset-2 pad_15_left"><h2>Admin page</h2></div>
-				<div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-2">
-					<div class="BOX margin_15_bottom no_pad_top">
-						<a href="admin_page_manage.php"><h3>Manage users</h3></a>
+				<div class="col-sm-offset-1 col-md-offset-1 col-lg-offset-2 pad_15_left"><h2>Admin page - Manage</h2></div>
+				<div class="col-xs-12 col-sm-12 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+					<div class="BOX margin_15_bottom">
+						<?php 
+							printmembers();
+						?>
 						<p class="clear_both"></p>
 					</div>
-				</div>
-				<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
-					<div class="BOX no_pad_top">
-						<h3>Add a user</h3>
+					<div class="BOX">
+						<?php 
+							echo "<h4>*Info Rights ID</h4>";
+							printrightsinfo();
+						?>
 						<p class="clear_both"></p>
 					</div>
 				</div>
