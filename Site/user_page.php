@@ -24,7 +24,40 @@ if (isset($_SESSION["logged_in"]))
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet" />
 		<script src="js/check_in_out.js"></script>
-		
+		<script type="text/javascript">
+			function search_users()
+			{
+				xhr = new XMLHttpRequest();
+				var zoekterm = document.getElementById("zoeken").value;
+				if (xhr != null)
+				{
+					var url="search_user_validate.php?search_user_page="+zoekterm;  
+
+					xhr.onreadystatechange=refresh_inhoud;
+					xhr.open("GET",url,true);
+					xhr.send(null);
+				}
+			}
+
+			function refresh_inhoud() 
+			{
+				var output = document.getElementById("members");
+				if (xhr.readyState == 4 && xhr.status == 200)
+				{
+					if(xhr.responseText)
+					{
+
+						output.innerHTML = xhr.responseText;
+
+					}
+					else
+					{
+						output.innerHTML = "<h2>Geen resultaten.</h2>";
+					}
+				}
+			}
+		</script>
+
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -68,7 +101,7 @@ if (isset($_SESSION["logged_in"]))
 				<div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-2">
 					<div class="BOX margin_15_bottom">
 						<div class="col-md-5 user_foto">
-							<img src="<?php if($_SESSION["profile_picture"] != NULL) {echo "IMG/users/" .$_SESSION["profile_picture"];} else {echo "IMG/users/default.png";} ?>" alt="Profile picture" class="user_foto">
+							<img src="<?php if($_SESSION["profile_picture"] != NULL) { echo "IMG/users/" .$_SESSION["profile_picture"]; } else { echo "IMG/users/default.png"; } ?>" alt="Profile picture" class="user_foto">
 						</div>
 						<div class="col-md-7 user_info">
 							<ul>
@@ -157,12 +190,12 @@ if (isset($_SESSION["logged_in"]))
 								<div class="form-group">
 									<label for="zoeken" class="col-md-3 control-label">Search:</label>
 									<div class="col-md-9">
-										<input type="text" class="form-control" id="zoeken" name="zoeken">
+										<input type="text" onkeyup="search_users();" class="form-control" id="zoeken" name="zoeken">
 									</div>
 								</div>
 							</form>
 							<div class="col-md-12"><hr class="hr"></div>
-							<div class="col-md-12">
+							<div class="col-md-12" id="members">
 								<?php
 								show_member();
 								?>
@@ -186,3 +219,4 @@ if (isset($_SESSION["logged_in"]))
 		{
 			header("Location: index.php");
 		}
+		?>
