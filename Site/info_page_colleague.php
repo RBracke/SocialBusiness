@@ -134,7 +134,7 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
 											</div>";
 						}
 
-						if ($_SESSION["rights"]["check_in_out"] == 1)
+						if ($_SESSION["rights"]["messages"] == 1)
 						{
 								echo "<div class='BOX margin_15_bottom no_pad_bottom'>
 												<div class='col-md-12'>
