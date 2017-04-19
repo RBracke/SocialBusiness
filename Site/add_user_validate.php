@@ -11,12 +11,17 @@ if(isset($_SESSION['logged_in']) && isset($_SESSION["admin"]) && ($_SESSION["adm
 	$function = strip($_POST["function"]);
 	$admin = strip($_POST["admin_radio"]);
 
-	if (isset($_POST["rights_checkbox"])){
-		$rights = strip($_POST["rights_checkbox"]);
-		$rights++;
-	}else{$rights = 0;}
+	if (isset($_POST["rights_checkbox_info"])){
+		$rights_info = 4;
+	}else{$rights_info = 0;}
+	if (isset($_POST["rights_checkbox_time"])){
+		$rights_time = 2;
+	}else{$rights_time = 0;}
+	if (isset($_POST["rights_checkbox_message"])){
+		$rights_message = 1;
+	}else{$rights_message = 0;}
 
-	echo $rights;
+	$rights_id = $rights_info + $rights_time + $rights_message + 1;
 
 	if (isset($_POST["nin"]))
 	{
@@ -56,17 +61,16 @@ if(isset($_SESSION['logged_in']) && isset($_SESSION["admin"]) && ($_SESSION["adm
 	if (isset($_POST["password"]) && isset($_POST["repassword"]) && ($_POST["password"] == $_POST["repassword"]))
 	{
 		$password = strip($_POST["password"]);
-		$repassword = strip($_POST["repassword"]);
 		$password_md5 = md5(htmlspecialchars($_POST["password"]));
-		$repassword_md5 = strip($_POST["repassword"]);
-	} else{$password = "21232f297a57a5a743894a0e4a801fc3";}
+
+	} else{$password_md5 = "21232f297a57a5a743894a0e4a801fc3";}
 
 	$date = date("Y-m-d");
 
 	$query = "SET foreign_key_checks = 0";
 	mysqli_query($link, $query);
 	$goto_url = "settings_page.php?";
-	$query = "INSERT INTO `user` (`name`, `nin`, `address`, `gender`, `email`, `date_of_birth`, `martial_status`, `password`, `phone_number`, `function`, `rights_id`, `admin`, `start_date`) VALUES ('" .$name. "', '" .$nin. "', '" .$home_address. "', '" .$gender. "', '" .$email. "', '" .$dob. "', '" .$martial_status. "', '" .$password. "', '" .$phone. "', '" .$function. "', '" .$rights. "', '" .$admin. "', '" .$date. "')";
+	$query = "INSERT INTO `user` (`name`, `nin`, `address`, `gender`, `email`, `date_of_birth`, `martial_status`, `password`, `phone_number`, `function`, `rights_id`, `admin`, `start_date`) VALUES ('" .$name. "', '" .$nin. "', '" .$home_address. "', '" .$gender. "', '" .$email. "', '" .$dob. "', '" .$martial_status. "', '" .$password_md5. "', '" .$phone. "', '" .$function. "', '" .$rights_id. "', '" .$admin. "', '" .$date. "')";
 
 	if ($link->query($query) === TRUE) {
     echo "New record created successfully";

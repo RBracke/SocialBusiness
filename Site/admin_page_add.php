@@ -81,9 +81,9 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 									<div class="form-group">
 										<label for="rights_checkbox" class="col-md-3 control-label">Has rights<span class="rood">*</span></label> <!-- waardes tellen niet op-->
 										<div class="col-md-9">
-											<label class="checkbox-inline"><input type="checkbox" id="rights_checkbox" value="4" name="rights_checkbox">Check info</label>
-											<label class="checkbox-inline"><input type="checkbox" value="2" name="rights_checkbox">Check in and out times</label>
-											<label class="checkbox-inline"><input type="checkbox" value="1" name="rights_checkbox">Check Messages</label>
+											<label class="checkbox-inline"><input type="checkbox" id="rights_checkbox" value="1" name="rights_checkbox_info">Check info</label>
+											<label class="checkbox-inline"><input type="checkbox" value="1" name="rights_checkbox_time">Check in and out times</label>
+											<label class="checkbox-inline"><input type="checkbox" value="1" name="rights_checkbox_message">Check Messages</label>
 										</div>
 									</div>
 									<div class="form-group">
