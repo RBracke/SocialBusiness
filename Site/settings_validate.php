@@ -136,7 +136,7 @@ if(isset($_SESSION['logged_in']) && isset($_POST["nin"]) && isset($_POST["dob"])
 				{
 					$query_password = "UPDATE user SET password ='" .$newpassword_md5. "' WHERE user_id = " .$id;
 
-					mysqli_query($link, $query_password) or die("Er is een fout opgetreden bij het uitvoeren van de query: \"$query_phone_number\"");
+					mysqli_query($link, $query_password) or die("Er is een fout opgetreden bij het uitvoeren van de query: \"$query_password\"");
 					$goto_url = $goto_url . "&new_password=ok";
 				}
 				else
@@ -145,18 +145,35 @@ if(isset($_SESSION['logged_in']) && isset($_POST["nin"]) && isset($_POST["dob"])
 				}
 			}
 
+			if (isset($_FILES["picture"]["name"]) && $_FILES["picture"]["name"] != NULL && false != getimagesize($_FILES["picture"]["tmp_name"]))
+			{
+				$temp = explode(".", $_FILES["picture"]["name"]);
+				$newfilename = $_SESSION["user_id"] . '.' . end($temp);
+				move_uploaded_file($_FILES["picture"]["tmp_name"], "IMG/users/" . $newfilename);
+
+				$query_picture = "UPDATE user SET profile_picture ='" .$newfilename. "' WHERE user_id = " .$id;
+
+				mysqli_query($link, $query_picture) or die("Er is een fout opgetreden bij het uitvoeren van de query: \"$query_picture\"");
+				$goto_url = $goto_url . "&picture=ok";
+			}
+			else
+			{
+				$goto_url = $goto_url . "&picture=error";
+			}
+
 			mysqli_close($link);
 
 			header( "Location: " .$goto_url );
+
 		}
 		else
 		{
-			header( "Location: settings_page.php?error=password" );
+			header( "Location: settings_page.php?password=error" );
 		}
 	}
 	else
 	{
-		header( "Location: settings_page.php?error=password" );
+		header( "Location: settings_page.php?password=error" );
 	}
 }
 else 

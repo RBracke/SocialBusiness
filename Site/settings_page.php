@@ -77,7 +77,7 @@ if (isset($_SESSION["logged_in"]))
 				<div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-2">
 					<div class="BOX margin_15_bottom">
 						<div class="col-md-5 user_foto">
-							<img src="IMG/user.png" alt="Profile picture" class="user_foto">
+							<img src="<?php if($_SESSION["profile_picture"] != NULL) {echo "IMG/users/" .$_SESSION["profile_picture"];} else {echo "IMG/users/default.png";} ?>" alt="Profile picture" class="user_foto">
 						</div>
 						<div class="col-md-7 user_info">
 							<ul>
@@ -164,7 +164,7 @@ if (isset($_SESSION["logged_in"]))
 							<h4>Settings</h4>
 							<div class="col-md-12"><hr class="hr"></div>
 							<div class="col-md-12">
-								<form class="form-horizontal" name="settings" method="post" action="settings_validate.php">
+								<form class="form-horizontal" name="settings" method="post" action="settings_validate.php" enctype="multipart/form-data">
 									<div class="form-group margin_15_top <?php if (isset($_GET["nin"]) && $_GET["nin"] == "ok") {echo "has-success";} elseif (isset($_GET["nin"]) && $_GET["nin"] == "error") {echo "has-error";} ?>">
 										<label for="nin" class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Nin</label>
 										<div class="col-md-9">
@@ -208,7 +208,7 @@ if (isset($_SESSION["logged_in"]))
 											<input type="text" class="form-control" id="phone" name="phone_number" value="<?php echo $_SESSION["phone_number"]; ?>">
 										</div>
 									</div>
-									<div class="form-group">
+									<div class="form-group <?php if (isset($_GET["password"]) && $_GET["password"] == "ok") {echo "has-success";} elseif (isset($_GET["password"]) && $_GET["password"] == "error") {echo "has-error";} ?>">
 										<label for="oldpassword" class="col-md-3 control-label">Password</label>
 										<div class="col-md-9">
 											<input type="password" class="form-control" id="oldpassword" name="password">
@@ -230,7 +230,7 @@ if (isset($_SESSION["logged_in"]))
 										<div class="col-sm-12 no_pad_left pad_15_bottom">
 											<label for="picture" class="col-md-3 control-label">New profile picture</label>
 											<div class="col-md-9">
-												<input type="file" id="picture" class="btn btn-warning file">
+												<input accept="image/*" type="file" name="picture" id="picture" class="btn btn-warning file">
 											</div>
 										</div>
 									</div>

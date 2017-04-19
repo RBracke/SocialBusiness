@@ -80,7 +80,7 @@ if (isset($_SESSION["logged_in"]))
 		 <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-2">
 			 <div class="BOX margin_15_bottom">
 				 <div class="col-md-5 user_foto">
-					 <img src="IMG/user.png" alt="Profile picture" class="user_foto">
+					 <img src="<?php if($_SESSION["profile_picture"] != NULL) {echo "IMG/users/" .$_SESSION["profile_picture"];} else {echo "IMG/users/default.png";} ?>" alt="Profile picture" class="user_foto">
 				 </div>
 				 <div class="col-md-7 user_info">
 					 <ul>
