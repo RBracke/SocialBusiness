@@ -147,7 +147,7 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
 					</div>
 					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
 						<div class="BOX">
-							<form class="form-vertical" name="message" method="post" action="#">
+							<form class="form-vertical" name="message" method="post" action="post_message.php">
 								<div class="form-group">
 									<label for="topic" class="control-label h4 no_margin_top">Topic</label>
 									<input type="text" class="form-control" id="topic" name="topic">
@@ -156,6 +156,7 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
 									<label for="message" class="control-label h4 no_margin_top">Message</label>
 									<textarea rows="10" class="form-control" id="message" name="message"></textarea>
 								</div>
+									<input type="hidden" name="receipant" value="<?php echo $_SESSION["colleague"]["user_id"]; ?>"> 
 								<div class="form-group">
 									<div class="col-sm-12 no_pad_left pad_15_bottom">
 										<input type="file" class="btn btn-warning file">

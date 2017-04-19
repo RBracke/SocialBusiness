@@ -3,7 +3,7 @@ session_start();
 
 include("functions.php");
 
-if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
+if (isset($_SESSION["logged_in"]) && isset($_GET["id"]) && $_SESSION["rights"]["info"] == 1)
 {
 
 	fill_session($_SESSION["user_id"]);
