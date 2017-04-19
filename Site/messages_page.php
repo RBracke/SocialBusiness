@@ -152,7 +152,7 @@ if (isset($_SESSION["logged_in"]))
 					</div>
 					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
 						<div class="BOX">
-							<form class="form-vertical" name="message" method="post" action="#">
+							<form class="form-vertical" name="message" method="post" action="post_message.php">
 								<div class="form-group">
 									<label for="receipant" class="control-label h4 no_margin_top">Receipant</label>
 									<input type="text" class="form-control" id="receipant" name="receipant">

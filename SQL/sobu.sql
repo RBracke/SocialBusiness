@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `message` (
 	`topic` varchar(50),
 	`content` text,
 	`file` varchar(50),
-	`date_time` date,
+	`date_time` datetime,
 	`receipant` int(5),
 	`sender` int(5),
 	PRIMARY KEY (`message_id`),

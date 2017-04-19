@@ -113,28 +113,41 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
 							</div>
 							<p class="clear_both"></p>
 						</div>
-						<div class="BOX margin_15_bottom no_pad_bottom">
-							<div class="col-md-12">
-							<a href="info_page_colleague.php?id=<?php echo $_SESSION["colleague"]["user_id"] ?>" class="h4">Info</a>
-							</div>
-							<p class="clear_both"></p>
-						</div>
-						<div class="BOX margin_15_bottom no_pad_bottom">
-							<div class="col-md-12">
-								<a href="#" class="h4">Check in and out history</a>
-							</div>
-							<p class="clear_both"></p>
-						</div>
-						<div class="BOX margin_15_bottom no_pad_bottom">
-							<div class="col-md-12">
-								<a href="#" class="h4">Message and file history</a>
-							</div>
-							<p class="clear_both"></p>
-						</div>
+						<?php
+						if ($_SESSION["rights"]["info"] == 1)
+						{
+								echo "<div class='BOX margin_15_bottom no_pad_bottom'>
+												<div class='col-md-12'>
+												<a href=\"info_page_colleague.php?id=" .$_SESSION['colleague']['user_id']. "\" class='h4'>Info</a>
+												</div>
+											<p class='clear_both'></p>
+											</div>";
+						}
+
+						if ($_SESSION["rights"]["check_in_out"] == 1)
+						{
+								echo "<div class='BOX margin_15_bottom no_pad_bottom'>
+												<div class='col-md-12'>
+												<a href='#' class='h4'>Check in and out history</a>
+												</div>
+											<p class='clear_both'></p>
+											</div>";
+						}
+
+						if ($_SESSION["rights"]["messages"] == 1)
+						{
+								echo "<div class='BOX margin_15_bottom no_pad_bottom'>
+												<div class='col-md-12'>
+												<a href='#' class='h4'>Message and file history</a>
+												</div>
+											<p class='clear_both'></p>
+											</div>";
+						}
+						?>
 					</div>
 					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
 						<div class="BOX">
-							<form class="form-vertical" name="message" method="post" action="#">
+							<form class="form-vertical" name="message" method="post" action="post_message.php">
 								<div class="form-group">
 									<label for="topic" class="control-label h4 no_margin_top">Topic</label>
 									<input type="text" class="form-control" id="topic" name="topic">
@@ -143,6 +156,7 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
 									<label for="message" class="control-label h4 no_margin_top">Message</label>
 									<textarea rows="10" class="form-control" id="message" name="message"></textarea>
 								</div>
+									<input type="hidden" name="receipant" value="<?php echo $_SESSION["colleague"]["user_id"]; ?>"> 
 								<div class="form-group">
 									<div class="col-sm-12 no_pad_left pad_15_bottom">
 										<input type="file" class="btn btn-warning file">

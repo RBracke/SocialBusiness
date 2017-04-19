@@ -69,7 +69,6 @@ if(isset($_SESSION['logged_in']) && isset($_SESSION["admin"]) && ($_SESSION["adm
 
 	$query = "SET foreign_key_checks = 0";
 	mysqli_query($link, $query);
-	$goto_url = "settings_page.php?";
 	$query = "INSERT INTO `user` (`name`, `nin`, `address`, `gender`, `email`, `date_of_birth`, `martial_status`, `password`, `phone_number`, `function`, `rights_id`, `admin`, `start_date`) VALUES ('" .$name. "', '" .$nin. "', '" .$home_address. "', '" .$gender. "', '" .$email. "', '" .$dob. "', '" .$martial_status. "', '" .$password_md5. "', '" .$phone. "', '" .$function. "', '" .$rights_id. "', '" .$admin. "', '" .$date. "')";
 
 	if ($link->query($query) === TRUE) {
