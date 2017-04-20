@@ -152,28 +152,21 @@ if (isset($_SESSION["logged_in"]))
 					</div>
 					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
 						<div class="BOX">
-							<form class="form-vertical" name="message" method="post" action="post_message.php">
+							<form class="form-horizontal" name="people_search" method="post" action="#">
 								<div class="form-group">
-									<label for="receipant" class="control-label h4 no_margin_top">Receipant</label>
-									<input type="text" class="form-control" id="receipant" name="receipant">
-								</div>
-								<div class="form-group">
-									<label for="topic" class="control-label h4 no_margin_top">Topic</label>
-									<input type="text" class="form-control" id="topic" name="topic">
-								</div>
-								<div class="form-group">
-									<label for="message" class="control-label h4 no_margin_top">Message</label>
-									<textarea rows="10" class="form-control" id="message" name="message"></textarea>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-12 no_pad_left pad_15_bottom">
-										<input type="file" class="btn btn-warning file">
-									</div>
-									<div class="col-sm-12 no_pad_left">
-										<button type="submit" class="btn btn-warning">Send</button>
+									<label for="zoeken" class="col-md-3 control-label">Search:</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" id="zoeken" name="zoeken">
 									</div>
 								</div>
 							</form>
+							<div class="col-md-12"><hr class="hr"></div>
+							<div class="col-md-12">
+								<?php
+								print_messages_list();
+								?>
+							</div>
+							<p class="clear_both"></p>
 							<p class="clear_both"></p>
 						</div>
 					</div>
