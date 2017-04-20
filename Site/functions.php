@@ -355,17 +355,64 @@ function printmembers()
 	echo "<div class='table-responsive'><table class='table table-hover'><thead><tr><th>ID</th><th>Function</th><th>Name</th><th>Email</th><th>Phone Number</th><th>Address</th><th>Admin</th><th>Rights ID*</th><th>Edit</th><th>Delete</th></tr></thead><tbody>";
 	if($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
+
+			$query_rights = "SELECT info, check_in_out, messages FROM user LEFT JOIN rights ON user.rights_id = rights.rights_id WHERE user.user_id = " .$row["user_id"];
+			$result_rights = mysqli_query($link, $query_rights) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query_rights \"$query_rights\"");
+
 			if($row['admin'] == 1){
 				$admin = "Yes";
 			}
 			else {$admin = "No";}
-			echo "<tr><td>".$row['user_id']."</td><td>".$row['function']."</td><td>".$row['name']."</td><td>".$row['email']."</td><td>".$row['phone_number']."</td><td>".$row['address']."</td><td>".$admin."</td><td>".$row['rights_id']."</td><td></td><td></td></tr>";
+			echo "<tr><td>".$row['user_id']."</td><td>".$row['function']."</td><td>".$row['name']."</td><td>".$row['email']."</td><td>".$row['phone_number']."</td><td>".$row['address']."</td><td>".$admin."</td>";
+			if ($row_rights = mysqli_fetch_array($result_rights))
+			{
+				if ($row_rights["info"] != NULL)
+				{
+					if ($row_rights["info"] == 1)
+					{
+						$info = "Yes";
+					}
+					else
+					{
+						$info = "No";
+					}
+					if ($row_rights["check_in_out"] == 1)
+					{
+						$check_in_out = "Yes";
+					}
+					else
+					{
+						$check_in_out = "No";
+					}
+					if ($row_rights["messages"] == 1)
+					{
+						$messages = "Yes";
+					}
+					else
+					{
+						$messages = "No";
+					}
+					echo "<td id=\"label_rights\" data-toggle=\"tooltip\" data-placement=\"top\" data-html=\"true\" title=\"Check info: " .$info. "<br>Check in and out history: " .$check_in_out. "<br>Check messages: " .$messages. "\"><span class=\"glyphicon glyphicon-question-sign\" aria-hidden=\"true\"></span>&nbsp;".$row['rights_id']."</td>";
+				}
+				else
+				{
+					echo "<td></td>";
+				}
+				
+			}
+			else
+			{
+				echo "<td></td>";
+			}
+			
+			echo "<td></td><td></td></tr>";
 		}
 	}
 	echo "</tbody></table></div>";
 	mysqli_close($link);
 
 }
+
 
 function printrightsinfo()
 {

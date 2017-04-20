@@ -22,6 +22,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script type="text/javascript">
 			function search_users()
 			{
@@ -62,6 +63,11 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 					}
 				}
 			}
+
+			$(document).ready(function(){
+				$('[data-toggle="tooltip"]').tooltip();   
+			});
+
 		</script>
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -112,13 +118,13 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 						?>
 						<p class="clear_both"></p>
 					</div>
-					<div class="BOX">
+					<!--<div class="BOX">
 						<?php 
 						echo "<h4>*Info Rights ID</h4>";
 						printrightsinfo();
 						?>
 						<p class="clear_both"></p>
-					</div>
+					</div>-->
 				</div>
 			</div>
 
