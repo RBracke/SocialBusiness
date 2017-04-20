@@ -103,7 +103,37 @@ if (isset($_SESSION["logged_in"]))
 
 	}
 
+	if (isset($_GET["search_messages"]))
+	{
+		$link = connecteren();
+		$zoekterm = strip($_GET['search_messages']);
+		mysqli_close($link);
 
+		$users = search_users($zoekterm);
+
+		echo "<div class='table-responsive'><table class='table table-hover'><thead><tr><th>Date and time</th><th>Topic</th><th>Sender</th></tr></thead><tbody>";
+
+		foreach ($users as $user) 
+		{
+		$link = connecteren();
+		$query = "SELECT message.date_time, message.topic, message.message_id FROM message LEFT JOIN user ON message.receipant = user.user_id WHERE user.user_id  = " .$user. " ORDER BY message.message_id DESC";
+		$result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
+
+		$query_sender = "SELECT user.name, user.user_id FROM message LEFT JOIN user ON message.sender = user.user_id WHERE message.receipant = " .$user. " ORDER BY message.message_id DESC";
+		$result_sender = mysqli_query($link, $query_sender) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
+
+		echo "<div class='table-responsive'><table class='table table-hover'><thead><tr><th>Date and time</th><th>Topic</th><th>Sender</th></tr></thead><tbody>";
+
+		if(($result->num_rows > 0) && ($result_sender->num_rows > 0)) {
+			while(($row = $result->fetch_assoc()) && ($row_sender = $result_sender->fetch_assoc())) {
+			echo "<tr><td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$row_sender['user_id']."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row_sender['user_id']."\">".$row_sender['name']."</a></td></tr>";
+			}
+		}
+		mysqli_close($link);
+		echo "</tbody></table></div>";
+	}
+
+}
 
 
 }
