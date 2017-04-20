@@ -474,7 +474,7 @@ function print_messages_list()
 
 	if(($result->num_rows > 0) && ($result_sender->num_rows > 0)) {
 		while(($row = $result->fetch_assoc()) && ($row_sender = $result_sender->fetch_assoc())) {
-		echo "<tr><td>".$row['date_time']."</td><td><a href=\"actual_message.php?id=".$row['message_id']."\">".$row['topic']."</a></td><td><a href=\"colleague_page.php?id=".$row_sender['user_id']."\">".$row_sender['name']."</a></td></tr>";
+		echo "<tr><td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$row_sender['user_id']."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row_sender['user_id']."\">".$row_sender['name']."</a></td></tr>";
 		}
 	}
 	echo "</tbody></table></div>";

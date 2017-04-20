@@ -3,10 +3,11 @@ session_start();
 
 include("functions.php");
 
-if (isset($_SESSION["logged_in"]))
+if (isset($_SESSION["logged_in"]) && isset($_POST["id"]))
 {
 
 	fill_session($_SESSION["user_id"]);
+	get_colleague($_POST["id"]);
 
 	?>
 
@@ -24,7 +25,6 @@ if (isset($_SESSION["logged_in"]))
 		<link href="css/reset.css" rel="stylesheet" />
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet" />
-		<script src="js/check_in_out.js"></script>
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -68,12 +68,12 @@ if (isset($_SESSION["logged_in"]))
 				<div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-2">
 					<div class="BOX margin_15_bottom">
 						<div class="col-md-5 user_foto">
-							<img src="<?php if($_SESSION["profile_picture"] != NULL) {echo "IMG/users/" .$_SESSION["profile_picture"];} else {echo "IMG/users/default.png";} ?>" alt="Profile picture" class="user_foto">
+							<img src="<?php if($_SESSION["colleague"]["profile_picture"] != NULL) {echo "IMG/users/" .$_SESSION["profile_picture"];} else {echo "IMG/users/default.png";} ?>" alt="Profile picture" class="user_foto">
 						</div>
 						<div class="col-md-7 user_info">
 							<ul>
-								<li><?php echo $_SESSION["name"]; ?></li>
-								<li><?php echo $_SESSION["function"]; ?></li>
+								<li><?php echo $_SESSION["colleague"]["name"]; ?></li>
+								<li><?php echo $_SESSION["colleague"]["function"]; ?></li>
 								<li>
 									<div class="col-xs-9 col-sm-9 col-md-9 no_pad_left">Online</div>
 									<div class="col-xs-3 col-sm-3 col-md-3">
@@ -81,7 +81,7 @@ if (isset($_SESSION["logged_in"]))
 
 										<?php
 
-										if ($_SESSION["logged_in"] == 1)
+										if ($_SESSION["colleague"]["logged_in"] == 1)
 										{
 											echo "<img src=\"IMG/Green_circle.png\" title=\"Online\" alt=\"Online\" class=\"indicator_online_building\">";
 										}
@@ -97,7 +97,7 @@ if (isset($_SESSION["logged_in"]))
 										<div class="col-xs-3 col-sm-3 col-md-3">
 
 											<?php
-											if ($_SESSION["in_building"] == 1)
+											if ($_SESSION["colleague"]["in_building"] == 1)
 											{
 												echo "<img src=\"IMG/Green_square.png\" id=\"in_building\" title=\"In Building\" alt=\"In Building\" class=\"indicator_online_building\">";
 											}
@@ -109,51 +109,46 @@ if (isset($_SESSION["logged_in"]))
 
 										</div>
 									</li>
-									<li>
-										<div class="col-md-12 no_pad_left">
-
-											<?php
-											if ($_SESSION["in_building"] == 0)
-											{
-												echo "<button class=\"btn btn-success\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check in</button>";
-												echo "<h5 id=\"check_in_out_warning\"><small>Don't forget to check in when arriving.</small></h5>";
-											}
-											else
-											{
-												echo "<button class=\"btn btn-danger\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check out</button>";
-												echo "<h5 id=\"check_in_out_warning\"><small>Don't forget to check out when leaving.</small></h5>"; /*werkt pas vanaf refresh?*/
-											}
-											?>
-
-										</div>
-									</li>
 								</ul>
 							</div>
 							<p class="clear_both"></p>
 						</div>
-						<div class="BOX margin_15_bottom no_pad_bottom">
-							<div class="col-md-12">
-								<a href="info_page.php" class="h4">Info</a>
-							</div>
-							<p class="clear_both"></p>
-						</div>
-						<div class="BOX margin_15_bottom no_pad_bottom">
-							<div class="col-md-12">
-								<a href="#" class="h4">Check in and out history</a>
-							</div>
-							<p class="clear_both"></p>
-						</div>
-						<div class="BOX margin_15_bottom no_pad_bottom">
-							<div class="col-md-12">
-								<a href="#" class="h4">Message and file history</a>
-							</div>
-							<p class="clear_both"></p>
-						</div>
+						<?php
+						if ($_SESSION["rights"]["info"] == 1)
+						{
+								echo "<div class='BOX margin_15_bottom no_pad_bottom'>
+												<div class='col-md-12'>
+												<a href=\"info_page_colleague.php?id=" .$_SESSION['colleague']['user_id']. "\" class='h4'>Info</a>
+												</div>
+											<p class='clear_both'></p>
+											</div>";
+						}
+
+						if ($_SESSION["rights"]["check_in_out"] == 1)
+						{
+								echo "<div class='BOX margin_15_bottom no_pad_bottom'>
+												<div class='col-md-12'>
+												<a href='#' class='h4'>Check in and out history</a>
+												</div>
+											<p class='clear_both'></p>
+											</div>";
+						}
+
+						if ($_SESSION["rights"]["messages"] == 1)
+						{
+								echo "<div class='BOX margin_15_bottom no_pad_bottom'>
+												<div class='col-md-12'>
+												<a href='#' class='h4'>Message and file history</a>
+												</div>
+											<p class='clear_both'></p>
+											</div>";
+						}
+						?>
 					</div>
 					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
 						<div class="BOX">
 								<?php
-								$message_id = $_GET['id'];
+								$message_id = $_POST['message_id'];
 								$link = connecteren();
 								$query = "SELECT * FROM message WHERE message_id  = " .$message_id. "";
 								$result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");

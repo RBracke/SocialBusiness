@@ -129,3 +129,13 @@ img.indicator_online_building {
 .rood{
 	color: red;
 }
+
+#submitlink {
+  border: none;
+  background: none;
+  color: #336699;
+  cursor: pointer;
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
