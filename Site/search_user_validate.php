@@ -71,6 +71,42 @@ if (isset($_SESSION["logged_in"]))
 
 	}
 
+	if (isset($_GET["search_admin_page_manage"]))
+	{
+		$link = connecteren();
+		$zoekterm = strip($_GET['search_admin_page_manage']);
+		mysqli_close($link);
+
+		$users = search_users($zoekterm);
+
+		echo "<div class='table-responsive'><table class='table table-hover'><thead><tr><th>ID</th><th>Function</th><th>Name</th><th>Email</th><th>Phone Number</th><th>Address</th><th>Admin</th><th>Rights ID*</th><th>Edit</th><th>Delete</th></tr></thead><tbody>";
+
+		foreach ($users as $user) 
+		{
+			$link = connecteren();
+			$query = "SELECT user_id, name, function, address, email, phone_number, admin, rights_id FROM user WHERE user_id = " .$user. " ORDER BY user_id ASC";
+			$result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
+			
+			if($result->num_rows > 0) {
+				while($row = $result->fetch_assoc()) {
+					if($row['admin'] == 1){
+						$admin = "Yes";
+					}
+					else {$admin = "No";}
+					echo "<tr><td>".$row['user_id']."</td><td>".$row['function']."</td><td>".$row['name']."</td><td>".$row['email']."</td><td>".$row['phone_number']."</td><td>".$row['address']."</td><td>".$admin."</td><td>".$row['rights_id']."</td><td></td><td></td></tr>";
+				}
+			}
+			
+			mysqli_close($link);
+		}
+		echo "</tbody></table></div>";
+
+	}
+
+
+
+
 }
+
 
 ?>

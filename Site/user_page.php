@@ -24,6 +24,7 @@ if (isset($_SESSION["logged_in"]))
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet" />
 		<script src="js/check_in_out.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script type="text/javascript">
 			function search_users()
 			{
@@ -31,11 +32,19 @@ if (isset($_SESSION["logged_in"]))
 				var zoekterm = document.getElementById("zoeken").value;
 				if (xhr != null)
 				{
-					var url="search_user_validate.php?search_user_page="+zoekterm;  
+					var output = document.getElementById("members");
+					var loading = "<i>Loading...&nbsp;&nbsp;&nbsp;</i><i class=\"fa fa-circle-o-notch fa-spin\" style=\"font-size:24px\"></i>";
+					output.innerHTML = loading;
+					setTimeout(function()
+					{
+						var url="search_user_validate.php?search_user_page="+zoekterm;  
 
-					xhr.onreadystatechange=refresh_inhoud;
-					xhr.open("GET",url,true);
-					xhr.send(null);
+						xhr.onreadystatechange=refresh_inhoud;
+						xhr.open("GET",url,true);
+						xhr.send(null);
+					}, 500);
+
+					
 				}
 			}
 

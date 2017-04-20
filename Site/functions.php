@@ -363,6 +363,8 @@ function printmembers()
 		}
 	}
 	echo "</tbody></table></div>";
+	mysqli_close($link);
+
 }
 
 function printrightsinfo()
@@ -398,7 +400,7 @@ function search_users($zoekterm)
 	$users = array();
 	$i = 0;
 
-	$query_search_user = "SELECT user_id FROM user WHERE name LIKE '%" .$zoekterm. "%'";
+	$query_search_user = "SELECT user_id FROM user WHERE name LIKE '%" .$zoekterm. "%' ORDER BY user.name ASC";
 
 	$result_search_user = mysqli_query($link, $query_search_user) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_search_user\"");
 
