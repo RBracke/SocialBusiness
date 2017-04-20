@@ -215,8 +215,10 @@ function show_member()
 	$link = connecteren();
 	$query_list = "SELECT user.user_id, user.name, user.function, user.online, in_building.in_building_now, in_building.in_building_id FROM user LEFT JOIN in_building on user.user_id = in_building.user_id ORDER BY user.name ASC, in_building.in_building_id DESC";
 	$result_list = mysqli_query($link, $query_list) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_list\"");
-	if($result_list->num_rows > 0) {
-		while($row = $result_list->fetch_assoc()) {
+	if($result_list->num_rows > 0) 
+	{
+		while($row = $result_list->fetch_assoc()) 
+		{
 			if(($row['user_id'] != $_SESSION['user_id']) && ($row['user_id'] != $x))
 			{
 				echo "<div class='form-group'>
@@ -224,44 +226,44 @@ function show_member()
 				<div class='col-md-3'>" .$row['function']. "</div>
 				<div class='col-md-2'>";
 
-				if ($row["online"] == 1)
-				{
-					echo "<img src=\"IMG/Green_circle.png\" title=\"Online\" alt=\"Online\" class=\"indicator_online_building\">";
-				}
-				else
-				{
-					echo "<img src=\"IMG/Red_circle.png\" title=\"Offline\" alt=\"Offline\" class=\"indicator_online_building\">";
-				}
+					if ($row["online"] == 1)
+					{
+						echo "<img src=\"IMG/Green_circle.png\" title=\"Online\" alt=\"Online\" class=\"indicator_online_building\">";
+					}
+					else
+					{
+						echo "<img src=\"IMG/Red_circle.png\" title=\"Offline\" alt=\"Offline\" class=\"indicator_online_building\">";
+					}
 
-				echo "</div>
-				<div class='col-md-2'>";
+					echo "</div><div class='col-md-2'>";
 
-				if ($row["in_building_now"] == 1)
-				{
-					echo "<img src=\"IMG/Green_square.png\" id=\"in_building\" title=\"In Building\" alt=\"In Building\" class=\"indicator_online_building\">";
-				}
-				else
-				{
-					echo "<img src=\"IMG/Red_square.png\" id=\"in_building\" title=\"Not in Building\" alt=\"Not in building\" class=\"indicator_online_building\">";
-				}
+					if ($row["in_building_now"] == 1)
+					{
+						echo "<img src=\"IMG/Green_square.png\" id=\"in_building\" title=\"In Building\" alt=\"In Building\" class=\"indicator_online_building\">";
+					}
+					else
+					{
+						echo "<img src=\"IMG/Red_square.png\" id=\"in_building\" title=\"Not in Building\" alt=\"Not in building\" class=\"indicator_online_building\">";
+					}
 
-				echo "</div>
-			</div>
-			<p class='clear_both'></p>";
-			$x = $row['user_id'];
-		}
-	}   
-} 
-else 
-{
-	echo 'not found';
-}
-mysqli_close($link);
+					echo "</div>
+				</div>
+				<p class='clear_both'></p>";
+				$x = $row['user_id'];
+			}
+		}   
+	} 
+	else 
+	{
+		echo 'not found';
+	}
+	mysqli_close($link);
 }
 
 function get_colleague($id)
 {
 	$link = connecteren();
+	$id = strip($id);
 
 	$query_user = "SELECT name, nin, address, gender, email, profile_picture, date_of_birth, online, martial_status, phone_number, function, rights_id, admin, start_date FROM user WHERE user_id = '" .$id. "'";
 
@@ -341,8 +343,8 @@ function get_colleague($id)
 
 function valideerDatum($date)
 {
-    $d = DateTime::createFromFormat('Y-m-d', $date);
-    return $d && $d->format('Y-m-d') === $date;
+	$d = DateTime::createFromFormat('Y-m-d', $date);
+	return $d && $d->format('Y-m-d') === $date;
 }
 
 function printmembers()
@@ -353,15 +355,64 @@ function printmembers()
 	echo "<div class='table-responsive'><table class='table table-hover'><thead><tr><th>ID</th><th>Function</th><th>Name</th><th>Email</th><th>Phone Number</th><th>Address</th><th>Admin</th><th>Rights ID*</th><th>Edit</th><th>Delete</th></tr></thead><tbody>";
 	if($result->num_rows > 0) {
 		while($row = $result->fetch_assoc()) {
+
+			$query_rights = "SELECT info, check_in_out, messages FROM user LEFT JOIN rights ON user.rights_id = rights.rights_id WHERE user.user_id = " .$row["user_id"];
+			$result_rights = mysqli_query($link, $query_rights) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query_rights \"$query_rights\"");
+
 			if($row['admin'] == 1){
 				$admin = "Yes";
 			}
 			else {$admin = "No";}
-			echo "<tr><td>".$row['user_id']."</td><td>".$row['function']."</td><td>".$row['name']."</td><td>".$row['email']."</td><td>".$row['phone_number']."</td><td>".$row['address']."</td><td>".$admin."</td><td>".$row['rights_id']."</td><td></td><td></td></tr>";
+			echo "<tr><td>".$row['user_id']."</td><td>".$row['function']."</td><td>".$row['name']."</td><td>".$row['email']."</td><td>".$row['phone_number']."</td><td>".$row['address']."</td><td>".$admin."</td>";
+			if ($row_rights = mysqli_fetch_array($result_rights))
+			{
+				if ($row_rights["info"] != NULL)
+				{
+					if ($row_rights["info"] == 1)
+					{
+						$info = "Yes";
+					}
+					else
+					{
+						$info = "No";
+					}
+					if ($row_rights["check_in_out"] == 1)
+					{
+						$check_in_out = "Yes";
+					}
+					else
+					{
+						$check_in_out = "No";
+					}
+					if ($row_rights["messages"] == 1)
+					{
+						$messages = "Yes";
+					}
+					else
+					{
+						$messages = "No";
+					}
+					echo "<td><span id=\"label_rights\" data-toggle=\"tooltip\" data-placement=\"top\" data-html=\"true\" title=\"Check info: " .$info. "<br>Check in and out history: " .$check_in_out. "<br>Check messages: " .$messages. "\" class=\"glyphicon glyphicon-question-sign\" aria-hidden=\"true\"></span>&nbsp;".$row['rights_id']."</td>";
+				}
+				else
+				{
+					echo "<td></td>";
+				}
+				
+			}
+			else
+			{
+				echo "<td></td>";
+			}
+			
+			echo "<td></td><td></td></tr>";
 		}
 	}
 	echo "</tbody></table></div>";
+	mysqli_close($link);
+
 }
+
 
 function printrightsinfo()
 {
@@ -388,6 +439,26 @@ function printrightsinfo()
 		}
 	}
 	echo "</tbody></table></div>";
+}
+
+function search_users($zoekterm)
+{
+	$link = connecteren();
+	$users = array();
+	$i = 0;
+
+	$query_search_user = "SELECT user_id FROM user WHERE name LIKE '%" .$zoekterm. "%' ORDER BY user.name ASC";
+
+	$result_search_user = mysqli_query($link, $query_search_user) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_search_user\"");
+
+	while($rij = mysqli_fetch_array($result_search_user))
+	{
+		$users[$i] = $rij["user_id"];
+		$i++;
+	}
+
+	return $users;
+
 }
 
 ?>
