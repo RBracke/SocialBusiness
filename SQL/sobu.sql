@@ -77,11 +77,25 @@ INSERT INTO `user` (`user_id`, `name`, `nin`, `address`, `gender`, `email`, `dat
 (6, 'jan',4568254005, 'bredabaan 3', 1, 'jan@hotmail.com', '1999-11-15', 'single', '21232f297a57a5a743894a0e4a801fc3', 584441258, 'IT-guy', 6, 0, '2015-01-11');
 
 INSERT INTO `in_building` (`in_building_id`, `user_id`, `in_building_now`, `time_check`) VALUES
-(33, 1, 1, '2017-04-11 15:51:28'),
-(34, 1, 0, '2017-04-11 15:51:30'),
-(35, 1, 1, '2017-04-11 15:51:39'),
-(36, 1, 0, '2017-04-11 15:51:40'),
-(37, 1, 1, '2017-04-11 15:51:41'),
-(38, 1, 0, '2017-04-11 16:08:21'),
-(39, 1, 1, '2017-04-11 16:08:22'),
-(40, 1, 0, '2017-04-11 16:09:05');
+(1, 1, 1, '2017-04-11 15:51:28'),
+(2, 1, 0, '2017-04-11 15:51:30'),
+(3, 1, 1, '2017-04-11 15:51:39'),
+(4, 1, 0, '2017-04-11 15:51:40'),
+(5, 1, 1, '2017-04-11 15:51:41'),
+(6, 1, 0, '2017-04-11 16:08:21'),
+(7, 1, 1, '2017-04-11 16:08:22'),
+(8, 1, 0, '2017-04-11 16:09:05');
+
+INSERT INTO `message` (`message_id`, `topic`, `content`, `file`, `date_time`, `receipant`, `sender`) VALUES
+(1, 'test 1', 'dit is de inhoud van test 1', NULL, '2017-04-20 00:04:20', 1, 2),
+(2, 'test 2', 'dit is de inhoud van test 2', NULL, '2017-04-20 00:04:21', 1, 2),
+(3, 'test 3', 'dit is de inhoud van test 3', NULL, '2017-04-20 00:04:22', 2, 1),
+(4, 'test 4', 'dit is de inhoud van test 4', NULL, '2017-04-20 00:04:23', 2, 1),
+(5, 'test 5', 'dit is de inhoud van test 5', NULL, '2017-04-20 00:04:24', 1, 2),
+(6, 'test 6', 'dit is de inhoud van test 6', NULL, '2017-04-20 00:04:25', 1, 2),
+(7, 'test 7', 'dit is de inhoud van test 7', NULL, '2017-04-20 00:04:26', 2, 1),
+(8, 'test 8', 'dit is de inhoud van test 8', NULL, '2017-04-20 00:04:27', 2, 1),
+(9, 'test 9', 'dit is de inhoud van test 9', NULL, '2017-04-20 00:04:28', 1, 3),
+(10, 'test 10', 'dit is de inhoud van test 10', NULL, '2017-04-20 00:04:29', 1, 4),
+(11, 'test 11', 'dit is de inhoud van test 11', NULL, '2017-04-20 00:04:30', 2, 5),
+(12, 'test 12', 'dit is de inhoud van test 12', NULL, '2017-04-20 00:04:31', 2, 6);

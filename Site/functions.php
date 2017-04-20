@@ -464,17 +464,17 @@ function search_users($zoekterm)
 function print_messages_list()
 {
 	$link = connecteren();
-	$query = "SELECT message.date_time, message.topic, user.name FROM message LEFT JOIN user ON message.receipant = user.user_id WHERE user.user_id  = " .$_SESSION["user_id"]. " ORDER BY message.message_id DESC";
+	$query = "SELECT message.date_time, message.topic, message.message_id FROM message LEFT JOIN user ON message.receipant = user.user_id WHERE user.user_id  = " .$_SESSION["user_id"]. " ORDER BY message.message_id DESC";
 	$result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
 
-	$query_sender = "SELECT user.name FROM message LEFT JOIN user ON message.sender = user.user_id WHERE message.receipant = " .$_SESSION["user_id"]. " ORDER BY message.message_id DESC";
+	$query_sender = "SELECT user.name, user.user_id FROM message LEFT JOIN user ON message.sender = user.user_id WHERE message.receipant = " .$_SESSION["user_id"]. " ORDER BY message.message_id DESC";
 	$result_sender = mysqli_query($link, $query_sender) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
 
 	echo "<div class='table-responsive'><table class='table table-hover'><thead><tr><th>Date and time</th><th>Topic</th><th>Sender</th></tr></thead><tbody>";
 
 	if(($result->num_rows > 0) && ($result_sender->num_rows > 0)) {
 		while(($row = $result->fetch_assoc()) && ($row_sender = $result_sender->fetch_assoc())) {
-		echo "<tr><td>".$row['date_time']."</td><td>".$row['topic']."</td><td>".$row_sender['name']."</td></tr>";
+		echo "<tr><td>".$row['date_time']."</td><td><a href=\"actual_message.php?id=".$row['message_id']."\">".$row['topic']."</a></td><td><a href=\"colleague_page.php?id=".$row_sender['user_id']."\">".$row_sender['name']."</a></td></tr>";
 		}
 	}
 	echo "</tbody></table></div>";
