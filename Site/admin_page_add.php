@@ -149,8 +149,9 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 											</div>
 										</div>
 									</div>
-									<div class="col-sm-12 pad_15_bottom"><span class="rood">* Required</span></div>
+									
 									<div class="col-md-9">
+										<span class="rood">* Required&nbsp;&nbsp;&nbsp;</span>
 										<button type="submit" class="btn btn-warning">Add</button>
 									</div>
 								</form>
