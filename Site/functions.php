@@ -463,21 +463,54 @@ function search_users($zoekterm)
 
 function print_messages_list()
 {
+	
 	$link = connecteren();
-	$query = "SELECT message.date_time, message.topic, message.message_id FROM message LEFT JOIN user ON message.receipant = user.user_id WHERE user.user_id  = " .$_SESSION["user_id"]. " ORDER BY message.message_id DESC";
-	$result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
 
-	$query_sender = "SELECT user.name, user.user_id FROM message LEFT JOIN user ON message.sender = user.user_id WHERE message.receipant = " .$_SESSION["user_id"]. " ORDER BY message.message_id DESC";
-	$result_sender = mysqli_query($link, $query_sender) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
+	$query_sended = "SELECT message.date_time, message.topic, message.message_id, message.receipant, message.sender FROM message LEFT JOIN user ON message.sender = user.user_id WHERE user.user_id  = " .$_SESSION["user_id"]. " ORDER BY message.message_id DESC";
+	$result_sended = mysqli_query($link, $query_sended) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_sended\"");
 
-	echo "<div class='table-responsive'><table class='table table-hover'><thead><tr><th>Date and time</th><th>Topic</th><th>Sender</th></tr></thead><tbody>";
 
-	if(($result->num_rows > 0) && ($result_sender->num_rows > 0)) {
-		while(($row = $result->fetch_assoc()) && ($row_sender = $result_sender->fetch_assoc())) {
-		echo "<tr><td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$row_sender['user_id']."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row_sender['user_id']."\">".$row_sender['name']."</a></td></tr>";
+	if($result_sended->num_rows > 0) 
+	{
+		echo "<h4 class=\"text-primary\">Send:</h4><div class='table-responsive'><table class='table table-hover'><thead><tr><th>Date and time</th><th>Topic</th><th>Receipant</th></tr></thead><tbody>";
+		while($row = $result_sended->fetch_assoc()) 
+		{
+			$query_rec_name = "SELECT name FROM user WHERE user_id  = " .$row["receipant"];
+			$result_rec_name = mysqli_query($link, $query_rec_name) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_rec_name\"");
+
+			while($row_rec_name = $result_rec_name->fetch_assoc()) 
+			{
+
+				echo "<tr><td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$_SESSION["user_id"]."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row['receipant']."\">".$row_rec_name['name']."</a></td></tr>";
+			}
 		}
+		echo "</tbody></table></div>";
 	}
-	echo "</tbody></table></div>";
+	
+	$query_sended = "SELECT message.date_time, message.topic, message.message_id, message.receipant, message.sender FROM message LEFT JOIN user ON message.receipant = user.user_id WHERE user.user_id  = " .$_SESSION["user_id"]. " ORDER BY message.message_id DESC";
+	$result_sended = mysqli_query($link, $query_sended) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_sended\"");
+
+
+	if($result_sended->num_rows > 0) 
+	{
+		echo "<h4 class=\"text-primary\">Received:</h4><div class='table-responsive'><table class='table table-hover'><thead><tr><th>Date and time</th><th>Topic</th><th>Sender</th></tr></thead><tbody>";
+		while($row = $result_sended->fetch_assoc()) 
+		{
+			$query_sender_name = "SELECT name FROM user WHERE user_id  = " .$row["sender"];
+			$result_sender_name = mysqli_query($link, $query_sender_name) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_sender_name\"");
+
+			while($row_sender_name = $result_sender_name->fetch_assoc()) 
+			{
+
+				echo "<tr><td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$_SESSION["user_id"]."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row['sender']."\">".$row_sender_name['name']."</a></td></tr>";
+			}
+		}
+		echo "</tbody></table></div>";
+	}
+	
+
+
+	mysqli_close($link);
 }
 
 ?>
