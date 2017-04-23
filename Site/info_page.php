@@ -179,7 +179,7 @@ if (isset($_SESSION["logged_in"]))
  			<div class="col-md-3">Personal email</div><div class="col-md-9"><?php echo $_SESSION["email"]; ?></div>
  		</div><p class="clear_both"></p>
  		<div class="form-group">
- 			<div class="col-md-3">Phone number</div><div class="col-md-9"><?php echo ("+32" .$_SESSION["phone_number"]. ""); ?></div>
+ 			<div class="col-md-3">Phone number</div><div class="col-md-9"><?php echo $_SESSION["phone_number"]; ?></div>
  		</div><p class="clear_both"></p>
  		<div class="form-group">
  			<div class="col-md-3">Start date</div><div class="col-md-9"><?php echo $_SESSION["start_date"]; ?></div>
