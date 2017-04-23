@@ -141,14 +141,6 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 											<input type="password" class="form-control" id="repassword" name="repassword">
 										</div>
 									</div>
-									<div class="form-group">
-										<div class="col-sm-12 no_pad_left pad_15_bottom">
-											<label for="picture" class="col-md-3 control-label">Profile picture</label>
-											<div class="col-md-9">
-												<input type="file" id="picture" class="btn btn-warning file">
-											</div>
-										</div>
-									</div>
 									
 									<div class="col-md-9">
 										<span class="rood">* Required&nbsp;&nbsp;&nbsp;</span>

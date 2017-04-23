@@ -6,7 +6,6 @@ include("functions.php");
 
 if(isset($_SESSION['logged_in']) && isset($_POST["nin"]) && isset($_POST["dob"]) && isset($_POST["gender"]) && isset($_POST["address"]) && isset($_POST["martial"]) && isset($_POST["email"]) && isset($_POST["phone_number"]))
 {
-	echo "here";
 	$link = connecteren();
 
 	if (isset($_POST["password"]))

@@ -405,7 +405,7 @@ function printmembers()
 				echo "<td></td>";
 			}
 			
-			echo "<td></td><td></td></tr>";
+			echo "<td><a href=\"admin_page_edit_user.php?id=" .$row["user_id"]. "\"><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></a></td><td class=\"has-error\"><a href=\"admin_page_delete_user.php?id=" .$row["user_id"]. "\"><span class=\"glyphicon glyphicon-remove\" style=\"color:red\" aria-hidden=\"true\"></span></a></td></tr>";
 		}
 	}
 	echo "</tbody></table></div>";

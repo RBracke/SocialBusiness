@@ -118,13 +118,6 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 						?>
 						<p class="clear_both"></p>
 					</div>
-					<!--<div class="BOX">
-						<?php 
-						echo "<h4>*Info Rights ID</h4>";
-						printrightsinfo();
-						?>
-						<p class="clear_both"></p>
-					</div>-->
 				</div>
 			</div>
 
