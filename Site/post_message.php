@@ -16,7 +16,7 @@ if (isset($_SESSION["logged_in"]))
 	$query = "INSERT INTO `message` (`topic`, `content`, `date_time`, `receipant`, `sender`) VALUES ('" .$topic. "', '" .$message. "', '" .$date. "', '" .$receipant. "', '" .$id. "')";
 
 	if ($link->query($query) === TRUE) {
-    echo "Message sended";
+    header("Location: colleague_page.php?id=".$receipant."&msended='1'");
 	} else {
     echo "Error: " . $query. "<br>" . $link->error;
 	}
