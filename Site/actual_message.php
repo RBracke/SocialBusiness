@@ -174,8 +174,8 @@ if (isset($_SESSION["logged_in"]) && isset($_POST["id"]) && isset($_POST["messag
 							$result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
 							if (mysqli_num_rows($result) == 1){
 								$result = mysqli_fetch_array($result);
-								echo "<h3>" .$result['topic']. "</h3><div class='col-md-12'><hr class='hr'></div><div class='col-md-12'>";
-								echo "".$result['content']." <a href=\"colleague_page.php?id=".$result['sender']."\">Reply</a></div>";
+								echo "<div class='form-group'><label for='comment'><h3>" .$result['topic']. "</h3></label><hr class='hr'><textarea class='form-control' rows= '15' readonly>";
+								echo "".$result['content']."</textarea><br><a href=\"colleague_page.php?id=".$result['sender']."\"> Reply</a></div>";
 							}
 							?>
 							<p class="clear_both"></p>
