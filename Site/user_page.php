@@ -61,7 +61,7 @@ if (isset($_SESSION["logged_in"]))
 					}
 					else
 					{
-						output.innerHTML = "<h2>Geen resultaten.</h2>";
+						output.innerHTML = "<div class='alert alert-warning'><strong>No one found.</strong></div>";
 					}
 				}
 			}
