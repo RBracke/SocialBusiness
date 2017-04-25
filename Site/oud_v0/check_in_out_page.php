@@ -27,7 +27,13 @@ if (isset($_SESSION["logged_in"]))
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 			<!-- Include all compiled plugins (below), or include individual files as needed -->
 			<script src="js/bootstrap.min.js"></script>
-				<!-- zingshart -->
+			<script type="text/javascript">
+				$(document).ready(function(){
+					$('[data-toggle="tooltip"]').tooltip();   
+				});
+			</script>
+
+		<!-- zingshart -->
 		<script src= "js/zingchart.min.js"></script>
 		<script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
 		ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>
@@ -149,21 +155,25 @@ if (isset($_SESSION["logged_in"]))
 		 </div>
 		 <p class="clear_both"></p>
 	 </div>
+	 <div class="BOX margin_15_bottom no_pad_bottom">
+		 <div class="col-md-12">
+			 <a href="#" class="h4">Message and file history</a>
+		 </div>
+		 <p class="clear_both"></p>
+	 </div>
  </div>
  <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4">
  	<div class="BOX">
- 	<div id='myChart'></div>	
+ 	<div id='myChart'></div>
  	<?php
 	 	$link = connecteren();
-	 	$query = "SELECT time_check FROM in_building WHERE user_id = '" .$_SESSION["user_id"]. "' ORDER BY in_building_id ASC";
+		$query = "SELECT in_building_now FROM in_building WHERE user_id = '" .$_SESSION["user_id"]. "' ORDER BY in_building_id ASC";
 		$data = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
 	?>
 	<script>
 		var myData=[<?php 
 		while($info=mysqli_fetch_array($data)){
-			$datumtijd = date_create($info['time_check']);
-			$time = $datumtijd->format('H:i:s');
-			echo (date_format($datumtijd, 'U')*1000).','; /* We use the concatenation operator '.' to add comma delimiters after each data value. */
+			echo $info['in_building_now'].','; /* We use the concatenation operator '.' to add comma delimiters after each data value. */
 		}
 		?>];
 		<?php
@@ -172,9 +182,7 @@ if (isset($_SESSION["logged_in"]))
 		?>
 		var myLabels=[<?php 
 		while($info=mysqli_fetch_array($data)){
-			$datumtijd = date_create($info['time_check']);
-			$date = $datumtijd->format('Y-m-d');
-	    	echo '"'.(date_format($datumtijd, 'U')*1000).'",'; /* The concatenation operator '.' is used here to create string values from our database names. */
+	    	echo '"'.$info['time_check'].'",'; /* The concatenation operator '.' is used here to create string values from our database names. */
 		}
 		?>];
 	</script>
@@ -184,21 +192,17 @@ if (isset($_SESSION["logged_in"]))
 	<script>
 	  	var chartData={
 		    "type":"line",
-			"scale-x":{
-		        "labels":myLabels,
-		        "transform":{
+		    "scale-x":{
+	    		"min-value":1491927120395, /*uses miliseconds since 1 jan 1972*/
+    			"step":86400000,
+	    		"transform":{
 	       			"type":"date",
 	       			"all":"%m.%d.%Y"
 	    		}
-		    },
-		    "series":[
-		        {
-		            "values":myData,
-		           	"transform":{
-	       				"type":"date",
-	       				"all":"%G:%i:%s"
-	    		}
-		        }
+			},
+		    "series":[ 
+		        { "values": [7,8,9,8] },
+		        { "values": [14,15,14,16]}
 		    ]
 	  	};
 	  	zingchart.render({
