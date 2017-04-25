@@ -151,12 +151,6 @@ if (isset($_SESSION["logged_in"]))
 		 </div>
 		 <p class="clear_both"></p>
 	 </div>
-	 <div class="BOX margin_15_bottom no_pad_bottom">
-		 <div class="col-md-12">
-			 <a href="#" class="h4">Message and file history</a>
-		 </div>
-		 <p class="clear_both"></p>
-	 </div>
  </div>
  <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4">
  	<div class="BOX">

@@ -413,34 +413,6 @@ function printmembers()
 
 }
 
-
-function printrightsinfo()
-{
-	$link = connecteren();
-	$query = "SELECT * FROM rights ORDER BY rights_id ASC";
-	$result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
-	echo "<div class='table-responsive'><table class='table table-hover'><thead><tr><th>Rights ID</th><th>Check info</th><th>Check in and out times</th><th>Check messages</th></tr></thead><tbody>";
-	if($result->num_rows > 0) {
-		while($row = $result->fetch_assoc()) {
-			if($row['info'] == 1){
-				$info = "Yes";
-			}
-			else {$info = "No";}
-			if($row['check_in_out'] == 1){
-				$check = "Yes";
-			}
-			else {$check = "No";}
-			if($row['messages'] == 1){
-				$message = "Yes";
-			}
-			else {$message = "No";}
-
-			echo "<tr><td>".$row['rights_id']."</td><td>".$info."</td><td>".$check."</td><td>".$message."</td></tr>";
-		}
-	}
-	echo "</tbody></table></div>";
-}
-
 function search_users($zoekterm)
 {
 	$link = connecteren();
