@@ -1,0 +1,76 @@
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<title>Sobu</title>
+		<link rel="shortcut icon" href="IMG/icon.png"/>
+
+		<!-- Bootstrap -->
+		<link href="css/reset.css" rel="stylesheet" />
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+			<![endif]-->
+		</head>
+		<body>
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<a class="navbar-brand" href="index.php"><span class="so">So</span><span class="bu">bu</span></a>
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right links_bovenaan">
+							<li><a href="contact_page.php">Contact</a></li>
+						</ul>
+					</div>
+				</div><!-- /.container-fluid -->
+			</nav>
+
+			<div class="container-fluid">
+				<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+					<div class="contact mid BOX">
+						<form class="form-vertical" name="message" method="post" action="mailto:admin@subo.com">
+								<div class="form-group">
+									<label for="topic" class="control-label h4 no_margin_top">Topic</label>
+									<input type="text" class="form-control" id="topic" name="topic">
+								</div>
+								<div class="form-group">
+									<label for="message" class="control-label h4 no_margin_top">Message</label>
+									<textarea rows="10" class="form-control" id="message" name="message"></textarea>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-12 no_pad_left">
+										<button type="submit" class="btn btn-warning">Send</button>
+									</div>
+								</div>
+							</form>
+							<p class="clear_both"></p>
+					</div>
+				</div>
+			</div>
+
+
+
+			<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+			<!-- Include all compiled plugins (below), or include individual files as needed -->
+			<script src="js/bootstrap.min.js"></script>
+		</body>
+		</html>

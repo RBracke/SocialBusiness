@@ -92,7 +92,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == 0 || !isset($_SES
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right links_bovenaan">
-							<li><a href="#">Contact</a></li>
+							<li><a href="contact_page.html">Contact</a></li>
 						</ul>
 					</div>
 				</div><!-- /.container-fluid -->
@@ -133,7 +133,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == 0 || !isset($_SES
 						else if ($email_ok == "nok")
 						{
 							?>
-							<div class="text-danger">This email isn't linked to an account. Please <a href="contact.html">contact</a> the administrator.</div>
+							<div class="text-danger">This email isn't linked to an account. Please <a href="contact_page.html">contact</a> the administrator.</div>
 							<form class="form-horizontal" name="login_email" method="post" action="#">
 								<div class="form-group">
 									<label for="email" class="col-sm-2 control-label">Email:</label>
@@ -153,7 +153,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == 0 || !isset($_SES
 						else if ($email_ok == "error")
 						{
 							?>
-							<div class="text-danger">An error occured, please<a href="contact.html">contact</a> the administrator with error code 1.</div>
+							<div class="text-danger">An error occured, please<a href="contact_page.html">contact</a> the administrator with error code 1.</div>
 							<form class="form-horizontal" name="login_email" method="post" action="#">
 								<div class="form-group">
 									<label for="email" class="col-sm-2 control-label">Email:</label>
@@ -173,7 +173,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == 0 || !isset($_SES
 						else if ($email_ok == "login_no_match")
 						{
 							?>
-							<div class="text-danger">Wrong password. Forgot your password? Please <a href="contact.html">contact</a> the administrator.</div>
+							<div class="text-danger">Wrong password. Forgot your password? Please <a href="contact_page.html">contact</a> the administrator.</div>
 							<form class="form-horizontal" name="login_email" method="post" action="#">
 								<div class="form-group">
 									<label for="email" class="col-sm-2 control-label">Email:</label>
