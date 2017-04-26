@@ -126,7 +126,7 @@ if (isset($_SESSION["logged_in"]))
 								$messages = "No";
 							}
 
-					echo "<td><span id=\"label_rights\" data-toggle=\"tooltip\" data-placement=\"top\" data-html=\"true\" title=\"Check info: " .$info. "<br>Check in and out history: " .$check_in_out. "<br>Check messages: " .$messages. "\" class=\"glyphicon glyphicon-question-sign\" aria-hidden=\"true\"></span>&nbsp;".$row['rights_id']."</td>";
+							echo "<td><span id=\"label_rights\" data-toggle=\"tooltip\" data-placement=\"top\" data-html=\"true\" title=\"Check info: " .$info. "<br>Check in and out history: " .$check_in_out. "<br>Check messages: " .$messages. "\" class=\"glyphicon glyphicon-question-sign\" aria-hidden=\"true\"></span>&nbsp;".$row['rights_id']."</td>";
 						}
 						else
 						{
@@ -138,8 +138,8 @@ if (isset($_SESSION["logged_in"]))
 					{
 						echo "<td></td>";
 					}
-			
-				echo "<td><a href=\"admin_page_edit_user.php?id=" .$row["user_id"]. "\"><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></a></td><td class=\"has-error\"><a href=\"admin_page_delete_user.php?id=" .$row["user_id"]. "\"><span class=\"glyphicon glyphicon-remove\" style=\"color:red\" aria-hidden=\"true\"></span></a></td></tr>";
+					
+					echo "<td><a href=\"admin_page_edit_user.php?id=" .$row["user_id"]. "\"><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></a></td><td class=\"has-error\"><a href=\"admin_page_delete_user.php?id=" .$row["user_id"]. "\"><span class=\"glyphicon glyphicon-remove\" style=\"color:red\" aria-hidden=\"true\"></span></a></td></tr>";
 				}
 			}
 			mysqli_close($link);
