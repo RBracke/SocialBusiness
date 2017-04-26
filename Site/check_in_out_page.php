@@ -153,6 +153,7 @@ if (isset($_SESSION["logged_in"]))
  </div>
  <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4">
  	<div class="BOX">
+ 	<h4>Check in and out history</h4>
  	<div id='myChart'></div>	
  	<?php
 	 	$link = connecteren();

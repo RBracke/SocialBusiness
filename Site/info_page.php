@@ -155,6 +155,8 @@ if (isset($_SESSION["logged_in"]))
  </div>
  <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4">
  	<div class="BOX">
+ 	<h4>Info</h4>
+	<div class="col-md-12"><hr class="hr"><br></div>
  		<div class="form-group margin_15_top">
  			<div class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Nin</div><div class="col-md-9"><?php echo $_SESSION["nin"]; ?></div>
  		</div><p class="clear_both"></p>

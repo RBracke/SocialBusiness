@@ -188,6 +188,8 @@ if (isset($_SESSION["logged_in"]))
 					</div>
 					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
 						<div class="BOX">
+						<h4>Messages</h4>
+							<div class="col-md-12"><hr class="hr"><br></div>
 							<form class="form-horizontal" name="people_search" method="post" action="#">
 								<div class="form-group">
 									<label for="zoeken" class="col-md-3 control-label">Search:</label>
@@ -196,7 +198,6 @@ if (isset($_SESSION["logged_in"]))
 									</div>
 								</div>
 							</form>
-							<div class="col-md-12"><hr class="hr"></div>
 							<div class="col-md-12" id="members">
 								<?php
 								print_messages_list();

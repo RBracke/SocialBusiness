@@ -8,3 +8,4 @@ required onder labels verplaatsen bij admin_page_add, add knop onder cellen plaa
 admin_page_edit nog beetje aanpassen (cosmetisch)
 maar 1 keer per dag in en uit checken
 bug: delete werkt niet (waarschijnlijk door foreign keys maar wanneer persoon verwijderd wordt moeten messages en check_in_out data ook verwijderd worden van die persoon)
+bug: wanneer men andermans messages bekijkt gaan deze niet open als jij niet de afzender of ontvanger bent.

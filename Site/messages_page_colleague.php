@@ -190,6 +190,8 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]) && ($_SESSION["rights"][
 					</div>
 					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
 						<div class="BOX">
+						<h4>Messages</h4>
+							<div class="col-md-12"><hr class="hr"><br></div>
 							<form class="form-horizontal" name="people_search" method="post" action="#">
 								<div class="form-group">
 									<label for="zoeken" class="col-md-3 control-label">Search:</label>
