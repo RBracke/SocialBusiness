@@ -147,6 +147,10 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
 					</div>
 					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
 						<div class="BOX">
+						<?php if(isset($_GET["msended"])){
+								echo "<div class='alert alert-success'><strong>Success!</strong> Your message has been sent successfully</div>";
+							}
+							?>
 							<form class="form-vertical" name="message" method="post" action="post_message.php">
 								<div class="form-group">
 									<label for="topic" class="control-label h4 no_margin_top">Topic</label>

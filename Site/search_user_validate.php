@@ -86,6 +86,9 @@ if (isset($_SESSION["logged_in"]))
 			$link = connecteren();
 			$query = "SELECT user_id, name, function, address, email, phone_number, admin, rights_id FROM user WHERE user_id = " .$user. " ORDER BY user_id ASC";
 			$result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
+
+			$query_rights = "SELECT info, check_in_out, messages FROM user LEFT JOIN rights ON user.rights_id = rights.rights_id WHERE user.user_id = " .$user. "";
+			$result_rights = mysqli_query($link, $query_rights) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query_rights \"$query_rights\"");
 			
 			if($result->num_rows > 0) {
 				while($row = $result->fetch_assoc()) {
@@ -93,13 +96,56 @@ if (isset($_SESSION["logged_in"]))
 						$admin = "Yes";
 					}
 					else {$admin = "No";}
-					echo "<tr><td>".$row['user_id']."</td><td>".$row['function']."</td><td>".$row['name']."</td><td>".$row['email']."</td><td>".$row['phone_number']."</td><td>".$row['address']."</td><td>".$admin."</td><td>".$row['rights_id']."</td><td></td><td></td></tr>";
+					echo "<tr><td>".$row['user_id']."</td><td>".$row['function']."</td><td>".$row['name']."</td><td>".$row['email']."</td><td>".$row['phone_number']."</td><td>".$row['address']."</td><td>".$admin."</td>";
+					if ($row_rights = mysqli_fetch_array($result_rights))
+					{
+						if ($row_rights["info"] != NULL)
+						{
+							if ($row_rights["info"] == 1)
+							{
+								$info = "Yes";
+							}
+							else
+							{
+								$info = "No";
+							}
+							if ($row_rights["check_in_out"] == 1)
+							{
+								$check_in_out = "Yes";
+							}
+							else
+							{
+								$check_in_out = "No";
+							}
+							if ($row_rights["messages"] == 1)
+							{
+								$messages = "Yes";
+							}
+							else
+							{
+								$messages = "No";
+							}
+
+					echo "<td><span id=\"label_rights\" data-toggle=\"tooltip\" data-placement=\"top\" data-html=\"true\" title=\"Check info: " .$info. "<br>Check in and out history: " .$check_in_out. "<br>Check messages: " .$messages. "\" class=\"glyphicon glyphicon-question-sign\" aria-hidden=\"true\"></span>&nbsp;".$row['rights_id']."</td>";
+						}
+						else
+						{
+							echo "<td></td>";
+						}
+						
+					}
+					else
+					{
+						echo "<td></td>";
+					}
+			
+				echo "<td><a href=\"admin_page_edit_user.php?id=" .$row["user_id"]. "\"><span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span></a></td><td class=\"has-error\"><a href=\"admin_page_delete_user.php?id=" .$row["user_id"]. "\"><span class=\"glyphicon glyphicon-remove\" style=\"color:red\" aria-hidden=\"true\"></span></a></td></tr>";
 				}
 			}
-			
 			mysqli_close($link);
 		}
 		echo "</tbody></table></div>";
+
 
 	}
 

@@ -32,7 +32,11 @@ if (isset($_SESSION["logged_in"]))
 					$('[data-toggle="tooltip"]').tooltip();   
 				});
 			</script>
-		
+
+		<!-- zingshart -->
+		<script src= "js/zingchart.min.js"></script>
+		<script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+		ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -151,36 +155,63 @@ if (isset($_SESSION["logged_in"]))
 		 </div>
 		 <p class="clear_both"></p>
 	 </div>
+	 <div class="BOX margin_15_bottom no_pad_bottom">
+		 <div class="col-md-12">
+			 <a href="#" class="h4">Message and file history</a>
+		 </div>
+		 <p class="clear_both"></p>
+	 </div>
  </div>
  <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4">
  	<div class="BOX">
- 		<div class="form-group margin_15_top">
- 			<div class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Nin</div><div class="col-md-9"><?php echo $_SESSION["nin"]; ?></div>
- 		</div><p class="clear_both"></p>
- 		<div class="form-group">
- 			<div class="col-md-3">Age</div><div class="col-md-9"><?php echo date("Y/m/d") - $_SESSION["date_of_birth"]; ?></div>
- 		</div><p class="clear_both"></p>
- 		<div class="form-group">
- 			<div class="col-md-3">Gender</div><div class="col-md-9"><?php if($_SESSION["gender"] == "1"){echo "Male";} else{echo "Female";} ?></div>
- 		</div><p class="clear_both"></p>
- 		<div class="form-group">
- 			<div class="col-md-3">Home address</div><div class="col-md-9"><?php echo $_SESSION["address"]; ?></div>
- 		</div><p class="clear_both"></p>
- 		<div class="form-group">
- 			<div class="col-md-3">Martial status</div><div class="col-md-9"><?php echo $_SESSION["martial_status"]; ?></div>
- 		</div><p class="clear_both"></p>
- 		<div class="form-group">
- 			<div class="col-md-3">Personal email</div><div class="col-md-9"><?php echo $_SESSION["email"]; ?></div>
- 		</div><p class="clear_both"></p>
- 		<div class="form-group">
- 			<div class="col-md-3">Phone number</div><div class="col-md-9"><?php echo $_SESSION["phone_number"]; ?></div>
- 		</div><p class="clear_both"></p>
- 		<div class="form-group">
- 			<div class="col-md-3">Start date</div><div class="col-md-9"><?php echo $_SESSION["start_date"]; ?></div>
- 		</div><p class="clear_both"></p>
- 		<div class="form-group">
- 			<div class="col-md-3">Days in company</div><div class="col-md-9"><?php $start_date = strtotime($_SESSION["start_date"]); echo floor((time() - $start_date)/86400); ?></div>
- 		</div><p class="clear_both"></p>
+ 	<div id='myChart'></div>
+ 	<?php
+	 	$link = connecteren();
+		$query = "SELECT in_building_now FROM in_building WHERE user_id = '" .$_SESSION["user_id"]. "' ORDER BY in_building_id ASC";
+		$data = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
+	?>
+	<script>
+		var myData=[<?php 
+		while($info=mysqli_fetch_array($data)){
+			echo $info['in_building_now'].','; /* We use the concatenation operator '.' to add comma delimiters after each data value. */
+		}
+		?>];
+		<?php
+			$query = "SELECT time_check FROM in_building WHERE user_id = '" .$_SESSION["user_id"]. "' ORDER BY in_building_id ASC";
+			$data = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
+		?>
+		var myLabels=[<?php 
+		while($info=mysqli_fetch_array($data)){
+	    	echo '"'.$info['time_check'].'",'; /* The concatenation operator '.' is used here to create string values from our database names. */
+		}
+		?>];
+	</script>
+	<?php
+		mysqli_close($link);
+	?>
+	<script>
+	  	var chartData={
+		    "type":"line",
+		    "scale-x":{
+	    		"min-value":1491927120395, /*uses miliseconds since 1 jan 1972*/
+    			"step":86400000,
+	    		"transform":{
+	       			"type":"date",
+	       			"all":"%m.%d.%Y"
+	    		}
+			},
+		    "series":[ 
+		        { "values": [7,8,9,8] },
+		        { "values": [14,15,14,16]}
+		    ]
+	  	};
+	  	zingchart.render({
+		    id:'myChart',
+		    data:chartData,
+		    height:400,
+		    width:400
+	  	});
+	</script>
  	</div>
  </div>
 

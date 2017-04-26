@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 CREATE TABLE IF NOT EXISTS `message` (
 	`message_id` int(11) AUTO_INCREMENT,
-	`topic` varchar(50),
+	`topic` varchar(30),
 	`content` text,
 	`file` varchar(50),
 	`date_time` datetime,

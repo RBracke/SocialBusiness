@@ -413,34 +413,6 @@ function printmembers()
 
 }
 
-
-function printrightsinfo()
-{
-	$link = connecteren();
-	$query = "SELECT * FROM rights ORDER BY rights_id ASC";
-	$result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
-	echo "<div class='table-responsive'><table class='table table-hover'><thead><tr><th>Rights ID</th><th>Check info</th><th>Check in and out times</th><th>Check messages</th></tr></thead><tbody>";
-	if($result->num_rows > 0) {
-		while($row = $result->fetch_assoc()) {
-			if($row['info'] == 1){
-				$info = "Yes";
-			}
-			else {$info = "No";}
-			if($row['check_in_out'] == 1){
-				$check = "Yes";
-			}
-			else {$check = "No";}
-			if($row['messages'] == 1){
-				$message = "Yes";
-			}
-			else {$message = "No";}
-
-			echo "<tr><td>".$row['rights_id']."</td><td>".$info."</td><td>".$check."</td><td>".$message."</td></tr>";
-		}
-	}
-	echo "</tbody></table></div>";
-}
-
 function search_users($zoekterm)
 {
 	$link = connecteren();
@@ -472,7 +444,7 @@ function print_messages_list()
 
 	if($result_sended->num_rows > 0) 
 	{
-		echo "<h4 class=\"text-primary\">Send:</h4><div class='table-responsive'><table class='table table-hover'><thead><tr><th>Date and time</th><th>Topic</th><th>Receipant</th></tr></thead><tbody>";
+		echo "<div class='panel-group'><div class='panel panel-default'><div class='panel-heading'><h4 class='text-primary'><a data-toggle='collapse' href='#collapse1'>Send</a></h4></div><div id='collapse1' class='panel-collapse collapse'><div class='panel-body'><div class='table-responsive'><table class='table table-hover'><thead><tr><th>Date and time</th><th>Topic</th><th>Receipant</th></tr></thead><tbody>";
 		while($row = $result_sended->fetch_assoc()) 
 		{
 			$query_rec_name = "SELECT name FROM user WHERE user_id  = " .$row["receipant"];
@@ -484,7 +456,7 @@ function print_messages_list()
 				echo "<tr><td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$row["receipant"]."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row['receipant']."\">".$row_rec_name['name']."</a></td></tr>";
 			}
 		}
-		echo "</tbody></table></div>";
+		echo "</tbody></table></div></div></div></div></div>";
 	}
 	
 	$query_sended = "SELECT message.date_time, message.topic, message.message_id, message.receipant, message.sender FROM message LEFT JOIN user ON message.receipant = user.user_id WHERE user.user_id  = " .$_SESSION["user_id"]. " ORDER BY message.message_id DESC";
@@ -493,7 +465,7 @@ function print_messages_list()
 
 	if($result_sended->num_rows > 0) 
 	{
-		echo "<h4 class=\"text-primary\">Received:</h4><div class='table-responsive'><table class='table table-hover'><thead><tr><th>Date and time</th><th>Topic</th><th>Sender</th></tr></thead><tbody>";
+		echo "<div class='panel-group'><div class='panel panel-default'><div class='panel-heading'><h4 class='text-primary'><a data-toggle='collapse' href='#collapse2'>Received</a></h4></div><div id='collapse2' class='panel-collapse collapse'><div class='panel-body'><div class='table-responsive'><table class='table table-hover'><thead><tr><th>Date and time</th><th>Topic</th><th>Sender</th></tr></thead><tbody>";
 		while($row = $result_sended->fetch_assoc()) 
 		{
 			$query_sender_name = "SELECT name FROM user WHERE user_id  = " .$row["sender"];
@@ -505,7 +477,7 @@ function print_messages_list()
 				echo "<tr><td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$row["sender"]."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row['sender']."\">".$row_sender_name['name']."</a></td></tr>";
 			}
 		}
-		echo "</tbody></table></div>";
+		echo "</tbody></table></div></div></div></div></div>";
 	}
 	
 
