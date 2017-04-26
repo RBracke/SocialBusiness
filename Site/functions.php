@@ -222,9 +222,9 @@ function show_member()
 			if(($row['user_id'] != $_SESSION['user_id']) && ($row['user_id'] != $x))
 			{
 				echo "<div class='form-group'>
-				<div class='col-md-5'><a href=\"colleague_page.php?id=".$row['user_id']."\">".$row['name']."</a></div>
-				<div class='col-md-3'>" .$row['function']. "</div>
-				<div class='col-md-2'>";
+				<div class='col-xs-5'><a href=\"colleague_page.php?id=".$row['user_id']."\">".$row['name']."</a></div>
+				<div class='col-xs-3'>" .$row['function']. "</div>
+				<div class='col-xs-2'>";
 
 					if ($row["online"] == 1)
 					{
