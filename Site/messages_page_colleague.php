@@ -3,7 +3,7 @@ session_start();
 
 include("functions.php");
 
-if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
+if (isset($_SESSION["logged_in"]) && isset($_GET["id"]) && ($_SESSION["rights"]["messages"] == 1))
 {
 
 	fill_session($_SESSION["user_id"]);
@@ -26,6 +26,48 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet" />
 		<script src="js/message_refresh.js"></script>
+		<script type="text/javascript">
+			function search_users()
+			{
+				xhr = new XMLHttpRequest();
+				var zoekterm = document.getElementById("zoeken").value;
+				if (xhr != null)
+				{
+					var output = document.getElementById("members");
+					var loading = "<i>Loading...&nbsp;&nbsp;&nbsp;</i><i class=\"fa fa-circle-o-notch fa-spin\" style=\"font-size:24px\"></i>";
+					output.innerHTML = loading;
+					setTimeout(function()
+					{
+						var url="search_user_validate.php?search_messages_colleague="+zoekterm;  
+
+						xhr.onreadystatechange=refresh_inhoud;
+						xhr.open("GET",url,true);
+						xhr.send(null);
+					}, 500);
+
+					
+				}
+			}
+
+			function refresh_inhoud() 
+			{
+				var output = document.getElementById("members");
+				if (xhr.readyState == 4 && xhr.status == 200)
+				{
+					if(xhr.responseText)
+					{
+
+						output.innerHTML = xhr.responseText;
+
+					}
+					else
+					{
+						output.innerHTML = "<h2>Geen resultaten.</h2>";
+					}
+				}
+			}
+		</script>
+
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -148,29 +190,21 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
 					</div>
 					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
 						<div class="BOX">
-						<?php if(isset($_GET["msended"])){
-								echo "<div class='alert alert-success'><strong>Success!</strong> Your message has been sent successfully</div>";
-							}
-							?>
-							<form class="form-vertical" name="message" method="post" action="post_message.php">
+							<form class="form-horizontal" name="people_search" method="post" action="#">
 								<div class="form-group">
-									<label for="topic" class="control-label h4 no_margin_top">Topic</label>
-									<input type="text" class="form-control" id="topic" name="topic" <?php if (isset($_GET["topic"])) { echo "value=\"" .$_GET["topic"]. "\""; } ?>>
-								</div>
-								<div class="form-group">
-									<label for="message" class="control-label h4 no_margin_top">Message</label>
-									<textarea rows="10" class="form-control" id="message" name="message"></textarea>
-								</div>
-									<input type="hidden" name="receipant" value="<?php echo $_SESSION["colleague"]["user_id"]; ?>"> 
-								<div class="form-group">
-									<div class="col-sm-12 no_pad_left pad_15_bottom">
-										<input type="file" class="btn btn-warning file">
-									</div>
-									<div class="col-sm-12 no_pad_left">
-										<button type="submit" class="btn btn-warning">Send</button>
+									<label for="zoeken" class="col-md-3 control-label">Search:</label>
+									<div class="col-md-9">
+										<input type="text" onkeyup="search_users();" class="form-control" id="zoeken" name="zoeken">
 									</div>
 								</div>
 							</form>
+							<div class="col-md-12"><hr class="hr"></div>
+							<div class="col-md-12" id="members">
+								<?php
+								print_messages_list_colleague();
+								?>
+							</div>
+							<p class="clear_both"></p>
 							<p class="clear_both"></p>
 						</div>
 					</div>

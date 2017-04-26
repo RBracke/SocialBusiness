@@ -129,7 +129,7 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]) && $_SESSION["rights"]["
 						{
 								echo "<div class='BOX margin_15_bottom no_pad_bottom'>
 												<div class='col-md-12'>
-												<a href='#' class='h4'>Check in and out history</a>
+												<a href='check_in_out_page_colleague.php?id=" .$_SESSION['colleague']['user_id']. "' class='h4'>Check in and out history</a>
 												</div>
 											<p class='clear_both'></p>
 											</div>";
@@ -139,7 +139,7 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]) && $_SESSION["rights"]["
 						{
 								echo "<div class='BOX margin_15_bottom no_pad_bottom'>
 												<div class='col-md-12'>
-												<a href='#' class='h4'>Message and file history</a>
+												<a href='messages_page_colleague.php?id=" .$_SESSION['colleague']['user_id']. "'' class='h4'>Message and file history</a>
 												</div>
 											<p class='clear_both'></p>
 											</div>";

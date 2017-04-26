@@ -3,7 +3,7 @@ session_start();
 
 include("functions.php");
 
-if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
+if (isset($_SESSION["logged_in"]) && isset($_GET["id"]) && ($_SESSION["rights"]["check_in_out"] == 1))
 {
 
 	fill_session($_SESSION["user_id"]);
@@ -26,6 +26,10 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet" />
 		<script src="js/message_refresh.js"></script>
+						<!-- zingshart -->
+		<script src= "js/zingchart.min.js"></script>
+		<script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+		ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -146,35 +150,88 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
 						}
 						?>
 					</div>
-					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
-						<div class="BOX">
-						<?php if(isset($_GET["msended"])){
-								echo "<div class='alert alert-success'><strong>Success!</strong> Your message has been sent successfully</div>";
+					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4">
+				 	<div class="BOX">
+				 	<div id='myChart'></div>	
+				 	<?php
+					 	$link = connecteren();
+					 	$query = "SELECT time_check, in_building_now FROM in_building WHERE user_id = '" .$_SESSION["colleague"]["user_id"]. "' ORDER BY in_building_id ASC";
+						$data = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
+						$time3 = NULL;
+						$date2 = NULL;
+					?>
+					<script>
+						var myData=[<?php 
+						while($info=mysqli_fetch_array($data)){
+							$datumtijd = date_create($info['time_check']);
+							if($info['in_building_now'] == 1){
+								$time1 = $datumtijd->format('H:i:s');
+								$time1 = strtotime($time1);
 							}
-							?>
-							<form class="form-vertical" name="message" method="post" action="post_message.php">
-								<div class="form-group">
-									<label for="topic" class="control-label h4 no_margin_top">Topic</label>
-									<input type="text" class="form-control" id="topic" name="topic" <?php if (isset($_GET["topic"])) { echo "value=\"" .$_GET["topic"]. "\""; } ?>>
-								</div>
-								<div class="form-group">
-									<label for="message" class="control-label h4 no_margin_top">Message</label>
-									<textarea rows="10" class="form-control" id="message" name="message"></textarea>
-								</div>
-									<input type="hidden" name="receipant" value="<?php echo $_SESSION["colleague"]["user_id"]; ?>"> 
-								<div class="form-group">
-									<div class="col-sm-12 no_pad_left pad_15_bottom">
-										<input type="file" class="btn btn-warning file">
-									</div>
-									<div class="col-sm-12 no_pad_left">
-										<button type="submit" class="btn btn-warning">Send</button>
-									</div>
-								</div>
-							</form>
-							<p class="clear_both"></p>
-						</div>
-					</div>
-				</div>
+							if($info['in_building_now'] == 0){
+								$time2 = $datumtijd->format('H:i:s');
+								$time2 = strtotime($time2);
+							}
+							if(isset($time1)&&isset($time2))
+							{
+								$time = ($time2 - $time1)/60;
+								$time2 = NULL;
+								$time1 = NULL;
+							}
+							if((isset($time))&&($time != $time3)){
+							echo idate('i', $time).','; /* We use the concatenation operator '.' to add comma delimiters after each data value. */
+							$time3 = $time;
+							}
+						}
+						?>];
+						<?php
+							$query = "SELECT time_check FROM in_building WHERE user_id = '" .$_SESSION["colleague"]["user_id"]. "' ORDER BY in_building_id ASC";
+							$data = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
+						?>
+						var myLabels=[<?php 
+						while($info=mysqli_fetch_array($data)){
+							$datumtijd = date_create($info['time_check']);
+							$date = $datumtijd->format('Y-m-d');
+							if($date != $date2){
+					    	echo '"'.(date_format($datumtijd, 'U')*1000).'",'; /* The concatenation operator '.' is used here to create string values from our database names. */
+					    	$date2 = $date;
+					    	}
+						}
+						?>];
+					</script>
+					<?php
+						mysqli_close($link);
+					?>
+					<script>
+					  	var chartData={
+						    "type":"bar",
+						      "legend":{
+						      	    "x":"20%"
+
+						      },
+							"scale-x":{
+						        "labels":myLabels,
+						        "transform":{
+					       			"type":"date",
+					       			"all":"%m.%d.%Y"
+					    		}
+						    },
+						    "series":[
+						        {
+						            "values":myData,
+						            "text":"Hours at work"
+						        }
+						    ]
+					  	};
+					  	zingchart.render({
+						    id:'myChart',
+						    data:chartData,
+						    height:400,
+						    width:400
+					  	});
+					</script>
+				 	</div>
+				 </div>
 
 
 
