@@ -33,7 +33,7 @@ if (isset($_SESSION["logged_in"]) && isset($_POST["id"]) && isset($_POST["messag
 		exit();
 	}
 
-	if ($row["sender"] == $_SESSION["user_id"] || $row["receipant"] == $_SESSION["user_id"]) 
+	if ($row["sender"] == $_SESSION["user_id"] || $row["receipant"] == $_SESSION["user_id"] || $row["sender"] == $_SESSION["colleague"]["user_id"] || $row["receipant"] == $_SESSION["colleague"]["user_id"]) 
 	{
 
 		get_colleague($colleague_id);
