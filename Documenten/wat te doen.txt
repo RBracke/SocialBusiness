@@ -5,5 +5,6 @@ bug: wanneer in messages en manage_users gezocht wordt en niets gevonden is geef
 eventueel: bestanden bij berichten
 bug: popup bij search op admin_page_user_manage bij nin
 required onder labels verplaatsen bij admin_page_add, add knop onder cellen plaatsen
-admin_page_edit_user en admin_page_add, 'add' knop beter plaatsen
+admin_page_edit nog beetje aanpassen (cosmetisch)
 maar 1 keer per dag in en uit checken
+bug: delete werkt niet (waarschijnlijk door foreign keys maar wanneer persoon verwijderd wordt moeten messages en check_in_out data ook verwijderd worden van die persoon)

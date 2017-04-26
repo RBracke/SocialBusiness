@@ -69,15 +69,14 @@ INSERT INTO `rights` (`rights_id`, `info`, `check_in_out`, `messages`) VALUES
 (7, 1, 1, 0),
 (8, 1, 1, 1);
 
-INSERT INTO `user` (`user_id`, `name`, `nin`, `address`, `gender`, `email`, `date_of_birth`, `martial_status`, `password`, `phone_number`, `function`, `rights_id`, `admin`, `start_date`) VALUES
-(1, 'Ruben De Admin', 86022402508, 'wijnegemstenweg 112e', 1, 'Ruben@admin.com', '1996-12-24', 'married', '21232f297a57a5a743894a0e4a801fc3', '0494456865', 'Boss', 8, 1, '2017-04-01'), /*password = admin*/
-(3, 'joske', 44121181161, 'josdreef 24', 1, 'jos@hotmail.com', '1990-05-25', 'single', '21232f297a57a5a743894a0e4a801fc3', '0568799563', 'Employee', 5, 0, '2012-08-01'),
-(4, 'josefien',42082713590, 'nieuwdreef 54', 0, 'josefien@hotmail.com', '1992-06-25', 'in relationship', '21232f297a57a5a743894a0e4a801fc3', '0675419824', 'cleaning lady', 1, 0, '2010-08-25'),
-(5, 'jef',2806122056, 'boonhoek 88', 1, 'jef@hotmail.com', '1988-11-25', 'divorced', '21232f297a57a5a743894a0e4a801fc3', '05423647526', 'cook', 1, 0, '2008-11-25'),
-(6, 'jan',4568254005, 'bredabaan 3', 1, 'jan@hotmail.com', '1999-11-15', 'single', '21232f297a57a5a743894a0e4a801fc3', '0584441258', 'IT-guy', 6, 0, '2015-01-11');
-
 INSERT INTO `user` (`user_id`, `name`, `nin`, `address`, `gender`, `email`, `profile_picture`, `date_of_birth`, `martial_status`, `password`, `phone_number`, `function`, `rights_id`, `admin`, `start_date`) VALUES
-(2, 'Kenzo De Admin', 60061812456, 'kenzotlaan 11', 1, 'kenzo@admin.com', '2.jpg', '1997-12-24', 'married', '21232f297a57a5a743894a0e4a801fc3', '0488656154', 'Boss', 8, 1, '2017-03-01');
+(1, 'Ruben De Admin', 86022402508, 'wijnegemstenweg 112e', 1, 'Ruben@admin.com', '1.jpg', '1996-12-24', 'married', '21232f297a57a5a743894a0e4a801fc3', '0494456865', 'Boss', 8, 1, '2017-04-01'), /*password = admin*/
+(2, 'Kenzo De Admin', 60061812456, 'kenzotlaan 11', 1, 'kenzo@admin.com', '2.jpg', '1997-12-24', 'married', '21232f297a57a5a743894a0e4a801fc3', '0488656154', 'Boss', 8, 1, '2017-03-01'),
+(3, 'joske', 44121181161, 'josdreef 24', 1, 'jos@hotmail.com', NULL, '1990-05-25', 'single', '21232f297a57a5a743894a0e4a801fc3', '0568799563', 'Employee', 5, 0, '2012-08-01'),
+(4, 'josefien',42082713590, 'nieuwdreef 54', 0, 'josefien@hotmail.com', NULL, '1992-06-25', 'in relationship', '21232f297a57a5a743894a0e4a801fc3', '0675419824', 'cleaning lady', 1, 0, '2010-08-25'),
+(5, 'jef',2806122056, 'boonhoek 88', 1, 'jef@hotmail.com', NULL, '1988-11-25', 'divorced', '21232f297a57a5a743894a0e4a801fc3', '05423647526', 'cook', 1, 0, '2008-11-25'),
+(6, 'jan',4568254005, 'bredabaan 3', 1, 'jan@hotmail.com', NULL, '1999-11-15', 'single', '21232f297a57a5a743894a0e4a801fc3', '0584441258', 'IT-guy', 6, 0, '2015-01-11');
+
 
 INSERT INTO `in_building` (`in_building_id`, `user_id`, `in_building_now`, `time_check`) VALUES
 (1, 1, 1, '2017-04-11 15:51:28'),
@@ -86,16 +85,36 @@ INSERT INTO `in_building` (`in_building_id`, `user_id`, `in_building_now`, `time
 (4, 1, 0, '2017-04-12 18:51:40'),
 (5, 1, 1, '2017-04-15 7:51:41'),
 (6, 1, 0, '2017-04-15 16:08:21'),
-(7, 1, 1, '2017-04-20 9:08:22'),
-(8, 1, 0, '2017-04-20 16:09:05'),
-(9, 2, 1, '2017-04-11 15:51:28'),
-(10, 2, 0, '2017-04-11 16:51:30'),
-(11, 2, 1, '2017-04-13 15:51:39'),
-(12, 2, 0, '2017-04-13 17:51:40'),
+(7, 1, 1, '2017-04-19 9:08:22'),
+(8, 1, 0, '2017-04-19 16:09:05'),
+(9, 1, 1, '2017-04-21 15:51:28'),
+(10, 1, 0, '2017-04-21 16:51:30'),
+(11, 1, 1, '2017-04-24 15:51:39'),
+(12, 1, 0, '2017-04-24 17:51:40'),
 (13, 2, 1, '2017-04-16 7:51:41'),
 (14, 2, 0, '2017-04-16 17:08:21'),
 (15, 2, 1, '2017-04-22 9:08:22'),
-(16, 2, 0, '2017-04-22 15:09:05');
+(16, 2, 0, '2017-04-22 15:09:05'),
+(17, 2, 1, '2017-04-24 10:08:22'),
+(18, 2, 0, '2017-04-24 15:09:05'),
+(19, 2, 1, '2017-04-26 10:08:22'),
+(20, 2, 0, '2017-04-26 13:09:05'),
+(21, 3, 1, '2017-04-11 15:51:28'),
+(22, 3, 0, '2017-04-11 18:51:30'),
+(23, 3, 1, '2017-04-12 15:51:39'),
+(24, 3, 0, '2017-04-12 18:51:40'),
+(25, 4, 1, '2017-04-15 7:51:41'),
+(26, 4, 0, '2017-04-15 16:08:21'),
+(27, 6, 1, '2017-04-10 9:08:22'),
+(28, 6, 0, '2017-04-10 16:09:05'),
+(29, 6, 1, '2017-04-12 15:51:28'),
+(30, 6, 0, '2017-04-12 16:51:30'),
+(31, 6, 1, '2017-04-21 15:51:28'),
+(32, 6, 0, '2017-04-21 16:51:30'),
+(33, 5, 1, '2017-04-12 15:51:39'),
+(34, 5, 0, '2017-04-12 18:51:40'),
+(35, 5, 1, '2017-04-15 7:51:41'),
+(36, 5, 0, '2017-04-15 16:08:21');
 
 INSERT INTO `message` (`message_id`, `topic`, `content`, `file`, `date_time`, `receipant`, `sender`) VALUES
 (1, 'test 1', 'dit is de inhoud van test 1', NULL, '2017-04-20 00:04:20', 1, 2),
