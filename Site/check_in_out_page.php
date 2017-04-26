@@ -155,15 +155,33 @@ if (isset($_SESSION["logged_in"]))
  	<div id='myChart'></div>	
  	<?php
 	 	$link = connecteren();
-	 	$query = "SELECT time_check FROM in_building WHERE user_id = '" .$_SESSION["user_id"]. "' ORDER BY in_building_id ASC";
+	 	$query = "SELECT time_check, in_building_now FROM in_building WHERE user_id = '" .$_SESSION["user_id"]. "' ORDER BY in_building_id ASC";
 		$data = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
+		$time3 = NULL;
+		$date2 = NULL;
 	?>
 	<script>
 		var myData=[<?php 
 		while($info=mysqli_fetch_array($data)){
 			$datumtijd = date_create($info['time_check']);
-			$time = $datumtijd->format('H:i:s');
-			echo (date_format($datumtijd, 'U')*1000).','; /* We use the concatenation operator '.' to add comma delimiters after each data value. */
+			if($info['in_building_now'] == 1){
+				$time1 = $datumtijd->format('H:i:s');
+				$time1 = strtotime($time1);
+			}
+			if($info['in_building_now'] == 0){
+				$time2 = $datumtijd->format('H:i:s');
+				$time2 = strtotime($time2);
+			}
+			if(isset($time1)&&isset($time2))
+			{
+				$time = ($time2 - $time1)/60;
+				$time2 = NULL;
+				$time1 = NULL;
+			}
+			if((isset($time))&&($time != $time3)){
+			echo idate('i', $time).','; /* We use the concatenation operator '.' to add comma delimiters after each data value. */
+			$time3 = $time;
+			}
 		}
 		?>];
 		<?php
@@ -174,7 +192,10 @@ if (isset($_SESSION["logged_in"]))
 		while($info=mysqli_fetch_array($data)){
 			$datumtijd = date_create($info['time_check']);
 			$date = $datumtijd->format('Y-m-d');
+			if($date != $date2){
 	    	echo '"'.(date_format($datumtijd, 'U')*1000).'",'; /* The concatenation operator '.' is used here to create string values from our database names. */
+	    	$date2 = $date;
+	    	}
 		}
 		?>];
 	</script>
@@ -183,7 +204,11 @@ if (isset($_SESSION["logged_in"]))
 	?>
 	<script>
 	  	var chartData={
-		    "type":"line",
+		    "type":"bar",
+		      "legend":{
+		      	    "x":"20%"
+
+		      },
 			"scale-x":{
 		        "labels":myLabels,
 		        "transform":{
@@ -194,10 +219,7 @@ if (isset($_SESSION["logged_in"]))
 		    "series":[
 		        {
 		            "values":myData,
-		           	"transform":{
-	       				"type":"date",
-	       				"all":"%G:%i:%s"
-	    		}
+		            "text":"Hours at work"
 		        }
 		    ]
 	  	};
