@@ -6,6 +6,5 @@ bug: wanneer in messages en manage_users gezocht wordt en niets gevonden is geef
 eventueel: bestanden bij berichten
 bug: popup bij search op admin_page_user_manage bij nin
 required onder labels verplaatsen bij admin_page_add, add knop onder cellen plaatsen
-messagepage: content in witte kader
 admin_page_edit nog beetje aanpassen (cosmetisch)
 maar 1 keer per dag in en uit checken
