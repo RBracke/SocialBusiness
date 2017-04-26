@@ -1,7 +1,6 @@
 wat te doen?
 
-berichtengeschiedenis
-check in en check out grafiek voor collega
+berichtengeschiedenis dat wanneer iemand bericht leest op iemand anders account dit bericht niet als gelezen geset wordt.
 bug: wanneer in messages en manage_users gezocht wordt en niets gevonden is geeft dit lege grafiek ipv message.
 eventueel: bestanden bij berichten
 bug: popup bij search op admin_page_user_manage bij nin
