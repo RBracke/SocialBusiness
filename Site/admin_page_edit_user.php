@@ -81,31 +81,30 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["admin"] == 1 && isset($_GET["id"
 				<div class="col-sm-offset-1 col-md-offset-1 col-lg-offset-2 pad_15_left"><h2>Admin page - Edit user</h2></div>
 				<div class="col-xs-12 col-sm-12 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 					<div class="BOX">
-						<div class="col-md-12"><hr class="hr"></div>
-						<div class="col-md-12">
+							<div class="col-md-12">
 							<form class="form-horizontal" name="settings" method="post" action="admin_validate_user_settings.php" enctype="multipart/form-data">
 								<div class="form-group margin_15_top <?php if (isset($_GET["name"]) && $_GET["name"] == "ok") {echo "has-success";} elseif (isset($_GET["name"]) && $_GET["name"] == "error") {echo "has-error";} ?>"">
-									<label for="dob" class="col-md-3 control-label">Name<span class="rood">*</span></label>
+									<label for="dob" class="col-md-3 control-label">Name</label>
 									<div class="col-md-9">
 										<input type="text" class="form-control" id="name" name="name"  value="<?php echo $_SESSION["colleague"]["name"]; ?>" placeholder="Surname Forename">
 										<input type="hidden" name="id" value="<?php echo $_SESSION["colleague"]["user_id"]; ?>">
 									</div>
 								</div>
 								<div class="form-group <?php if (isset($_GET["function"]) && $_GET["function"] == "ok") {echo "has-success";} elseif (isset($_GET["function"]) && $_GET["function"] == "error") {echo "has-error";} ?>"">
-									<label for="function" class="col-md-3 control-label">Function<span class="rood">*</span></label>
+									<label for="function" class="col-md-3 control-label">Function</label>
 									<div class="col-md-9">
 										<input type="text" class="form-control" id="function" name="function"  value="<?php echo $_SESSION["colleague"]["function"]; ?>" placeholder="Function of the new employee">
 									</div>
 								</div>
 								<div class="form-group <?php if (isset($_GET["admin"]) && $_GET["admin"] == "ok") {echo "has-success";} elseif (isset($_GET["admin"]) && $_GET["admin"] == "error") {echo "has-error";} ?>"">
-									<label for="admin_radio" class="col-md-3 control-label">Admin<span class="rood">*</span></label>
+									<label for="admin_radio" class="col-md-3 control-label">Admin</label>
 									<div class="col-md-9">
 										<label class="radio-inline"><input type="radio" id="admin_radio" value="1" name="admin_radio" <?php if($_SESSION["colleague"]["admin"] == 1){echo "checked";} ?>>Yes</label>
 										<label class="radio-inline"><input type="radio" value="0" name="admin_radio" <?php if($_SESSION["colleague"]["admin"] == 0){echo "checked";} ?>>No</label>
 									</div>
 								</div>
 								<div class="form-group <?php if (isset($_GET["rights"]) && $_GET["rights"] == "ok") {echo "has-success";} elseif (isset($_GET["rights"]) && $_GET["rights"] == "error") {echo "has-error";} ?>"">
-									<label for="rights_checkbox" class="col-md-3 control-label">Has rights<span class="rood">*</span></label> <!-- waardes tellen niet op-->
+									<label for="rights_checkbox" class="col-md-3 control-label">Has rights</label> <!-- waardes tellen niet op-->
 									<div class="col-md-9">
 										<label class="checkbox-inline"><input type="checkbox" id="rights_checkbox" value="1" name="rights_checkbox_info" <?php if($_SESSION["colleague"]["rights"]["info"] == 1){echo "checked";} ?>>Check info</label>
 										<label class="checkbox-inline"><input type="checkbox" value="1" name="rights_checkbox_time" <?php if($_SESSION["colleague"]["rights"]["check_in_out"] == 1){echo "checked";} ?>>Check in and out times</label>
@@ -168,7 +167,6 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["admin"] == 1 && isset($_GET["id"
 									</div>
 								</div>
 								<div class="col-md-9">
-									<span class="rood">* Required&nbsp;&nbsp;&nbsp;</span>
 									<button type="submit" class="btn btn-warning">Save</button>
 								</div>
 							</form>

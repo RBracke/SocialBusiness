@@ -206,8 +206,16 @@ if (isset($_SESSION["logged_in"]))
 	<script>
 	  	var chartData={
 		    "type":"bar",
-		      "legend":{
-		      	    "x":"20%"
+			"plot": {
+				"animation": {
+					"delay": "200",
+          			"effect":"4",
+					"method": "5",
+					"sequence": "1"
+					}
+			},
+		    "legend":{
+		      	"x":"20%"
 
 		      },
 			"scale-x":{

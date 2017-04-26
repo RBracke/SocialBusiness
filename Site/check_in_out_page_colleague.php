@@ -205,6 +205,14 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]) && ($_SESSION["rights"][
 					<script>
 					  	var chartData={
 						    "type":"bar",
+						    "plot": {
+							    "animation": {
+							      "delay": "200",
+          						  "effect":"4",
+							      "method": "5",
+							      "sequence": "1"
+							    }
+							  },
 						      "legend":{
 						      	    "x":"20%"
 
