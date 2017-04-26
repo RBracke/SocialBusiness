@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `message` (
 	`date_time` datetime,
 	`receipant` int(5),
 	`sender` int(5),
+	`gelezen` tinyint(1) DEFAULT '0',
 	PRIMARY KEY (`message_id`),
 	FOREIGN KEY (`receipant`) REFERENCES `user`(`user_id`),
 	FOREIGN KEY (`sender`) REFERENCES `user`(`user_id`)
@@ -80,13 +81,13 @@ INSERT INTO `user` (`user_id`, `name`, `nin`, `address`, `gender`, `email`, `pro
 
 INSERT INTO `in_building` (`in_building_id`, `user_id`, `in_building_now`, `time_check`) VALUES
 (1, 1, 1, '2017-04-11 15:51:28'),
-(2, 1, 0, '2017-04-11 15:51:30'),
-(3, 1, 1, '2017-04-11 15:51:39'),
-(4, 1, 0, '2017-04-11 15:51:40'),
-(5, 1, 1, '2017-04-11 15:51:41'),
-(6, 1, 0, '2017-04-11 16:08:21'),
-(7, 1, 1, '2017-04-11 16:08:22'),
-(8, 1, 0, '2017-04-11 16:09:05');
+(2, 1, 0, '2017-04-11 16:51:30'),
+(3, 1, 1, '2017-04-12 15:51:39'),
+(4, 1, 0, '2017-04-12 18:51:40'),
+(5, 1, 1, '2017-04-15 7:51:41'),
+(6, 1, 0, '2017-04-15 16:08:21'),
+(7, 1, 1, '2017-04-20 9:08:22'),
+(8, 1, 0, '2017-04-20 16:09:05');
 
 INSERT INTO `message` (`message_id`, `topic`, `content`, `file`, `date_time`, `receipant`, `sender`) VALUES
 (1, 'test 1', 'dit is de inhoud van test 1', NULL, '2017-04-20 00:04:20', 1, 2),

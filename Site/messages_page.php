@@ -181,7 +181,7 @@ if (isset($_SESSION["logged_in"]))
 						</div>
 						<div class="BOX margin_15_bottom no_pad_bottom">
 							<div class="col-md-12">
-								<a href="#" class="h4">Check in and out history</a>
+								<a href="check_in_out_page.php" class="h4">Check in and out history</a>
 							</div>
 							<p class="clear_both"></p>
 						</div>
