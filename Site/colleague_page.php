@@ -155,7 +155,7 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
 							<form class="form-vertical" name="message" method="post" action="post_message.php">
 								<div class="form-group">
 									<label for="topic" class="control-label h4 no_margin_top">Topic</label>
-									<input type="text" class="form-control" id="topic" name="topic">
+									<input type="text" class="form-control" id="topic" name="topic" <?php if (isset($_GET["topic"])) { echo "value=\"" .$_GET["topic"]. "\""; } ?>>
 								</div>
 								<div class="form-group">
 									<label for="message" class="control-label h4 no_margin_top">Message</label>
