@@ -24,6 +24,7 @@ if (isset($_SESSION["logged_in"]))
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet" />
 		<script src="js/check_in_out.js"></script>
+		<script src="js/message_refresh.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script type="text/javascript">
 			function search_users()
@@ -90,7 +91,7 @@ if (isset($_SESSION["logged_in"]))
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right links_bovenaan">
-							<li><a href="messages_page.php">Messages</a></li>
+							<li><a href="messages_page.php">Messages<span class="badge" id="message_aantal"></span></a></li>
 							<li><a href="settings_page.php">Settings</a></li>
 							<?php
 

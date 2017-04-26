@@ -144,3 +144,14 @@ img.indicator_online_building {
 	padding: 20px;
 	margin-top: 50px;
 }
+
+.messages_orange {
+	background-color: #fff7de;
+}
+#message_aantal {
+	background-color: #f9c000;
+	margin-left: 8px;
+}
+.form-control[readonly] {
+	background-color: white;
+}

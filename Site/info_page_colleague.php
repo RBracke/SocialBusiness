@@ -25,6 +25,7 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]) && $_SESSION["rights"]["
 		<link href="css/reset.css" rel="stylesheet" />
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet" />
+		<script src="js/message_refresh.js"></script>
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,7 +49,7 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]) && $_SESSION["rights"]["
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right links_bovenaan">
-							<li><a href="messages_page.php">Messages</a></li>
+							<li><a href="messages_page.php">Messages<span class="badge" id="message_aantal"></span></a></li>
 							<li><a href="settings_page.php">Settings</a></li>
 							<?php
 

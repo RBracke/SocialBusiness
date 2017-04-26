@@ -21,6 +21,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 		<link href="css/reset.css" rel="stylesheet" />
 		<link href="css/bootstrap.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet" />
+		<script src="js/message_refresh.js"></script>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script type="text/javascript">
@@ -92,7 +93,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right links_bovenaan">
-							<li><a href="messages_page.php">Messages</a></li>
+							<li><a href="messages_page.php">Messages<span class="badge" id="message_aantal"></span></a></li>
 							<li><a href="settings_page.php">Settings</a></li>
 							<li><a href="admin_page.php">Admin panel</a></li>
 							<li><a href="logout.php">Logout</a></li>
