@@ -163,7 +163,7 @@ if (isset($_SESSION["logged_in"]))
 
 		foreach ($users as $user) 
 		{
-			$query_sended = "SELECT message.date_time, message.topic, message.message_id, message.receipant, message.sender FROM message LEFT JOIN user ON message.receipant = user.user_id WHERE user.user_id  = " .$_SESSION["user_id"]. " && message.sender = " .$user. " ORDER BY message.message_id DESC";
+			$query_sended = "SELECT message.date_time, message.topic, message.message_id, message.receipant, message.sender, message.gelezen FROM message LEFT JOIN user ON message.receipant = user.user_id WHERE user.user_id  = " .$_SESSION["user_id"]. " && message.sender = " .$user. " ORDER BY message.message_id DESC";
 			$result_sended = mysqli_query($link, $query_sended) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_sended\"");
 
 
@@ -176,8 +176,15 @@ if (isset($_SESSION["logged_in"]))
 
 					while($row_sender_name = $result_sender_name->fetch_assoc()) 
 					{
-
-						echo "<tr><td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$row['sender']."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row['sender']."\">".$row_sender_name['name']."</a></td></tr>";
+						if ($row["gelezen"] == 0)
+						{
+							echo "<tr class=\"messages_orange\">";
+						}
+						else
+						{
+							echo "<tr>";
+						}
+						echo "<td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$row['sender']."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row['sender']."\">".$row_sender_name['name']."</a></td></tr>";
 					}
 				}
 			}
