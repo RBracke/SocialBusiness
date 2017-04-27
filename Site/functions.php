@@ -89,6 +89,7 @@ function user_login($email, $password)
 function fill_session($id)
 {
 	$link = connecteren();
+	user_online($id);
 
 	$query_user = "SELECT name, nin, address, gender, email, profile_picture, date_of_birth, online, martial_status, phone_number, function, rights_id, admin, start_date FROM user WHERE user_id = '" .$id. "'";
 
