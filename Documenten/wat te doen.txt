@@ -6,3 +6,4 @@ opmaak: add knop onder cellen plaatsen bij Admin_user_add en Admin_user_manage.
 bug: delete werkt niet (waarschijnlijk door foreign keys maar wanneer persoon verwijderd wordt moeten messages en check_in_out data ook verwijderd worden van die persoon)
 bug: geen autorefresh bij check_in_out en tekst wanneer men meerdere keren probeerd in te loggen op een dag
 opmaak: message weergeven of dit een bestand bevat.
+bug: wanneer geen nieuwe messages, geel bolletje wegdoen.
