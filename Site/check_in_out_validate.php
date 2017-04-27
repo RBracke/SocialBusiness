@@ -13,12 +13,10 @@ if (isset($_SESSION["logged_in"]))
 	if($row["in_building_now"] == 1)
 	{
 		user_out_building();
-		echo "out";
 	}
 	else
 	{
 		user_in_building();
-		echo "in";
 	}
 
 }

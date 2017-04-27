@@ -186,13 +186,38 @@ function user_offline()
 
 function user_in_building()
 {
-
+	$date_today = date('Y-m-d');
 	$link = connecteren();
 
-	$query_in_building = "INSERT INTO `in_building` (`user_id`, `in_building_now`) VALUES (" .$_SESSION["user_id"]. ", 1)";
+	$query = "SELECT time_check FROM in_building WHERE (user_id = " .$_SESSION["user_id"]. ") && (in_building_now = 1) ORDER BY in_building_id DESC LIMIT 1";
 
-	$result_in_building = mysqli_query($link, $query_in_building) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_in_building\"");
+	$result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_user\"");
+	
+	if (mysqli_num_rows($result) == 1)
+	{
+			$result_tijd = mysqli_fetch_array($result);
+			$datumtijd = date_create($result_tijd['time_check']);
+			$date = $datumtijd->format('Y-m-d');
+			if($date_today == $date)
+			{
+				$y = 1;
 
+			}
+			if($y == NULL)
+			{
+				$query_in_building = "INSERT INTO `in_building` (`user_id`, `in_building_now`) VALUES (" .$_SESSION["user_id"]. ", 1)";
+				$result_in_building = mysqli_query($link, $query_in_building) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_in_building\"");
+
+				echo "in";
+			}
+	}
+	else
+	{
+		$query_in_building = "INSERT INTO `in_building` (`user_id`, `in_building_now`) VALUES (" .$_SESSION["user_id"]. ", 1)";
+		$result_in_building = mysqli_query($link, $query_in_building) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_in_building\"");
+
+		echo "in";
+	}
 	
 	mysqli_close($link);
 }
@@ -204,6 +229,8 @@ function user_out_building()
 	$query_out_building = "INSERT INTO `in_building` (`user_id`, `in_building_now`) VALUES (" .$_SESSION["user_id"]. ", 0)";
 
 	$result_out_building = mysqli_query($link, $query_out_building) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_out_building\"");
+
+	echo "out";
 
 	
 	mysqli_close($link);

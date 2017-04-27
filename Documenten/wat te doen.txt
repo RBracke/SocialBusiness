@@ -1,9 +1,8 @@
 wat te doen?
 
-bug: berichtengeschiedenis dat wanneer iemand bericht leest op iemand anders account dit bericht niet als gelezen geset wordt.
 bug: wanneer in messages en manage_users gezocht wordt en niets gevonden is geeft dit lege grafiek ipv message.
-eventueel: bestanden bij berichten
 bug: popup bij search op admin_page_user_manage bij nin
 opmaak: add knop onder cellen plaatsen bij Admin_user_add en Admin_user_manage.
-bug: maar 1 kseer per dag in en uit checken
 bug: delete werkt niet (waarschijnlijk door foreign keys maar wanneer persoon verwijderd wordt moeten messages en check_in_out data ook verwijderd worden van die persoon)
+bug: geen autorefresh bij check_in_out en tekst wanneer men meerdere keren probeerd in te loggen op een dag
+opmaak: message weergeven of dit een bestand bevat.
