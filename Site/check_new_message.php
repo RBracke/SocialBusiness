@@ -5,6 +5,7 @@ include("functions.php");
 if (isset($_SESSION["user_id"]))
 {
 	$link = connecteren();
+	fill_session($_SESSION["user_id"]);
 
 	$query_aantal = "SELECT * FROM message WHERE receipant = " .$_SESSION["user_id"]. " && gelezen = 0";
 
