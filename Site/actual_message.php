@@ -13,16 +13,11 @@ if (isset($_SESSION["logged_in"]) && isset($_POST["id"]) && isset($_POST["messag
 	$colleague_id = strip($_POST["id"]);
 	$message_id = strip($_POST["message_id"]);
 
-	if ($colleague_id != $_SESSION["user_id"])
-	{
-		$query_read = "UPDATE message SET gelezen = 1 WHERE message_id = " .$message_id;
-
-		mysqli_query($link, $query_read) or die("Er is een fout opgetreden bij het uitvoeren van de query: \"$query_read\"");
-	}
-
-
 	$query_sended = "SELECT sender, receipant FROM `message` WHERE message_id = " .$message_id;
 	$result_sended = mysqli_query($link, $query_sended) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_sended\"");
+
+
+	
 
 	if ($row = $result_sended->fetch_assoc()) 
 	{
@@ -32,6 +27,15 @@ if (isset($_SESSION["logged_in"]) && isset($_POST["id"]) && isset($_POST["messag
 	{
 		exit();
 	}
+
+
+	if ($colleague_id != $_SESSION["user_id"] && $row["receipant"] == $_SESSION["user_id"])
+	{
+		$query_read = "UPDATE message SET gelezen = 1 WHERE message_id = " .$message_id;
+
+		mysqli_query($link, $query_read) or die("Er is een fout opgetreden bij het uitvoeren van de query: \"$query_read\"");
+	}
+
 
 	if ($row["sender"] == $_SESSION["user_id"] || $row["receipant"] == $_SESSION["user_id"] || $row["sender"] == $_SESSION["colleague"]["user_id"] || $row["receipant"] == $_SESSION["colleague"]["user_id"]) 
 	{
