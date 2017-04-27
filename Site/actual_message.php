@@ -188,7 +188,17 @@ if (isset($_SESSION["logged_in"]) && isset($_POST["id"]) && isset($_POST["messag
 					if (mysqli_num_rows($result) == 1){
 						$result = mysqli_fetch_array($result);
 						echo "<div class='form-group'><label for='comment'><h3>" .$result['topic']. "</h3></label><hr class='hr'><textarea class='form-control white_back' rows= '15' readonly>";
-						echo "".$result['content']."</textarea><br><a href=\"colleague_page.php?id=".$result['sender']."&topic=RE: " .$result['topic']. "\"> Reply</a></div>";
+						echo "".$result['content']."</textarea></div>";
+
+						if ($result['receipant'] == $_SESSION['user_id'])
+						{
+							echo "<div><a class=\"btn btn-warning\" href=\"colleague_page.php?id=".$result['sender']."&topic=RE: " .$result['topic']. "\"> Reply</a></div><br>";
+						}
+
+						if ($result['file'] != NULL)
+						{
+							echo "<div><a class=\"btn btn-warning\" href=\"Files/" .$result["file"]. "\" download>File download</a></div>";
+						}
 					}
 					?>
 					<p class="clear_both"></p>

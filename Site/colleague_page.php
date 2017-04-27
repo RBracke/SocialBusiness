@@ -152,7 +152,7 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
 								echo "<div class='alert alert-success'><strong>Success!</strong> Your message has been sent successfully</div>";
 							}
 							?>
-							<form class="form-vertical" name="message" method="post" action="post_message.php">
+							<form class="form-vertical" name="message" method="post" action="post_message.php" enctype="multipart/form-data">
 								<div class="form-group">
 									<label for="topic" class="control-label h4 no_margin_top">Topic</label>
 									<input type="text" class="form-control" id="topic" name="topic" <?php if (isset($_GET["topic"])) { echo "value=\"" .$_GET["topic"]. "\""; } ?>>
@@ -164,7 +164,7 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]))
 									<input type="hidden" name="receipant" value="<?php echo $_SESSION["colleague"]["user_id"]; ?>"> 
 								<div class="form-group">
 									<div class="col-sm-12 no_pad_left pad_15_bottom">
-										<input type="file" class="btn btn-warning file">
+										<input type="file" id="file_message" name="file_message" class="btn btn-warning file">
 									</div>
 									<div class="col-sm-12 no_pad_left">
 										<button type="submit" class="btn btn-warning">Send</button>
