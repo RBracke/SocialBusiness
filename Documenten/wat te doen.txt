@@ -2,10 +2,10 @@ wat te doen?
 
 bug: wanneer een bericht zonder titel verzonden wordt kan dit niet geopent worden. makkelijkste oplossing: bericht zonder titel niet verzenden.
 extra: wanneer men op het file paperclip icoontje klikt op de message page file automatisch downloaden
+extra: wanneer men dubbel incheck op een dag dat er een tekst verschijnt dat je maar 1 keer per dag kan in en uitchecken
+extra: feedback wanneer gebruiker iets doet bv. bij admin add user wanneer men niets invult gaat men gewoon naar user_page. dit kan verwarrend zijn.
 
 eventueel:
 bug: popup bij search op admin_page_user_manage bij nin
 extra: online en in_building weergeven op user page via ajax
-extra: wanneer men dubbel incheck op een dag dat er een tekst verschijnt dat je maar 1 keer per dag kan in en uitchecken
 extra: eventueel meer dingen in functies
-extra: feedback wanneer gebruiker iets doet
