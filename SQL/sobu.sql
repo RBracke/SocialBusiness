@@ -70,8 +70,8 @@ INSERT INTO `rights` (`rights_id`, `info`, `check_in_out`, `messages`) VALUES
 (8, 1, 1, 1);
 
 INSERT INTO `user` (`user_id`, `name`, `nin`, `address`, `gender`, `email`, `profile_picture`, `date_of_birth`, `martial_status`, `password`, `phone_number`, `function`, `rights_id`, `admin`, `start_date`) VALUES
-(1, 'Ruben De Admin', 86022402508, 'wijnegemstenweg 112e', 1, 'Ruben@admin.com', '1.jpg', '1996-12-24', 'married', '21232f297a57a5a743894a0e4a801fc3', '0494456865', 'Boss', 8, 1, '2017-04-01'), /*password = admin*/
-(2, 'Kenzo De Admin', 60061812456, 'kenzotlaan 11', 1, 'kenzo@admin.com', '2.jpg', '1997-12-24', 'married', '21232f297a57a5a743894a0e4a801fc3', '0488656154', 'Boss', 8, 1, '2017-03-01'),
+(1, 'Ruben Bracke', 86022402508, 'wijnegemstenweg 112e', 1, 'Ruben@admin.com', '1.jpg', '1996-12-24', 'married', '21232f297a57a5a743894a0e4a801fc3', '0494456865', 'Admin', 8, 1, '2017-04-01'), /*password = admin*/
+(2, 'Kenzo De Ruysscher', 60061812456, 'kenzotlaan 11', 1, 'kenzo@admin.com', '2.jpg', '1997-12-24', 'married', '21232f297a57a5a743894a0e4a801fc3', '0488656154', 'Admin', 8, 1, '2017-03-01'),
 (3, 'joske', 44121181161, 'josdreef 24', 1, 'jos@hotmail.com', NULL, '1990-05-25', 'single', '21232f297a57a5a743894a0e4a801fc3', '0568799563', 'Employee', 5, 0, '2012-08-01'),
 (4, 'josefien',42082713590, 'nieuwdreef 54', 0, 'josefien@hotmail.com', NULL, '1992-06-25', 'in relationship', '21232f297a57a5a743894a0e4a801fc3', '0675419824', 'cleaning lady', 1, 0, '2010-08-25'),
 (5, 'jef',2806122056, 'boonhoek 88', 1, 'jef@hotmail.com', NULL, '1988-11-25', 'divorced', '21232f297a57a5a743894a0e4a801fc3', '05423647526', 'cook', 1, 0, '2008-11-25'),

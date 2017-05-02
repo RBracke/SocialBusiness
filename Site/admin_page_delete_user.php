@@ -9,9 +9,14 @@ if(isset($_SESSION['logged_in']) && isset($_SESSION["admin"]) && ($_SESSION["adm
 {
 	$id = strip($_GET["id"]);
 
-	$query_function = "DELETE FROM user WHERE user.user_id = " .$id;
+	$query1 = "DELETE FROM message WHERE message.receipant and message.sender = " .$id;
+	mysqli_query($link, $query1) or die("Er is een fout opgetreden bij het uitvoeren van de query: \"$query1\"");
 
-	mysqli_query($link, $query_function) or die("Er is een fout opgetreden bij het uitvoeren van de query: \"$query_function\"");
+	$query2 = "DELETE FROM in_building WHERE in_building.user_id = " .$id;
+	mysqli_query($link, $query2) or die("Er is een fout opgetreden bij het uitvoeren van de query: \"$query2\"");
+
+	$query3 = "DELETE FROM user WHERE user.user_id = " .$id;
+	mysqli_query($link, $query3) or die("Er is een fout opgetreden bij het uitvoeren van de query: \"$query3\"");
 
 
 	mysqli_close($link);
