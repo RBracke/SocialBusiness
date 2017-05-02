@@ -198,7 +198,7 @@ if (isset($_SESSION["logged_in"]))
 									</div>
 								</div>
 							</form>
-							<div class="col-md-12"><hr class="hr"></div>
+							<div class="col-md-12"><hr class="hr"></div><br>
 							<div class="col-md-12" id="members">
 								<?php
 								show_member();
