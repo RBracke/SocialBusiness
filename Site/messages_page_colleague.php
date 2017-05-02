@@ -62,7 +62,7 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]) && ($_SESSION["rights"][
 					}
 					else
 					{
-						output.innerHTML = "<h2>Geen resultaten.</h2>";
+						output.innerHTML = "<br><div class='alert alert-warning'><strong>No Messages found.</strong></div>";
 					}
 				}
 			}

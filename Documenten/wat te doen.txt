@@ -1,6 +1,5 @@
 wat te doen?
 
-bug: wanneer in messages en manage_users gezocht wordt en niets gevonden is geeft dit lege grafiek ipv message.
 bug: wanneer geen nieuwe messages, geel bolletje wegdoen.
 
 eventueel:

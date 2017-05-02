@@ -60,7 +60,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 					}
 					else
 					{
-						output.innerHTML = "<h2>Geen resultaten.</h2>";
+						output.innerHTML = "<br><div class='alert alert-warning'><strong>No Results found.</strong></div>";
 					}
 				}
 			}
