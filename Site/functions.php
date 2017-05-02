@@ -188,6 +188,7 @@ function user_in_building()
 {
 	$date_today = date('Y-m-d');
 	$link = connecteren();
+	$y = NULL;
 
 	$query = "SELECT time_check FROM in_building WHERE (user_id = " .$_SESSION["user_id"]. ") && (in_building_now = 1) ORDER BY in_building_id DESC LIMIT 1";
 

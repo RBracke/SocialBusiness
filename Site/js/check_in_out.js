@@ -28,7 +28,7 @@ function refresh_in_building() {
 				output_button.innerHTML = "Check out";
 				output_warning.innerHTML = "<small>Don't forget to check out when leaving.</small>";
 			}
-			else
+			else if (xhr.responseText == "out")
 			{
 				output_icon.src = "IMG/Red_square.png";
 				output_icon.alt = "Not in building";
@@ -36,6 +36,10 @@ function refresh_in_building() {
 				output_button.className = "btn btn-success";
 				output_button.innerHTML = "Check in";
 				output_warning.innerHTML = "<small>Don't forget to check in when arriving.</small>";
+			}
+			else
+			{
+				output_button.innerHTML = xhr.responseText;
 			}
 		}
 		else
