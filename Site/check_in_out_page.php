@@ -56,15 +56,8 @@ if (isset($_SESSION["logged_in"]))
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav navbar-right links_bovenaan">
 						<li><a href="messages_page.php">Messages
-						<?php 
-								$link = connecteren();
-								$query = "SELECT * FROM message WHERE receipant = " .$_SESSION["user_id"]. " && gelezen = 0";
-								$result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
-								if($result->num_rows > 0)
-								{
-									echo "<span class='badge' id='message_aantal'></span>";
-								}
-								mysqli_close($link);
+							<?php 
+								print_badge();
 							?></a></li>
 						<li><a href="settings_page.php">Settings</a></li>
 							<?php
