@@ -166,7 +166,7 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]) && $_SESSION["rights"]["
 								<div class="col-md-3">Martial status</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["martial_status"]; ?></div>
 							</div><p class="clear_both"></p>
 							<div class="form-group">
-								<div class="col-md-3">Personal email</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["email"]; ?></div>
+								<div class="col-md-3">Email</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["email"]; ?></div>
 							</div><p class="clear_both"></p>
 							<div class="form-group">
 								<div class="col-md-3">Phone number</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["phone_number"]; ?></div>

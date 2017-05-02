@@ -143,7 +143,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["admin"] == 1 && isset($_GET["id"
 									</div>
 								</div>
 								<div class="form-group <?php if (isset($_GET["email"]) && $_GET["email"] == "ok") {echo "has-success";} elseif (isset($_GET["email"]) && $_GET["email"] == "error") {echo "has-error";} ?>">
-									<label for="email" class="col-md-3 control-label">Personal email</label>
+									<label for="email" class="col-md-3 control-label">Email</label>
 									<div class="col-md-9">
 										<input type="email" class="form-control" id="email" name="email" value="<?php echo $_SESSION["colleague"]["email"]; ?>">
 									</div>

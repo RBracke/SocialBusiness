@@ -5,3 +5,4 @@ bug: wanneer geen nieuwe messages, geel bolletje wegdoen.
 eventueel:
 bug: popup bij search op admin_page_user_manage bij nin
 extra: wanneer men op het file paperclip icoontje klikt op de message page file automatisch downloaden
+extra: online en in_building weergeven op user page via ajax
