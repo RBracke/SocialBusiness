@@ -1,7 +1,6 @@
 wat te doen?
 
 bug: wanneer in messages en manage_users gezocht wordt en niets gevonden is geeft dit lege grafiek ipv message.
-opmaak: add knop onder cellen plaatsen bij Admin_user_add en Admin_user_manage.
 bug: delete werkt niet (waarschijnlijk door foreign keys maar wanneer persoon verwijderd wordt moeten messages en check_in_out data ook verwijderd worden van die persoon)
 opmaak: message weergeven of dit een bestand bevat in de page met lijst met messages.
 bug: wanneer geen nieuwe messages, geel bolletje wegdoen.

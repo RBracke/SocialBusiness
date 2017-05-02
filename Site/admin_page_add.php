@@ -80,7 +80,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="rights_checkbox" class="col-md-3 control-label">Has rights<span class="rood">*</span></label> <!-- waardes tellen niet op-->
+										<label for="rights_checkbox" class="col-md-3 control-label">Has rights</label> <!-- waardes tellen niet op-->
 										<div class="col-md-9">
 											<label class="checkbox-inline"><input type="checkbox" id="rights_checkbox" value="1" name="rights_checkbox_info">Check info</label>
 											<label class="checkbox-inline"><input type="checkbox" value="1" name="rights_checkbox_time">Check in and out times</label>
@@ -142,10 +142,13 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 											<input type="password" class="form-control" id="repassword" name="repassword">
 										</div>
 									</div>
-									
-									<div class="col-md-9">
-										<span class="rood">* Required&nbsp;&nbsp;&nbsp;</span>
-										<button type="submit" class="btn btn-warning">Add</button>
+									<div class="form-group">
+										<div class="col-xs-10">
+											<label class="col-md-3 control-label"><button type="submit" class="btn btn-warning">Add</button></label>
+										</div>
+										<div class="col-xs-2">
+											<span class="rood">* Required</span>
+										</div>
 									</div>
 								</form>
 							</div>

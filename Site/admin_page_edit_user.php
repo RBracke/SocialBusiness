@@ -166,8 +166,8 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["admin"] == 1 && isset($_GET["id"
 										<input type="password" class="form-control" id="repassword" name="repassword">
 									</div>
 								</div>
-								<div class="col-md-9">
-									<button type="submit" class="btn btn-warning">Save</button>
+								<div class="col-md-10">
+									<label class="col-md-3 control-label"><button type="submit" class="btn btn-warning">Save</button></label>
 								</div>
 							</form>
 						</div>
