@@ -93,7 +93,17 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right links_bovenaan">
-							<li><a href="messages_page.php">Messages<span class="badge" id="message_aantal"></span></a></li>
+							<li><a href="messages_page.php">Messages
+							<?php 
+								$link = connecteren();
+								$query = "SELECT * FROM message WHERE receipant = " .$_SESSION["user_id"]. " && gelezen = 0";
+								$result = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
+								if($result->num_rows > 0)
+								{
+									echo "<span class='badge' id='message_aantal'></span>";
+								}
+								mysqli_close($link);
+							?></a></li>
 							<li><a href="settings_page.php">Settings</a></li>
 							<li><a href="admin_page.php">Admin panel</a></li>
 							<li><a href="logout.php">Logout</a></li>
