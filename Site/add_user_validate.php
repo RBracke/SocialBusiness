@@ -5,7 +5,7 @@ session_start();
 include("functions.php");
 
 $link = connecteren();
-if(isset($_SESSION['logged_in']) && isset($_SESSION["admin"]) && ($_SESSION["admin"] == 1) && isset($_POST["name"]) && isset($_POST["function"]) && isset($_POST["admin_radio"]))
+if(isset($_SESSION['logged_in']) && isset($_SESSION["admin"]) && ($_SESSION["admin"] == 1) && isset($_POST["name"]) && isset($_POST["function"]) && isset($_POST["admin_radio"]) && isset($_POST["email"]))
 {
 	$name = strip($_POST["name"]);
 	$function = strip($_POST["function"]);

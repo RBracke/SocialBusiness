@@ -119,7 +119,7 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="email" class="col-md-3 control-label">Personal email</label>
+										<label for="email" class="col-md-3 control-label">Personal email<span class="rood">*</span></label>
 										<div class="col-md-9">
 											<input type="email" class="form-control" id="email" name="email">
 										</div>
