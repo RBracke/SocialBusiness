@@ -467,13 +467,13 @@ function print_messages_list()
 	$link = connecteren();
 
 	
-	$query_sended = "SELECT message.date_time, message.topic, message.message_id, message.receipant, message.sender, message.gelezen FROM message LEFT JOIN user ON message.receipant = user.user_id WHERE user.user_id  = " .$_SESSION["user_id"]. " ORDER BY message.message_id DESC";
+	$query_sended = "SELECT message.date_time, message.topic, message.message_id, message.receipant, message.sender, message.gelezen, message.file FROM message LEFT JOIN user ON message.receipant = user.user_id WHERE user.user_id  = " .$_SESSION["user_id"]. " ORDER BY message.message_id DESC";
 	$result_sended = mysqli_query($link, $query_sended) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_sended\"");
 
 
 	if($result_sended->num_rows > 0) 
 	{
-		echo "<div class='panel-group'><div class='panel panel-default'><div class='panel-heading'><h4 class='text-primary'><a data-toggle='collapse' href='#collapse2'>Received</a></h4></div><div id='collapse2' class='panel-collapse collapse'><div class='panel-body'><div class='table-responsive'><table class='table table-hover'><thead><tr><th>Date and time</th><th>Topic</th><th>Sender</th></tr></thead><tbody>";
+		echo "<div class='panel-group'><div class='panel panel-default'><div class='panel-heading'><h4 class='text-primary'><a data-toggle='collapse' href='#collapse2'>Received</a></h4></div><div id='collapse2' class='panel-collapse collapse'><div class='panel-body'><div class='table-responsive'><table class='table table-hover'><thead><tr><th>Date and time</th><th>Topic</th><th>Sender</th><th></th></tr></thead><tbody>";
 		while($row = $result_sended->fetch_assoc()) 
 		{
 			$query_sender_name = "SELECT name FROM user WHERE user_id  = " .$row["sender"];
@@ -489,13 +489,21 @@ function print_messages_list()
 				{
 					echo "<tr>";
 				}
-				echo "<td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$row["sender"]."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row['sender']."\">".$row_sender_name['name']."</a></td></tr>";
+				echo "<td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$row["sender"]."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row['sender']."\">".$row_sender_name['name']."</a></td>";
+				if (isset($row["file"]))
+				{
+					echo "<td><img src=\"IMG/file.png\" title=\"File\" alt=\"File\" class=\"indicator_online_building\"><td></tr>";
+				}
+				else
+				{
+					echo "<td><td></tr>";
+				}
 			}
 		}
 		echo "</tbody></table></div></div></div></div></div>";
 	}
 	
-	$query_sended = "SELECT message.date_time, message.topic, message.message_id, message.receipant, message.sender FROM message LEFT JOIN user ON message.sender = user.user_id WHERE user.user_id  = " .$_SESSION["user_id"]. " ORDER BY message.message_id DESC";
+	$query_sended = "SELECT message.date_time, message.topic, message.message_id, message.receipant, message.sender, message.file FROM message LEFT JOIN user ON message.sender = user.user_id WHERE user.user_id  = " .$_SESSION["user_id"]. " ORDER BY message.message_id DESC";
 	$result_sended = mysqli_query($link, $query_sended) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_sended\"");
 
 
@@ -510,7 +518,15 @@ function print_messages_list()
 			while($row_rec_name = $result_rec_name->fetch_assoc()) 
 			{
 
-				echo "<tr><td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$row["receipant"]."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row['receipant']."\">".$row_rec_name['name']."</a></td></tr>";
+				echo "<tr><td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$row["receipant"]."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row['receipant']."\">".$row_rec_name['name']."</a></td>";
+				if (isset($row["file"]))
+				{
+					echo "<td><img src=\"IMG/file.png\" title=\"File\" alt=\"File\" class=\"indicator_online_building\"><td></tr>";
+				}
+				else
+				{
+					echo "<td><td></tr>";
+				}
 			}
 		}
 		echo "</tbody></table></div></div></div></div></div>";
@@ -527,7 +543,7 @@ function print_messages_list_colleague()
 	$link = connecteren();
 
 	
-	$query_sended = "SELECT message.date_time, message.topic, message.message_id, message.receipant, message.sender, message.gelezen FROM message LEFT JOIN user ON message.receipant = user.user_id WHERE user.user_id  = '" .$_SESSION["colleague"]["user_id"]. "' ORDER BY message.message_id DESC";
+	$query_sended = "SELECT message.date_time, message.topic, message.message_id, message.receipant, message.sender, message.gelezen, message.file FROM message LEFT JOIN user ON message.receipant = user.user_id WHERE user.user_id  = '" .$_SESSION["colleague"]["user_id"]. "' ORDER BY message.message_id DESC";
 	$result_sended = mysqli_query($link, $query_sended) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_sended\"");
 
 
@@ -549,13 +565,21 @@ function print_messages_list_colleague()
 				{
 					echo "<tr>";
 				}
-				echo "<td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$row["sender"]."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row['sender']."\">".$row_sender_name['name']."</a></td></tr>";
+				echo "<td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$row["sender"]."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row['sender']."\">".$row_sender_name['name']."</a></td>";
+				if (isset($row["file"]))
+				{
+					echo "<td><img src=\"IMG/file.png\" title=\"File\" alt=\"File\" class=\"indicator_online_building\"><td></tr>";
+				}
+				else
+				{
+					echo "<td><td></tr>";
+				}
 			}
 		}
 		echo "</tbody></table></div></div></div></div></div>";
 	}
 	
-	$query_sended = "SELECT message.date_time, message.topic, message.message_id, message.receipant, message.sender FROM message LEFT JOIN user ON message.sender = user.user_id WHERE user.user_id  = '" .$_SESSION["colleague"]["user_id"]. "' ORDER BY message.message_id DESC";
+	$query_sended = "SELECT message.date_time, message.topic, message.message_id, message.receipant, message.sender, message.file FROM message LEFT JOIN user ON message.sender = user.user_id WHERE user.user_id  = '" .$_SESSION["colleague"]["user_id"]. "' ORDER BY message.message_id DESC";
 	$result_sended = mysqli_query($link, $query_sended) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_sended\"");
 
 
@@ -570,7 +594,15 @@ function print_messages_list_colleague()
 			while($row_rec_name = $result_rec_name->fetch_assoc()) 
 			{
 
-				echo "<tr><td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$row["receipant"]."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row['receipant']."\">".$row_rec_name['name']."</a></td></tr>";
+				echo "<tr><td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$row["receipant"]."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row['receipant']."\">".$row_rec_name['name']."</a></td>";
+				if (isset($row["file"]))
+				{
+					echo "<td><img src=\"IMG/file.png\" title=\"File\" alt=\"File\" class=\"indicator_online_building\"><td></tr>";
+				}
+				else
+				{
+					echo "<td><td></tr>";
+				}
 			}
 		}
 		echo "</tbody></table></div></div></div></div></div>";
