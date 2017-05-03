@@ -37,6 +37,15 @@ function refresh_in_building() {
 				output_button.innerHTML = "Check in";
 				output_warning.innerHTML = "<small>Don't forget to check in when arriving.</small>";
 			}
+			else if (xhr.responseText == "Over limit")
+			{
+				output_icon.src = "IMG/Red_square.png";
+				output_icon.alt = "Not in building";
+				output_icon.title = "Not in building";
+				output_button.className = "btn btn-warning";
+				output_button.innerHTML = "Over limit";
+				output_warning.innerHTML = "<small>You can only check in once a day.</small>";
+			}
 			else
 			{
 				output_button.innerHTML = xhr.responseText;
@@ -47,9 +56,6 @@ function refresh_in_building() {
 			output_icon.src = "IMG/Red_square.png";
 			output_icon.alt = "Not in building";
 			output_icon.title = "Not in building";
-			output_button.className = "btn btn-success";
-			output_button.innerHTML = "Check in";
-			output_warning.innerHTML = "<small>Don't forget to check in when arriving.</small>";
 		}
 	}
 }

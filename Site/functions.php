@@ -202,6 +202,8 @@ function user_in_building()
 			if($date_today == $date)
 			{
 				$y = 1;
+				echo 'Over limit';
+				$_SESSION["overlimit"] = 1;
 
 			}
 			if($y == NULL)
@@ -219,6 +221,7 @@ function user_in_building()
 
 		echo "in";
 	}
+
 	
 	mysqli_close($link);
 }

@@ -66,6 +66,11 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 				<div class="col-xs-12 col-sm-12 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 					<div class="BOX">
 						<div class="col-md-12">
+				<?php if (isset($_GET["required_error"]) && $_GET["required_error"] == "error")
+				{
+					echo "<div class='alert alert-danger'><strong>Fill in the required fields.</strong></div>";
+				}
+				?>
 							<form class="form-horizontal" name="add_user" method="post" action="add_user_validate.php">
 								<div class="form-group margin_15_top">
 									<label for="dob" class="col-md-3 control-label">Name<span class="rood">*</span></label>

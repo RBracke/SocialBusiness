@@ -5,7 +5,7 @@ session_start();
 include("functions.php");
 
 $link = connecteren();
-if(isset($_SESSION['logged_in']) && isset($_SESSION["admin"]) && ($_SESSION["admin"] == 1) && isset($_POST["name"]) && isset($_POST["function"]) && isset($_POST["admin_radio"]) && isset($_POST["email"]))
+if(isset($_SESSION['logged_in']) && isset($_SESSION["admin"]) && ($_SESSION["admin"] == 1) && isset($_POST["name"]) && isset($_POST["function"]) && isset($_POST["admin_radio"]) && ($_POST["email"] != NULL))
 {
 	$name = strip($_POST["name"]);
 	$function = strip($_POST["function"]);
@@ -86,7 +86,7 @@ if(isset($_SESSION['logged_in']) && isset($_SESSION["admin"]) && ($_SESSION["adm
 }
 else
 {
-	header( "Location: index.php" );
+	header("Location: admin_page_add.php?required_error=error");
 }
 
 
