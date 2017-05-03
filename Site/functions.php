@@ -88,6 +88,8 @@ function user_login($email, $password)
 
 function fill_session($id)
 {
+	$y = NULL;
+	$date_today = date('Y-m-d');
 	$link = connecteren();
 
 	$query_user = "SELECT name, nin, address, gender, email, profile_picture, date_of_birth, online, martial_status, phone_number, function, rights_id, admin, start_date FROM user WHERE user_id = '" .$id. "'";
@@ -113,6 +115,31 @@ function fill_session($id)
 		$rights_id = $result_user["rights_id"];
 		$_SESSION["admin"] = $result_user["admin"];
 		$_SESSION["start_date"] = $result_user["start_date"];
+
+		$query_overlimit = "SELECT time_check FROM in_building WHERE (user_id = " .$_SESSION["user_id"]. ") && (in_building_now = 1) ORDER BY in_building_id DESC LIMIT 1";
+
+		$result_overlimit = mysqli_query($link, $query_overlimit) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_overlimit\"");
+
+		if (mysqli_num_rows($result_overlimit) == 1)
+		{
+			$result_overlimit_tijd = mysqli_fetch_array($result_overlimit);
+			$datumtijd = date_create($result_overlimit_tijd['time_check']);
+			$date = $datumtijd->format('Y-m-d');
+			if($date_today == $date)
+			{
+				$y = 1;
+				$_SESSION["overlimit"] = 1;
+
+			}
+			if($y == NULL)
+			{
+				$_SESSION["overlimit"] = 0;
+			}
+		}
+		else
+		{
+			$_SESSION["overlimit"] = 0;
+		}
 
 		$query_in_building = "SELECT in_building_now FROM in_building WHERE user_id = " .$_SESSION["user_id"]." ORDER by time_check DESC";
 		$result_in_building = mysqli_query($link, $query_in_building) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_in_building\"");
@@ -196,23 +223,23 @@ function user_in_building()
 	
 	if (mysqli_num_rows($result) == 1)
 	{
-			$result_tijd = mysqli_fetch_array($result);
-			$datumtijd = date_create($result_tijd['time_check']);
-			$date = $datumtijd->format('Y-m-d');
-			if($date_today == $date)
-			{
-				$y = 1;
-				echo 'Over limit';
-				$_SESSION["overlimit"] = 1;
+		$result_tijd = mysqli_fetch_array($result);
+		$datumtijd = date_create($result_tijd['time_check']);
+		$date = $datumtijd->format('Y-m-d');
+		if($date_today == $date)
+		{
+			$y = 1;
+			echo 'Over limit';
+			$_SESSION["overlimit"] = 1;
 
-			}
-			if($y == NULL)
-			{
-				$query_in_building = "INSERT INTO `in_building` (`user_id`, `in_building_now`) VALUES (" .$_SESSION["user_id"]. ", 1)";
-				$result_in_building = mysqli_query($link, $query_in_building) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_in_building\"");
+		}
+		if($y == NULL)
+		{
+			$query_in_building = "INSERT INTO `in_building` (`user_id`, `in_building_now`) VALUES (" .$_SESSION["user_id"]. ", 1)";
+			$result_in_building = mysqli_query($link, $query_in_building) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_in_building\"");
 
-				echo "in";
-			}
+			echo "in";
+		}
 	}
 	else
 	{

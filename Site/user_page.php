@@ -164,12 +164,12 @@ if (isset($_SESSION["logged_in"]))
 										<div class="col-md-12 no_pad_left">
 
 											<?php
-											if (($_SESSION["in_building"] == 0) && !(isset($_SESSION["overlimit"])))
+											if (($_SESSION["in_building"] == 0) && $_SESSION["overlimit"] == 0)
 											{
 												echo "<button class=\"btn btn-success\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check in</button>";
 												echo "<h5 id=\"check_in_out_warning\"><small>Don't forget to check in when arriving.</small></h5>";
 											}
-											else if(isset($_SESSION["overlimit"]))
+											else if ($_SESSION["overlimit"] == 1)
 											{
 												echo "<button class=\"btn btn-warning\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Over limit</button>";
 												echo "<h5 id=\"check_in_out_warning\"><small>You can only check in once a day.</small></h5>";
