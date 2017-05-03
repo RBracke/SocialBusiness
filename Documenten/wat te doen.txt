@@ -1,7 +1,5 @@
 wat te doen?
 
-bug: dubbel inchecken op dezelfde dag werkt al half op user_page.
-
 eventueel:
 extra: online en in_building weergeven op user page via ajax
 extra: eventueel meer dingen in functies
