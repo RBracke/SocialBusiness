@@ -1,6 +1,7 @@
 wat te doen?
 
+klaar :) 03/05/2017
+
 eventueel:
 extra: online en in_building weergeven op user page via ajax
 extra: eventueel meer dingen in functies
-extra: bij "admin pannel manage users" een link in de naam zetten van de user
