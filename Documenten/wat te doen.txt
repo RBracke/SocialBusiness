@@ -1,6 +1,5 @@
 wat te doen?
 
-bug: waneer men geen messages heeft en er geen badge is, word er waneer je een message krijgt dit niet gerefresht
 extra: wanneer men dubbel incheck op een dag dat er een tekst verschijnt dat je maar 1 keer per dag kan in en uitchecken
 extra: feedback wanneer gebruiker iets doet bv. bij admin add user wanneer men niets invult gaat men gewoon naar user_page. dit kan verwarrend zijn.
 
