@@ -59,9 +59,13 @@ if (isset($_SESSION["logged_in"]))
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right links_bovenaan">
 							<li><a href="messages_page.php">Messages
-							<?php 
-								print_badge();
-							?></a></li>
+								<span id="message_badge">
+									<?php 
+									print_badge();
+									?>
+									
+								</span>
+							</a></li>
 							<li><a href="settings_page.php">Settings</a></li>
 							<?php
 
@@ -144,18 +148,18 @@ if (isset($_SESSION["logged_in"]))
 							</div>
 							<p class="clear_both"></p>
 						</div>
-						 <div class="BOX margin_15_bottom no_pad_bottom">
-							 <div class="col-md-12">
-								 <a href="info_page.php" class="h4">Info</a>
-							 </div>
-							 <p class="clear_both"></p>
-						 </div>
-						 <div class="BOX margin_15_bottom no_pad_bottom">
-							 <div class="col-md-12">
-								 <a href="check_in_out_page.php" class="h4">Check in and out history</a>
-							 </div>
-							 <p class="clear_both"></p>
-						 </div>
+						<div class="BOX margin_15_bottom no_pad_bottom">
+							<div class="col-md-12">
+								<a href="info_page.php" class="h4">Info</a>
+							</div>
+							<p class="clear_both"></p>
+						</div>
+						<div class="BOX margin_15_bottom no_pad_bottom">
+							<div class="col-md-12">
+								<a href="check_in_out_page.php" class="h4">Check in and out history</a>
+							</div>
+							<p class="clear_both"></p>
+						</div>
 					</div>
 					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
 						<div class="BOX">

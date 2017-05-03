@@ -9,6 +9,10 @@ if(isset($_SESSION['logged_in']) && isset($_SESSION["admin"]) && ($_SESSION["adm
 {
 	$id = strip($_GET["id"]);
 
+	$query0 = "SELECT name FROM user WHERE user_id =" .$id;
+	$result_name = mysqli_query($link, $query0) or die("Er is een fout opgetreden bij het uitvoeren van de query: \"$query0\"");
+	$rij = mysqli_fetch_array($result_name);
+
 	$query1 = "DELETE FROM message WHERE message.receipant and message.sender = " .$id;
 	mysqli_query($link, $query1) or die("Er is een fout opgetreden bij het uitvoeren van de query: \"$query1\"");
 
@@ -21,7 +25,7 @@ if(isset($_SESSION['logged_in']) && isset($_SESSION["admin"]) && ($_SESSION["adm
 
 	mysqli_close($link);
 
-	header( "Location: admin_page_manage.php" );
+	header( "Location: admin_page_manage.php?delete=" .$rij["name"] );
 }
 else
 {

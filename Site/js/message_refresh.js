@@ -16,18 +16,18 @@ setInterval(function() {
 
 function refresh_inhoud_aantal() 
 {
-	var output = document.getElementById("message_aantal");
+	var output = document.getElementById("message_badge");
 	if (xhr.readyState == 4 && xhr.status == 200)
 	{
-		if(xhr.responseText)
+		if(xhr.responseText && xhr.responseText != 0)
 		{
 
-			output.innerHTML = xhr.responseText;
+			output.innerHTML = "<span class='badge' id='message_aantal'>" +xhr.responseText+ "</span>";
 
 		}
 		else
 		{
-			output.innerHTML = "0";
+			output.innerHTML = "";
 		}
 	}
 }

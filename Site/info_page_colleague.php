@@ -50,9 +50,13 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]) && $_SESSION["rights"]["
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right links_bovenaan">
 							<li><a href="messages_page.php">Messages
-							<?php 
-								print_badge();
-							?></a></li>
+								<span id="message_badge">
+									<?php 
+									print_badge();
+									?>
+									
+								</span>
+							</a></li>
 							<li><a href="settings_page.php">Settings</a></li>
 							<?php
 
@@ -120,81 +124,81 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]) && $_SESSION["rights"]["
 						<?php
 						if ($_SESSION["rights"]["info"] == 1)
 						{
-								echo "<div class='BOX margin_15_bottom no_pad_bottom'>
-												<div class='col-md-12'>
-												<a href=\"info_page_colleague.php?id=" .$_SESSION['colleague']['user_id']. "\" class='h4'>Info</a>
-												</div>
-											<p class='clear_both'></p>
-											</div>";
-						}
+							echo "<div class='BOX margin_15_bottom no_pad_bottom'>
+							<div class='col-md-12'>
+								<a href=\"info_page_colleague.php?id=" .$_SESSION['colleague']['user_id']. "\" class='h4'>Info</a>
+							</div>
+							<p class='clear_both'></p>
+						</div>";
+					}
 
-						if ($_SESSION["rights"]["check_in_out"] == 1)
-						{
-								echo "<div class='BOX margin_15_bottom no_pad_bottom'>
-												<div class='col-md-12'>
-												<a href='check_in_out_page_colleague.php?id=" .$_SESSION['colleague']['user_id']. "' class='h4'>Check in and out history</a>
-												</div>
-											<p class='clear_both'></p>
-											</div>";
-						}
-
-						if ($_SESSION["rights"]["messages"] == 1)
-						{
-								echo "<div class='BOX margin_15_bottom no_pad_bottom'>
-												<div class='col-md-12'>
-												<a href='messages_page_colleague.php?id=" .$_SESSION['colleague']['user_id']. "'' class='h4'>Message and file history</a>
-												</div>
-											<p class='clear_both'></p>
-											</div>";
-						}
-						?>
-					</div>
-					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4">
-						<div class="BOX">
-							<h4>Info</h4>
-							<div class="col-md-12"><hr class="hr"><br></div>
-							<div class="form-group margin_15_top">
-							<div class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Nin</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["nin"]; ?></div>
-							</div><p class="clear_both"></p>
-							<div class="form-group">
-								<div class="col-md-3">Age</div><div class="col-md-9"><?php echo date("Y/m/d") - $_SESSION["colleague"]["date_of_birth"]; ?></div>
-							</div><p class="clear_both"></p>
-							<div class="form-group">
-								<div class="col-md-3">Gender</div><div class="col-md-9"><?php if($_SESSION["colleague"]["gender"] == "1"){echo "Male";} else{echo "Female";} ?></div>
-							</div><p class="clear_both"></p>
-							<div class="form-group">
-								<div class="col-md-3">Home address</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["address"]; ?></div>
-							</div><p class="clear_both"></p>
-							<div class="form-group">
-								<div class="col-md-3">Martial status</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["martial_status"]; ?></div>
-							</div><p class="clear_both"></p>
-							<div class="form-group">
-								<div class="col-md-3">Email</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["email"]; ?></div>
-							</div><p class="clear_both"></p>
-							<div class="form-group">
-								<div class="col-md-3">Phone number</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["phone_number"]; ?></div>
-							</div><p class="clear_both"></p>
-							<div class="form-group">
-								<div class="col-md-3">Start date</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["start_date"]; ?></div>
-							</div><p class="clear_both"></p>
-							<div class="form-group">
-								<div class="col-md-3">Days in company</div><div class="col-md-9"><?php $start_date = strtotime($_SESSION["colleague"]["start_date"]); echo floor((time() - $start_date)/86400); ?></div>
-							</div><p class="clear_both"></p>
+					if ($_SESSION["rights"]["check_in_out"] == 1)
+					{
+						echo "<div class='BOX margin_15_bottom no_pad_bottom'>
+						<div class='col-md-12'>
+							<a href='check_in_out_page_colleague.php?id=" .$_SESSION['colleague']['user_id']. "' class='h4'>Check in and out history</a>
 						</div>
+						<p class='clear_both'></p>
+					</div>";
+				}
+
+				if ($_SESSION["rights"]["messages"] == 1)
+				{
+					echo "<div class='BOX margin_15_bottom no_pad_bottom'>
+					<div class='col-md-12'>
+						<a href='messages_page_colleague.php?id=" .$_SESSION['colleague']['user_id']. "'' class='h4'>Message and file history</a>
 					</div>
-				</div>
+					<p class='clear_both'></p>
+				</div>";
+			}
+			?>
+		</div>
+		<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4">
+			<div class="BOX">
+				<h4>Info</h4>
+				<div class="col-md-12"><hr class="hr"><br></div>
+				<div class="form-group margin_15_top">
+					<div class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Nin</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["nin"]; ?></div>
+				</div><p class="clear_both"></p>
+				<div class="form-group">
+					<div class="col-md-3">Age</div><div class="col-md-9"><?php echo date("Y/m/d") - $_SESSION["colleague"]["date_of_birth"]; ?></div>
+				</div><p class="clear_both"></p>
+				<div class="form-group">
+					<div class="col-md-3">Gender</div><div class="col-md-9"><?php if($_SESSION["colleague"]["gender"] == "1"){echo "Male";} else{echo "Female";} ?></div>
+				</div><p class="clear_both"></p>
+				<div class="form-group">
+					<div class="col-md-3">Home address</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["address"]; ?></div>
+				</div><p class="clear_both"></p>
+				<div class="form-group">
+					<div class="col-md-3">Martial status</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["martial_status"]; ?></div>
+				</div><p class="clear_both"></p>
+				<div class="form-group">
+					<div class="col-md-3">Email</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["email"]; ?></div>
+				</div><p class="clear_both"></p>
+				<div class="form-group">
+					<div class="col-md-3">Phone number</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["phone_number"]; ?></div>
+				</div><p class="clear_both"></p>
+				<div class="form-group">
+					<div class="col-md-3">Start date</div><div class="col-md-9"><?php echo $_SESSION["colleague"]["start_date"]; ?></div>
+				</div><p class="clear_both"></p>
+				<div class="form-group">
+					<div class="col-md-3">Days in company</div><div class="col-md-9"><?php $start_date = strtotime($_SESSION["colleague"]["start_date"]); echo floor((time() - $start_date)/86400); ?></div>
+				</div><p class="clear_both"></p>
+			</div>
+		</div>
+	</div>
 
 
 
-				<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-				<!-- Include all compiled plugins (below), or include individual files as needed -->
-				<script src="js/bootstrap.min.js"></script>
-			</body>
-			</html>
-			<?php
-		}
-		else
-		{
-			header("Location: index.php");
-		}
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
+<?php
+}
+else
+{
+	header("Location: index.php");
+}

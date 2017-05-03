@@ -92,9 +92,13 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]) && ($_SESSION["rights"][
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right links_bovenaan">
 							<li><a href="messages_page.php">Messages
-							<?php 
-								print_badge();
-							?></a></li>
+								<span id="message_badge">
+									<?php 
+									print_badge();
+									?>
+									
+								</span>
+							</a></li>
 							<li><a href="settings_page.php">Settings</a></li>
 							<?php
 
@@ -162,70 +166,70 @@ if (isset($_SESSION["logged_in"]) && isset($_GET["id"]) && ($_SESSION["rights"][
 						<?php
 						if ($_SESSION["rights"]["info"] == 1)
 						{
-								echo "<div class='BOX margin_15_bottom no_pad_bottom'>
-												<div class='col-md-12'>
-												<a href=\"info_page_colleague.php?id=" .$_SESSION['colleague']['user_id']. "\" class='h4'>Info</a>
-												</div>
-											<p class='clear_both'></p>
-											</div>";
-						}
-
-						if ($_SESSION["rights"]["check_in_out"] == 1)
-						{
-								echo "<div class='BOX margin_15_bottom no_pad_bottom'>
-												<div class='col-md-12'>
-												<a href='check_in_out_page_colleague.php?id=" .$_SESSION['colleague']['user_id']. "' class='h4'>Check in and out history</a>
-												</div>
-											<p class='clear_both'></p>
-											</div>";
-						}
-
-						if ($_SESSION["rights"]["messages"] == 1)
-						{
-								echo "<div class='BOX margin_15_bottom no_pad_bottom'>
-												<div class='col-md-12'>
-												<a href='messages_page_colleague.php?id=" .$_SESSION['colleague']['user_id']. "'' class='h4'>Message and file history</a>
-												</div>
-											<p class='clear_both'></p>
-											</div>";
-						}
-						?>
-					</div>
-					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
-						<div class="BOX">
-						<h4>Messages</h4>
-							<div class="col-md-12"><hr class="hr"><br></div>
-							<form class="form-horizontal" name="people_search" method="post" action="#">
-								<div class="form-group">
-									<label for="zoeken" class="col-md-3 control-label">Search:</label>
-									<div class="col-md-9">
-										<input type="text" onkeyup="search_users();" class="form-control" id="zoeken" name="zoeken">
-									</div>
-								</div>
-							</form>
-							<div class="col-md-12"><hr class="hr"></div>
-							<div class="col-md-12" id="members">
-								<?php
-								print_messages_list_colleague();
-								?>
+							echo "<div class='BOX margin_15_bottom no_pad_bottom'>
+							<div class='col-md-12'>
+								<a href=\"info_page_colleague.php?id=" .$_SESSION['colleague']['user_id']. "\" class='h4'>Info</a>
 							</div>
-							<p class="clear_both"></p>
-							<p class="clear_both"></p>
+							<p class='clear_both'></p>
+						</div>";
+					}
+
+					if ($_SESSION["rights"]["check_in_out"] == 1)
+					{
+						echo "<div class='BOX margin_15_bottom no_pad_bottom'>
+						<div class='col-md-12'>
+							<a href='check_in_out_page_colleague.php?id=" .$_SESSION['colleague']['user_id']. "' class='h4'>Check in and out history</a>
+						</div>
+						<p class='clear_both'></p>
+					</div>";
+				}
+
+				if ($_SESSION["rights"]["messages"] == 1)
+				{
+					echo "<div class='BOX margin_15_bottom no_pad_bottom'>
+					<div class='col-md-12'>
+						<a href='messages_page_colleague.php?id=" .$_SESSION['colleague']['user_id']. "'' class='h4'>Message and file history</a>
+					</div>
+					<p class='clear_both'></p>
+				</div>";
+			}
+			?>
+		</div>
+		<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
+			<div class="BOX">
+				<h4>Messages</h4>
+				<div class="col-md-12"><hr class="hr"><br></div>
+				<form class="form-horizontal" name="people_search" method="post" action="#">
+					<div class="form-group">
+						<label for="zoeken" class="col-md-3 control-label">Search:</label>
+						<div class="col-md-9">
+							<input type="text" onkeyup="search_users();" class="form-control" id="zoeken" name="zoeken">
 						</div>
 					</div>
+				</form>
+				<div class="col-md-12"><hr class="hr"></div>
+				<div class="col-md-12" id="members">
+					<?php
+					print_messages_list_colleague();
+					?>
 				</div>
+				<p class="clear_both"></p>
+				<p class="clear_both"></p>
+			</div>
+		</div>
+	</div>
 
 
 
-				<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-				<!-- Include all compiled plugins (below), or include individual files as needed -->
-				<script src="js/bootstrap.min.js"></script>
-			</body>
-			</html>
-			<?php
-		}
-		else
-		{
-			header("Location: index.php");
-		}
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
+<?php
+}
+else
+{
+	header("Location: index.php");
+}

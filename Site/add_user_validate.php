@@ -82,7 +82,7 @@ if(isset($_SESSION['logged_in']) && isset($_SESSION["admin"]) && ($_SESSION["adm
 
 	mysqli_close($link);
 
-	header( "Location: admin_page_manage.php" );
+	header( "Location: admin_page_manage.php?add=".$name );
 }
 else
 {

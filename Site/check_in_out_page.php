@@ -26,40 +26,44 @@ if (isset($_SESSION["logged_in"]))
 		<script src="js/check_in_out.js"></script>
 		<script src="js/message_refresh.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-			<!-- Include all compiled plugins (below), or include individual files as needed -->
-			<script src="js/bootstrap.min.js"></script>
-				<!-- zingshart -->
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="js/bootstrap.min.js"></script>
+		<!-- zingshart -->
 		<script src= "js/zingchart.min.js"></script>
 		<script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
-		ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>
+			ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>
 
-		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+			<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+			<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 			<![endif]-->
 		</head>
 		<body>
-		 <nav class="navbar navbar-default">
-			 <div class="container-fluid">
-				 <!-- Brand and toggle get grouped for better mobile display -->
-				 <div class="navbar-header">
-					<a class="navbar-brand" href="index.php"><span class="so">So</span><span class="bu">bu</span></a>
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div>
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right links_bovenaan">
-						<li><a href="messages_page.php">Messages
-							<?php 
-								print_badge();
-							?></a></li>
-						<li><a href="settings_page.php">Settings</a></li>
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<a class="navbar-brand" href="index.php"><span class="so">So</span><span class="bu">bu</span></a>
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right links_bovenaan">
+							<li><a href="messages_page.php">Messages
+								<span id="message_badge">
+									<?php 
+									print_badge();
+									?>
+									
+								</span>
+							</a></li>
+							<li><a href="settings_page.php">Settings</a></li>
 							<?php
 
 							if ($_SESSION["admin"] == 1)
@@ -68,195 +72,195 @@ if (isset($_SESSION["logged_in"]))
 							}
 
 							?>
-						<li><a href="logout.php">Logout</a></li>
-					</ul>
-				</div>
-			</div><!-- /.container-fluid -->
-		</nav>
+							<li><a href="logout.php">Logout</a></li>
+						</ul>
+					</div>
+				</div><!-- /.container-fluid -->
+			</nav>
 
-		<div class="container-fluid">
-		 <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-2">
-			 <div class="BOX margin_15_bottom">
-				 <div class="col-md-5 user_foto">
-					 <img src="<?php if($_SESSION["profile_picture"] != NULL) {echo "IMG/users/" .$_SESSION["profile_picture"];} else {echo "IMG/users/default.png";} ?>" alt="Profile picture" class="user_foto">
-				 </div>
-				 <div class="col-md-7 user_info">
-					 <ul>
-						 <li><?php echo $_SESSION["name"]; ?></li>
-						 <li><?php echo $_SESSION["function"]; ?></li>
-						 <li>
-							 <div class="col-xs-9 col-sm-9 col-md-9 no_pad_left">Online</div>
-							 <div class="col-xs-3 col-sm-3 col-md-3">
+			<div class="container-fluid">
+				<div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-2">
+					<div class="BOX margin_15_bottom">
+						<div class="col-md-5 user_foto">
+							<img src="<?php if($_SESSION["profile_picture"] != NULL) {echo "IMG/users/" .$_SESSION["profile_picture"];} else {echo "IMG/users/default.png";} ?>" alt="Profile picture" class="user_foto">
+						</div>
+						<div class="col-md-7 user_info">
+							<ul>
+								<li><?php echo $_SESSION["name"]; ?></li>
+								<li><?php echo $_SESSION["function"]; ?></li>
+								<li>
+									<div class="col-xs-9 col-sm-9 col-md-9 no_pad_left">Online</div>
+									<div class="col-xs-3 col-sm-3 col-md-3">
 
 
-								 <?php
+										<?php
 
-								 if ($_SESSION["logged_in"] == 1)
-								 {
-									echo "<img src=\"IMG/Green_circle.png\" title=\"Online\" alt=\"Online\" class=\"indicator_online_building\">";
-								}
-								else
-								{
-									echo "<img src=\"IMG/Red_circle.png\" title=\"Offline\" alt=\"Offline\" class=\"indicator_online_building\">";
-								}
+										if ($_SESSION["logged_in"] == 1)
+										{
+											echo "<img src=\"IMG/Green_circle.png\" title=\"Online\" alt=\"Online\" class=\"indicator_online_building\">";
+										}
+										else
+										{
+											echo "<img src=\"IMG/Red_circle.png\" title=\"Offline\" alt=\"Offline\" class=\"indicator_online_building\">";
+										}
 
-								?>
+										?>
+									</div>
+									<li>
+										<div class="col-xs-9 col-sm-9 col-md-9 no_pad_left">In Building</div>
+										<div class="col-xs-3 col-sm-3 col-md-3">
+
+											<?php
+											if ($_SESSION["in_building"] == 1)
+											{
+												echo "<img src=\"IMG/Green_square.png\" id=\"in_building\" title=\"In Building\" alt=\"In Building\" class=\"indicator_online_building\">";
+											}
+											else
+											{
+												echo "<img src=\"IMG/Red_square.png\" id=\"in_building\" title=\"Not in Building\" alt=\"Not in building\" class=\"indicator_online_building\">";
+											}
+											?>
+
+										</div>
+									</li>
+									<li>
+										<div class="col-md-12 no_pad_left">
+
+											<?php
+											if ($_SESSION["in_building"] == 0)
+											{
+												echo "<button class=\"btn btn-success\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check in</button>";
+												echo "<h5 id=\"check_in_out_warning\"><small>Don't forget to check in when arriving.</small></h5>";
+											}
+											else
+											{
+												echo "<button class=\"btn btn-danger\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check out</button>";
+												echo "<h5 id=\"check_in_out_warning\"><small>Don't forget to check out when leaving.</small></h5>"; /*werkt pas vanaf refresh?*/
+											}
+											?>
+
+										</div>
+									</li>
+								</ul>
 							</div>
-							<li>
-								<div class="col-xs-9 col-sm-9 col-md-9 no_pad_left">In Building</div>
-								<div class="col-xs-3 col-sm-3 col-md-3">
-
+							<p class="clear_both"></p>
+						</div>
+						<div class="BOX margin_15_bottom no_pad_bottom">
+							<div class="col-md-12">
+								<a href="info_page.php" class="h4">Info</a>
+							</div>
+							<p class="clear_both"></p>
+						</div>
+						<div class="BOX margin_15_bottom no_pad_bottom">
+							<div class="col-md-12">
+								<a href="check_in_out_page.php" class="h4">Check in and out history</a>
+							</div>
+							<p class="clear_both"></p>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4">
+						<div class="BOX">
+							<h4>Check in and out history</h4>
+							<div id='myChart'></div>	
+							<?php
+							$link = connecteren();
+							$query = "SELECT time_check, in_building_now FROM in_building WHERE user_id = '" .$_SESSION["user_id"]. "' ORDER BY in_building_id ASC";
+							$data = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
+							$time3 = NULL;
+							$date2 = NULL;
+							?>
+							<script>
+								var myData=[<?php 
+								while($info=mysqli_fetch_array($data)){
+									$datumtijd = date_create($info['time_check']);
+									if($info['in_building_now'] == 1){
+										$time1 = $datumtijd->format('H:i:s');
+										$time1 = strtotime($time1);
+									}
+									if($info['in_building_now'] == 0){
+										$time2 = $datumtijd->format('H:i:s');
+										$time2 = strtotime($time2);
+									}
+									if(isset($time1)&&isset($time2))
+									{
+										$time = ($time2 - $time1)/60;
+										$time2 = NULL;
+										$time1 = NULL;
+									}
+									if((isset($time))&&($time != $time3)){
+										echo idate('i', $time).','; /* We use the concatenation operator '.' to add comma delimiters after each data value. */
+										$time3 = $time;
+									}
+								}
+								?>];
 								<?php
-								if ($_SESSION["in_building"] == 1)
-								{
-									echo "<img src=\"IMG/Green_square.png\" id=\"in_building\" title=\"In Building\" alt=\"In Building\" class=\"indicator_online_building\">";
-								}
-								else
-								{
-									echo "<img src=\"IMG/Red_square.png\" id=\"in_building\" title=\"Not in Building\" alt=\"Not in building\" class=\"indicator_online_building\">";
-								}
+								$query = "SELECT time_check FROM in_building WHERE user_id = '" .$_SESSION["user_id"]. "' ORDER BY in_building_id ASC";
+								$data = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
 								?>
-
-								</div>
-							</li>
-							<li>
-								<div class="col-md-12 no_pad_left">
-
-								<?php
-								if ($_SESSION["in_building"] == 0)
-								{
-									echo "<button class=\"btn btn-success\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check in</button>";
-									echo "<h5 id=\"check_in_out_warning\"><small>Don't forget to check in when arriving.</small></h5>";
+								var myLabels=[<?php 
+								while($info=mysqli_fetch_array($data)){
+									$datumtijd = date_create($info['time_check']);
+									$date = $datumtijd->format('Y-m-d');
+									if($date != $date2){
+										echo '"'.(date_format($datumtijd, 'U')*1000).'",'; /* The concatenation operator '.' is used here to create string values from our database names. */
+										$date2 = $date;
+									}
 								}
-								else
-								{
-									echo "<button class=\"btn btn-danger\" id=\"check_in_out_button\" onclick=\"check_in_out();\">Check out</button>";
-									echo "<h5 id=\"check_in_out_warning\"><small>Don't forget to check out when leaving.</small></h5>"; /*werkt pas vanaf refresh?*/
-								}
-								?>
+								?>];
+							</script>
+							<?php
+							mysqli_close($link);
+							?>
+							<script>
+								var chartData={
+									"type":"bar",
+									"plot": {
+										"animation": {
+											"delay": "200",
+											"effect":"4",
+											"method": "5",
+											"sequence": "1"
+										}
+									},
+									"legend":{
+										"x":"20%"
 
-								</div>
-							</li>
-				</ul>
-			</div>
-			<p class="clear_both"></p>
-		</div>
-		<div class="BOX margin_15_bottom no_pad_bottom">
-		 <div class="col-md-12">
-			 <a href="info_page.php" class="h4">Info</a>
-		 </div>
-		 <p class="clear_both"></p>
-	 </div>
-	 <div class="BOX margin_15_bottom no_pad_bottom">
-		 <div class="col-md-12">
-			 <a href="check_in_out_page.php" class="h4">Check in and out history</a>
-		 </div>
-		 <p class="clear_both"></p>
-	 </div>
- </div>
- <div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4">
- 	<div class="BOX">
- 	<h4>Check in and out history</h4>
- 	<div id='myChart'></div>	
- 	<?php
-	 	$link = connecteren();
-	 	$query = "SELECT time_check, in_building_now FROM in_building WHERE user_id = '" .$_SESSION["user_id"]. "' ORDER BY in_building_id ASC";
-		$data = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
-		$time3 = NULL;
-		$date2 = NULL;
-	?>
-	<script>
-		var myData=[<?php 
-		while($info=mysqli_fetch_array($data)){
-			$datumtijd = date_create($info['time_check']);
-			if($info['in_building_now'] == 1){
-				$time1 = $datumtijd->format('H:i:s');
-				$time1 = strtotime($time1);
+									},
+									"scale-x":{
+										"labels":myLabels,
+										"transform":{
+											"type":"date",
+											"all":"%m.%d.%Y"
+										}
+									},
+									"series":[
+									{
+										"values":myData,
+										"text":"Hours at work"
+									}
+									]
+								};
+								zingchart.render({
+									id:'myChart',
+									data:chartData,
+									height:400,
+									width:400
+								});
+							</script>
+						</div>
+					</div>
+
+
+
+					<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+					<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+					<!-- Include all compiled plugins (below), or include individual files as needed -->
+					<script src="js/bootstrap.min.js"></script>
+				</body>
+				</html>
+				<?php
 			}
-			if($info['in_building_now'] == 0){
-				$time2 = $datumtijd->format('H:i:s');
-				$time2 = strtotime($time2);
-			}
-			if(isset($time1)&&isset($time2))
+			else
 			{
-				$time = ($time2 - $time1)/60;
-				$time2 = NULL;
-				$time1 = NULL;
+				header("Location: index.php");
 			}
-			if((isset($time))&&($time != $time3)){
-			echo idate('i', $time).','; /* We use the concatenation operator '.' to add comma delimiters after each data value. */
-			$time3 = $time;
-			}
-		}
-		?>];
-		<?php
-			$query = "SELECT time_check FROM in_building WHERE user_id = '" .$_SESSION["user_id"]. "' ORDER BY in_building_id ASC";
-			$data = mysqli_query($link, $query) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query\"");
-		?>
-		var myLabels=[<?php 
-		while($info=mysqli_fetch_array($data)){
-			$datumtijd = date_create($info['time_check']);
-			$date = $datumtijd->format('Y-m-d');
-			if($date != $date2){
-	    	echo '"'.(date_format($datumtijd, 'U')*1000).'",'; /* The concatenation operator '.' is used here to create string values from our database names. */
-	    	$date2 = $date;
-	    	}
-		}
-		?>];
-	</script>
-	<?php
-		mysqli_close($link);
-	?>
-	<script>
-	  	var chartData={
-		    "type":"bar",
-			"plot": {
-				"animation": {
-					"delay": "200",
-          			"effect":"4",
-					"method": "5",
-					"sequence": "1"
-					}
-			},
-		    "legend":{
-		      	"x":"20%"
-
-		      },
-			"scale-x":{
-		        "labels":myLabels,
-		        "transform":{
-	       			"type":"date",
-	       			"all":"%m.%d.%Y"
-	    		}
-		    },
-		    "series":[
-		        {
-		            "values":myData,
-		            "text":"Hours at work"
-		        }
-		    ]
-	  	};
-	  	zingchart.render({
-		    id:'myChart',
-		    data:chartData,
-		    height:400,
-		    width:400
-	  	});
-	</script>
- 	</div>
- </div>
-
-
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
-</body>
-</html>
-<?php
-}
-else
-{
-	header("Location: index.php");
-}

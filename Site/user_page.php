@@ -92,9 +92,13 @@ if (isset($_SESSION["logged_in"]))
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right links_bovenaan">
 							<li><a href="messages_page.php">Messages
-							<?php 
-								print_badge();
-							?></a></li>
+								<span id="message_badge">
+									<?php 
+									print_badge();
+									?>
+									
+								</span>
+							</a></li>
 							<li><a href="settings_page.php">Settings</a></li>
 							<?php
 

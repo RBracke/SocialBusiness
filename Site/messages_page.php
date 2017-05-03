@@ -91,9 +91,13 @@ if (isset($_SESSION["logged_in"]))
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right links_bovenaan">
 							<li><a href="messages_page.php">Messages
-							<?php 
-								print_badge();
-							?></a></li>
+								<span id="message_badge">
+									<?php 
+									print_badge();
+									?>
+									
+								</span>
+							</a></li>
 							<li><a href="settings_page.php">Settings</a></li>
 							<?php
 
@@ -191,7 +195,7 @@ if (isset($_SESSION["logged_in"]))
 					</div>
 					<div class="col-xs-12 col-sm-5 col-sm-offset-0 col-md-5 col-md-offset-0 col-lg-4 user_search">
 						<div class="BOX">
-						<h4>Messages</h4>
+							<h4>Messages</h4>
 							<div class="col-md-12"><hr class="hr"><br></div>
 							<form class="form-horizontal" name="people_search" method="post" action="#">
 								<div class="form-group">

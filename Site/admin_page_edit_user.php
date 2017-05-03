@@ -62,9 +62,13 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["admin"] == 1 && isset($_GET["id"
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right links_bovenaan">
 							<li><a href="messages_page.php">Messages
-							<?php 
-								print_badge();
-							?></a></li>
+								<span id="message_badge">
+									<?php 
+									print_badge();
+									?>
+									
+								</span>
+							</a></li>
 							<li><a href="settings_page.php">Settings</a></li>
 							<?php
 
@@ -84,7 +88,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["admin"] == 1 && isset($_GET["id"
 				<div class="col-sm-offset-1 col-md-offset-1 col-lg-offset-2 pad_15_left"><h2>Admin page - Edit user</h2></div>
 				<div class="col-xs-12 col-sm-12 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 					<div class="BOX">
-							<div class="col-md-12">
+						<div class="col-md-12">
 							<form class="form-horizontal" name="settings" method="post" action="admin_validate_user_settings.php" enctype="multipart/form-data">
 								<div class="form-group margin_15_top <?php if (isset($_GET["name"]) && $_GET["name"] == "ok") {echo "has-success";} elseif (isset($_GET["name"]) && $_GET["name"] == "error") {echo "has-error";} ?>"">
 									<label for="dob" class="col-md-3 control-label">Name</label>

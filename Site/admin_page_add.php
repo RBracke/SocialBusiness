@@ -46,9 +46,13 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right links_bovenaan">
 							<li><a href="messages_page.php">Messages
-							<?php 
-								print_badge();
-							?></a></li>
+								<span id="message_badge">
+									<?php 
+									print_badge();
+									?>
+									
+								</span>
+							</a></li>
 							<li><a href="settings_page.php">Settings</a></li>
 							<li><a href="admin_page.php">Admin panel</a></li>
 							<li><a href="logout.php">Logout</a></li>
@@ -61,101 +65,101 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 				<div class="col-sm-offset-1 col-md-offset-1 col-lg-offset-2 pad_15_left"><h2>Admin page - Add a user</h2></div>
 				<div class="col-xs-12 col-sm-12 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 					<div class="BOX">
-							<div class="col-md-12">
-								<form class="form-horizontal" name="add_user" method="post" action="add_user_validate.php">
-									<div class="form-group margin_15_top">
-										<label for="dob" class="col-md-3 control-label">Name<span class="rood">*</span></label>
-										<div class="col-md-9">
-											<input type="text" class="form-control" id="name" name="name" placeholder="Surname Forename">
-										</div>
+						<div class="col-md-12">
+							<form class="form-horizontal" name="add_user" method="post" action="add_user_validate.php">
+								<div class="form-group margin_15_top">
+									<label for="dob" class="col-md-3 control-label">Name<span class="rood">*</span></label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" id="name" name="name" placeholder="Surname Forename">
 									</div>
-									<div class="form-group">
-										<label for="function" class="col-md-3 control-label">Function<span class="rood">*</span></label>
-										<div class="col-md-9">
-											<input type="text" class="form-control" id="function" name="function" placeholder="Function of the new employee">
-										</div>
+								</div>
+								<div class="form-group">
+									<label for="function" class="col-md-3 control-label">Function<span class="rood">*</span></label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" id="function" name="function" placeholder="Function of the new employee">
 									</div>
-									<div class="form-group">
-										<label for="admin_radio" class="col-md-3 control-label">Admin<span class="rood">*</span></label>
-										<div class="col-md-9">
-											<label class="radio-inline"><input type="radio" id="admin_radio" value="1" name="admin_radio">Yes</label>
-											<label class="radio-inline"><input type="radio" value="0" name="admin_radio">No</label>
-										</div>
+								</div>
+								<div class="form-group">
+									<label for="admin_radio" class="col-md-3 control-label">Admin<span class="rood">*</span></label>
+									<div class="col-md-9">
+										<label class="radio-inline"><input type="radio" id="admin_radio" value="1" name="admin_radio">Yes</label>
+										<label class="radio-inline"><input type="radio" value="0" name="admin_radio">No</label>
 									</div>
-									<div class="form-group">
-										<label for="rights_checkbox" class="col-md-3 control-label">Has rights</label> <!-- waardes tellen niet op-->
-										<div class="col-md-9">
-											<label class="checkbox-inline"><input type="checkbox" id="rights_checkbox" value="1" name="rights_checkbox_info">Check info</label>
-											<label class="checkbox-inline"><input type="checkbox" value="1" name="rights_checkbox_time">Check in and out times</label>
-											<label class="checkbox-inline"><input type="checkbox" value="1" name="rights_checkbox_message">Check Messages</label>
-										</div>
+								</div>
+								<div class="form-group">
+									<label for="rights_checkbox" class="col-md-3 control-label">Has rights</label> <!-- waardes tellen niet op-->
+									<div class="col-md-9">
+										<label class="checkbox-inline"><input type="checkbox" id="rights_checkbox" value="1" name="rights_checkbox_info">Check info</label>
+										<label class="checkbox-inline"><input type="checkbox" value="1" name="rights_checkbox_time">Check in and out times</label>
+										<label class="checkbox-inline"><input type="checkbox" value="1" name="rights_checkbox_message">Check Messages</label>
 									</div>
-									<div class="form-group">
-										<label for="nin" class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Nin</label>
-										<div class="col-md-9">
-											<input type="text" class="form-control" id="nin" name="nin" placeholder="example: 85020100200">
-										</div>
+								</div>
+								<div class="form-group">
+									<label for="nin" class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Nin</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" id="nin" name="nin" placeholder="example: 85020100200">
 									</div>
-									<div class="form-group">
-										<label for="dob" class="col-md-3 control-label">Date of birth</label>
-										<div class="col-md-9">
-											<input type="date" class="form-control" id="dob" name="dob">
-										</div>
+								</div>
+								<div class="form-group">
+									<label for="dob" class="col-md-3 control-label">Date of birth</label>
+									<div class="col-md-9">
+										<input type="date" class="form-control" id="dob" name="dob">
 									</div>
-									<div class="form-group">
-										<label for="gender" class="col-md-3 control-label">Gender</label>
-										<div class="col-md-9">
-											<label class="radio-inline"><input type="radio" id="gender" value="m" name="gender">M</label>
-											<label class="radio-inline"><input type="radio" value="f" name="gender">F</label>
-										</div>
+								</div>
+								<div class="form-group">
+									<label for="gender" class="col-md-3 control-label">Gender</label>
+									<div class="col-md-9">
+										<label class="radio-inline"><input type="radio" id="gender" value="m" name="gender">M</label>
+										<label class="radio-inline"><input type="radio" value="f" name="gender">F</label>
 									</div>
-									<div class="form-group">
-										<label for="home" class="col-md-3 control-label">Home address</label>
-										<div class="col-md-9">
-											<input type="text" class="form-control" id="home" name="address">
-										</div>
+								</div>
+								<div class="form-group">
+									<label for="home" class="col-md-3 control-label">Home address</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" id="home" name="address">
 									</div>
-									<div class="form-group">
-										<label for="martial" class="col-md-3 control-label">Martial status</label>
-										<div class="col-md-9">
-											<input type="text" class="form-control" id="martial" name="martial">
-										</div>
+								</div>
+								<div class="form-group">
+									<label for="martial" class="col-md-3 control-label">Martial status</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" id="martial" name="martial">
 									</div>
-									<div class="form-group">
-										<label for="email" class="col-md-3 control-label">Email<span class="rood">*</span></label>
-										<div class="col-md-9">
-											<input type="email" class="form-control" id="email" name="email">
-										</div>
+								</div>
+								<div class="form-group">
+									<label for="email" class="col-md-3 control-label">Email<span class="rood">*</span></label>
+									<div class="col-md-9">
+										<input type="email" class="form-control" id="email" name="email">
 									</div>
-									<div class="form-group">
-										<label for="phone" class="col-md-3 control-label">Phone number</label>
-										<div class="col-md-9">
-											<input type="text" class="form-control" id="phone" name="phone_number" placeholder="example: 0499999999">
-										</div>
+								</div>
+								<div class="form-group">
+									<label for="phone" class="col-md-3 control-label">Phone number</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" id="phone" name="phone_number" placeholder="example: 0499999999">
 									</div>
-									<div class="form-group">
-										<label for="newpassword" class="col-md-3 control-label">Password</label>
-										<div class="col-md-9">
-											<input type="password" class="form-control" id="newpassword" name="newpassword" placeholder="Default = admin">
-										</div>
+								</div>
+								<div class="form-group">
+									<label for="newpassword" class="col-md-3 control-label">Password</label>
+									<div class="col-md-9">
+										<input type="password" class="form-control" id="newpassword" name="newpassword" placeholder="Default = admin">
 									</div>
-									<div class="form-group">
-										<label for="repassword" class="col-md-3 control-label">Retype password</label>
-										<div class="col-md-9">
-											<input type="password" class="form-control" id="repassword" name="repassword">
-										</div>
+								</div>
+								<div class="form-group">
+									<label for="repassword" class="col-md-3 control-label">Retype password</label>
+									<div class="col-md-9">
+										<input type="password" class="form-control" id="repassword" name="repassword">
 									</div>
-									<div class="form-group">
-										<div class="col-xs-10">
-											<label class="col-md-3 control-label"><button type="submit" class="btn btn-warning">Add</button></label>
-										</div>
-										<div class="col-xs-2">
-											<span class="rood">* Required</span>
-										</div>
+								</div>
+								<div class="form-group">
+									<div class="col-xs-10">
+										<label class="col-md-3 control-label"><button type="submit" class="btn btn-warning">Add</button></label>
 									</div>
-								</form>
-							</div>
-							<p class="clear_both"></p>
+									<div class="col-xs-2">
+										<span class="rood">* Required</span>
+									</div>
+								</div>
+							</form>
+						</div>
+						<p class="clear_both"></p>
 					</div>
 				</div>
 			</div>
