@@ -598,7 +598,7 @@ function print_messages_list_colleague()
 				echo "<td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$row["sender"]."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row['sender']."\">".$row_sender_name['name']."</a></td>";
 				if (isset($row["file"]))
 				{
-					echo "<td><img src=\"IMG/file.png\" title=\"File\" alt=\"File\" class=\"indicator_online_building\"><td></tr>";
+					echo "<td><a href=\"Files/" .$row["file"]. "\" download><img src=\"IMG/file.png\" title=\"File\" alt=\"File\" class=\"indicator_online_building\"></a><td></tr>";
 				}
 				else
 				{
@@ -627,7 +627,7 @@ function print_messages_list_colleague()
 				echo "<tr><td>".$row['date_time']."</td><td><form action='actual_message.php' method='POST'><input type='hidden' value='".$row['message_id']."' name='message_id'><input type='hidden' value='".$row["receipant"]."' name='id'><input type='submit' value='".$row['topic']."' id='submitlink'/></form></td><td><a href=\"colleague_page.php?id=".$row['receipant']."\">".$row_rec_name['name']."</a></td>";
 				if (isset($row["file"]))
 				{
-					echo "<td><img src=\"IMG/file.png\" title=\"File\" alt=\"File\" class=\"indicator_online_building\"><td></tr>";
+					echo "<td><a href=\"Files/" .$row["file"]. "\" download><img src=\"IMG/file.png\" title=\"File\" alt=\"File\" class=\"indicator_online_building\"></a><td></tr>";
 				}
 				else
 				{

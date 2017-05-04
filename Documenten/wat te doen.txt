@@ -1,6 +1,5 @@
 wat te doen?
 
-bug: bij collega messages page kan men het bestand nog niet downloaden
 bug: check in en check out werkt nog steeds niet 100%
 bug: feedback geven bij settings, en required voor password
 bug: gender wordt niet goed doorgegeven bij user_add
