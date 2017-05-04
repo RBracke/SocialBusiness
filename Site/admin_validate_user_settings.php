@@ -186,12 +186,12 @@ if(isset($_SESSION['logged_in']) && isset($_SESSION["admin"]) && ($_SESSION["adm
 
 	mysqli_close($link);
 
-	header( "Location: " .$goto_url );
+	header( "Location: " .$goto_url. "&succes=1" );
 
 }
 else
 {
-	header( "Location: index.php" );
+	header( "Location: " .$goto_url. "&error=error" );
 }
 
 

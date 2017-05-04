@@ -162,7 +162,7 @@ if(isset($_SESSION['logged_in']) && isset($_POST["nin"]) && isset($_POST["dob"])
 
 			mysqli_close($link);
 
-			header( "Location: " .$goto_url );
+			header( "Location: " .$goto_url. "&succes=1" );
 
 		}
 		else

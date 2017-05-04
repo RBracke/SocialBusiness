@@ -89,6 +89,14 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["admin"] == 1 && isset($_GET["id"
 				<div class="col-xs-12 col-sm-12 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 					<div class="BOX">
 						<div class="col-md-12">
+						<?php if(isset($_GET["succes"])){
+										echo "<div class='alert alert-success'><strong>Success!</strong> Settings has been saved successfully</div>";
+									}
+									if (isset($_GET["error"]) && $_GET["error"] == "error")
+									{
+										echo "<div class='alert alert-danger'><strong>Settings not saved, there was an error</strong></div>";
+									}
+								?>
 							<form class="form-horizontal" name="settings" method="post" action="admin_validate_user_settings.php" enctype="multipart/form-data">
 								<div class="form-group margin_15_top <?php if (isset($_GET["name"]) && $_GET["name"] == "ok") {echo "has-success";} elseif (isset($_GET["name"]) && $_GET["name"] == "error") {echo "has-error";} ?>"">
 									<label for="dob" class="col-md-3 control-label">Name</label>

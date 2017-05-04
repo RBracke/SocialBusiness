@@ -114,8 +114,8 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] == 1)
 								<div class="form-group">
 									<label for="gender" class="col-md-3 control-label">Gender</label>
 									<div class="col-md-9">
-										<label class="radio-inline"><input type="radio" id="gender" value="m" name="gender">M</label>
-										<label class="radio-inline"><input type="radio" value="f" name="gender">F</label>
+										<label class="radio-inline"><input type="radio" id="gender" value="1" name="gender">M</label>
+										<label class="radio-inline"><input type="radio" value="0" name="gender">F</label>
 									</div>
 								</div>
 								<div class="form-group">

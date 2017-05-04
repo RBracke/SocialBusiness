@@ -172,6 +172,14 @@ if (isset($_SESSION["logged_in"]))
 							<h4>Settings</h4>
 							<div class="col-md-12"><hr class="hr"></div>
 							<div class="col-md-12">
+								<?php if(isset($_GET["succes"])){
+										echo "<div class='alert alert-success'><strong>Success!</strong> Your Settings has been saved successfully</div>";
+									}
+									if (isset($_GET["password"]) && $_GET["password"] == "error")
+									{
+										echo "<div class='alert alert-danger'><strong>Fill in your password.</strong></div>";
+									}
+								?>
 								<form class="form-horizontal" name="settings" method="post" action="settings_validate.php" enctype="multipart/form-data">
 									<div class="form-group margin_15_top <?php if (isset($_GET["nin"]) && $_GET["nin"] == "ok") {echo "has-success";} elseif (isset($_GET["nin"]) && $_GET["nin"] == "error") {echo "has-error";} ?>">
 										<label for="nin" class="col-md-3 control-label" id="label_nin" data-toggle="tooltip" data-placement="top" title="National insurance number"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> Nin</label>
@@ -217,7 +225,7 @@ if (isset($_SESSION["logged_in"]))
 										</div>
 									</div>
 									<div class="form-group <?php if (isset($_GET["password"]) && $_GET["password"] == "ok") {echo "has-success";} elseif (isset($_GET["password"]) && $_GET["password"] == "error") {echo "has-error";} ?>">
-										<label for="oldpassword" class="col-md-3 control-label">Password</label>
+										<label for="oldpassword" class="col-md-3 control-label">Password<span class="rood">*</span></label>
 										<div class="col-md-9">
 											<input type="password" class="form-control" id="oldpassword" name="password">
 										</div>
@@ -242,8 +250,13 @@ if (isset($_SESSION["logged_in"]))
 											</div>
 										</div>
 									</div>
-									<div class="col-md-9">
-										<button type="submit" class="btn btn-warning">Save</button>
+									<div class="form-group">
+										<div class="col-xs-9">
+											<button type="submit" class="btn btn-warning">Save</button>
+										</div>
+										<div class="col-xs-3">
+											<span class="rood">* Required</span>
+										</div>
 									</div>
 								</form>
 							</div>
