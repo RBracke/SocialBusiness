@@ -116,16 +116,23 @@ function fill_session($id)
 		$_SESSION["admin"] = $result_user["admin"];
 		$_SESSION["start_date"] = $result_user["start_date"];
 
-		$query_overlimit = "SELECT time_check FROM in_building WHERE (user_id = " .$_SESSION["user_id"]. ") && (in_building_now = 1) ORDER BY in_building_id DESC LIMIT 1";
+		$query_overlimit_check_in = "SELECT time_check FROM in_building WHERE (user_id = " .$_SESSION["user_id"]. ") && (in_building_now = 1) ORDER BY in_building_id DESC LIMIT 1";
 
-		$result_overlimit = mysqli_query($link, $query_overlimit) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_overlimit\"");
+		$result_overlimit_check_in = mysqli_query($link, $query_overlimit_check_in) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_overlimit_check_in\"");
 
-		if (mysqli_num_rows($result_overlimit) == 1)
+		$query_overlimit_check_out = "SELECT time_check FROM in_building WHERE (user_id = " .$_SESSION["user_id"]. ") && (in_building_now = 0) ORDER BY in_building_id DESC LIMIT 1";
+
+		$result_overlimit_check_out = mysqli_query($link, $query_overlimit_check_out) or die("FOUT: er is een fout opgetreden bij het uitvoeren van de query \"$query_overlimit_check_out\"");
+
+		if (mysqli_num_rows($result_overlimit_check_in) == 1 && mysqli_num_rows($result_overlimit_check_in) == 1)
 		{
-			$result_overlimit_tijd = mysqli_fetch_array($result_overlimit);
-			$datumtijd = date_create($result_overlimit_tijd['time_check']);
-			$date = $datumtijd->format('Y-m-d');
-			if($date_today == $date)
+			$result_overlimit_check_in_tijd = mysqli_fetch_array($result_overlimit_check_in);
+			$result_overlimit_check_out_tijd = mysqli_fetch_array($result_overlimit_check_out);
+			$datumtijd_check_in = date_create($result_overlimit_check_in_tijd['time_check']);
+			$datumtijd_check_out = date_create($result_overlimit_check_out_tijd['time_check']);
+			$date_check_in = $datumtijd_check_in->format('Y-m-d');
+			$date_check_out = $datumtijd_check_out->format('Y-m-d');
+			if($date_today == $date_check_in && $date_today == $date_check_out)
 			{
 				$y = 1;
 				$_SESSION["overlimit"] = 1;
