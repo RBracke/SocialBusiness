@@ -1,0 +1,7 @@
+wat te doen:
+
+https
+over limit (code aanpassen + script dat waarde reset elke in db)
+er-diagramma tekenen en in verslag verwerken
+serveropstelling tekenen en in verslag verwerken
+
